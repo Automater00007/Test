@@ -57,12 +57,11 @@ export default function SiteNav() {
           <Link
             href="/"
             className="group flex items-baseline gap-2.5"
-            aria-label="Jade River Resort — home"
           >
             <span className="font-display text-[1.4rem] leading-none tracking-[-0.045em] md:text-[1.6rem]">
               Jade<span className="text-clay">.</span>River
             </span>
-            <span className="eyebrow hidden pb-[2px] text-[9px] text-ink/45 lg:block">
+            <span className="eyebrow hidden pb-[2px] text-[9px] text-ink/65 lg:block">
               Resort
             </span>
           </Link>
@@ -76,7 +75,7 @@ export default function SiteNav() {
                   href={item.href}
                   className={cn(
                     "link-line font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
-                    active ? "text-clay" : "text-ink/65 hover:text-ink",
+                    active ? "text-walnut" : "text-ink/65 hover:text-ink",
                   )}
                 >
                   {item.label}
@@ -89,7 +88,7 @@ export default function SiteNav() {
             <Link
               href="/contact"
               className="btn btn-clay hidden !py-3 !px-5 sm:inline-flex"
-              data-cursor="Book"
+
             >
               Reserve directly
               <Arrow />
@@ -102,8 +101,8 @@ export default function SiteNav() {
               aria-label="Open menu"
               aria-expanded={open}
             >
-              <span className="block h-px w-7 bg-ink transition-all duration-500 group-hover:w-5" />
-              <span className="block h-px w-5 bg-ink transition-all duration-500 group-hover:w-7" />
+              <span className="block h-px w-7 bg-charcoal transition-all duration-500 group-hover:w-5" />
+              <span className="block h-px w-5 bg-charcoal transition-all duration-500 group-hover:w-7" />
             </button>
           </div>
         </div>
@@ -112,7 +111,7 @@ export default function SiteNav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[80] flex flex-col bg-ink text-paper"
+            className="fixed inset-0 z-[80] flex flex-col bg-forest text-paper"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -157,7 +156,7 @@ export default function SiteNav() {
                           <span className="font-display text-[clamp(2.2rem,7vw,4rem)] leading-[1.05] tracking-[-0.04em] transition-colors group-hover:text-clay">
                             {item.label}
                           </span>
-                          <span className="font-mono text-[10px] tracking-[0.2em] text-paper/35">
+                          <span className="font-mono text-[10px] tracking-[0.2em] text-paper/65">
                             0{i + 1}
                           </span>
                         </Link>
@@ -173,7 +172,7 @@ export default function SiteNav() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
               >
-                <div className="eyebrow leading-[1.9] text-paper/50">
+                <div className="eyebrow leading-[1.9] text-paper/65">
                   Pahalgam, Jammu &amp; Kashmir
                   <br />
                   33.8834° N · 75.2698° E
@@ -185,7 +184,7 @@ export default function SiteNav() {
                   >
                     {site.phone}
                   </a>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-paper/40">
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-paper/65">
                     Direct bookings only
                   </p>
                 </div>

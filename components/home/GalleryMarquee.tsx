@@ -70,8 +70,8 @@ function Row({
           <Link
             key={i}
             href="/gallery"
-            className="group relative block h-[clamp(220px,32vh,400px)] w-[clamp(240px,26vw,400px)] shrink-0 overflow-hidden bg-ink-2"
-            data-cursor="View"
+            className="group relative block h-[clamp(220px,32vh,400px)] w-[clamp(240px,26vw,400px)] shrink-0 overflow-hidden bg-forest"
+
             aria-hidden={i >= items.length}
             tabIndex={i >= items.length ? -1 : 0}
           >
@@ -82,7 +82,7 @@ function Row({
               sizes="(min-width: 768px) 26vw, 80vw"
               className="object-cover transition-transform duration-[1100ms] ease-[var(--ease-out-expo)] group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/20" />
+            <div className="absolute inset-0 bg-forest/0 transition-colors duration-500 group-hover:bg-forest/20" />
             <span className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/0 transition-colors duration-500 group-hover:text-paper/80">
               {item.span === "wide" ? "Landscape" : item.span === "tall" ? "Portrait" : "Property"}
             </span>
@@ -102,7 +102,7 @@ export default function GalleryMarquee() {
       <div className="shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="eyebrow text-ink/50" data-reveal>
+            <span className="eyebrow text-ink/65" data-reveal>
               05 — Gallery
             </span>
             <h2
@@ -116,7 +116,7 @@ export default function GalleryMarquee() {
           <Link
             href="/gallery"
             className="link-line self-start font-mono text-[10px] uppercase tracking-[0.2em] md:self-end"
-            data-cursor="All"
+
           >
             Open full gallery →
           </Link>
@@ -128,7 +128,7 @@ export default function GalleryMarquee() {
         <Row items={rowB} speed={30} direction={1} />
       </div>
 
-      <p className="shell mt-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/35">
+      <p className="shell mt-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
         Scroll velocity changes the current — try it.
       </p>
     </section>

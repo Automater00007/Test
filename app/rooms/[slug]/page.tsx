@@ -88,7 +88,7 @@ export default async function RoomPage({
       <section className="shell py-14 md:py-24">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
-            <span className="eyebrow text-ink/45">The room</span>
+            <span className="eyebrow text-ink/65">The room</span>
             <p className="mt-6 font-display text-[clamp(1.6rem,2.9vw,2.8rem)] leading-[1.18] tracking-[-0.03em]">
               {room.long}
             </p>
@@ -99,7 +99,7 @@ export default async function RoomPage({
                 <ul className="mt-5 space-y-3">
                   {room.amenities.map((a) => (
                     <li key={a} className="flex items-baseline gap-3 border-b border-line pb-2.5 text-[0.93rem]">
-                      <span className="h-1 w-1 shrink-0 translate-y-[-2px] bg-clay" />
+                      <span className="h-1 w-1 shrink-0 translate-y-[-2px] bg-copper" />
                       {a}
                     </li>
                   ))}
@@ -116,7 +116,7 @@ export default async function RoomPage({
                     ["Best for", room.bestFor],
                   ].map(([k, v]) => (
                     <div key={k} className="flex justify-between gap-6 border-b border-line pb-2.5">
-                      <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/40">
+                      <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
                         {k}
                       </dt>
                       <dd className="text-right text-[0.9rem]">{v}</dd>
@@ -129,16 +129,16 @@ export default async function RoomPage({
 
           <aside className="md:col-span-4 md:col-start-9">
             <div className="md:sticky md:top-28 border border-line bg-paper-2 p-6">
-              <p className="eyebrow text-ink/40">Reserve directly</p>
+              <p className="eyebrow text-ink/65">Reserve directly</p>
               <p className="mt-4 font-display text-[2.4rem] leading-none">{formatPrice(room.price)}</p>
-              <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/40">
+              <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
                 per night · inclusive of taxes as confirmed
               </p>
 
               <Link
                 href={`/contact?room=${room.slug}`}
                 className="btn mt-7 w-full justify-center"
-                data-cursor="Book"
+
               >
                 Check availability
               </Link>
@@ -147,12 +147,12 @@ export default async function RoomPage({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-clay mt-3 w-full justify-center"
-                data-cursor="Chat"
+
               >
                 WhatsApp directly
               </a>
 
-              <p className="mt-6 border-t border-line pt-4 text-[0.85rem] leading-relaxed text-ink/55">
+              <p className="mt-6 border-t border-line pt-4 text-[0.85rem] leading-relaxed text-ink/70">
                 No booking engines, no OTA commission. Your enquiry goes straight to
                 the resort team.
               </p>
@@ -165,7 +165,7 @@ export default async function RoomPage({
       </section>
 
       <section className="shell pb-20">
-        <span className="eyebrow text-ink/45">The room, in frames</span>
+        <span className="eyebrow text-ink/65">The room, in frames</span>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {room.gallery.map((src, i) => (
             <div
@@ -188,14 +188,14 @@ export default async function RoomPage({
 
       <section className="border-t border-line py-16">
         <div className="shell">
-          <span className="eyebrow text-ink/45">Other rooms</span>
+          <span className="eyebrow text-ink/65">Other rooms</span>
           <div className="mt-8 grid gap-8 md:grid-cols-2">
             {others.map((other) => (
               <Link
                 key={other.slug}
                 href={`/rooms/${other.slug}`}
                 className="group flex items-center gap-6 border-t border-line pt-6"
-                data-cursor="View"
+
               >
                 <div className="relative h-28 w-24 shrink-0 overflow-hidden bg-paper-2">
                   <Image
@@ -207,11 +207,11 @@ export default async function RoomPage({
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="eyebrow text-ink/35">{other.count}</p>
+                  <p className="eyebrow text-ink/65">{other.count}</p>
                   <h3 className="mt-2 font-display text-[1.6rem] leading-tight transition-colors group-hover:text-clay">
                     {other.name}
                   </h3>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/45">
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/65">
                     From {formatPrice(other.price)} / night
                   </p>
                 </div>

@@ -31,7 +31,7 @@ export default function ReviewsPage() {
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
-              <p className="eyebrow text-ink/40">Submissions</p>
+              <p className="eyebrow text-ink/65">Submissions</p>
               <p className="mt-1 text-[0.95rem]">3–5 stars · reviewed</p>
             </div>
             <a href="#write" className="link-line mb-1 font-mono text-[10px] uppercase tracking-[0.18em]">
@@ -61,7 +61,7 @@ export default function ReviewsPage() {
                     {"★".repeat(review.rating)}
                     <span className="text-ink/15">{"★".repeat(5 - review.rating)}</span>
                   </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/35">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
                     {review.date}
                   </span>
                 </div>
@@ -70,12 +70,12 @@ export default function ReviewsPage() {
                 </h2>
               </div>
               <div>
-                <p className="mt-4 text-[0.96rem] leading-[1.75] text-ink/60">
+                <p className="mt-4 text-[0.96rem] leading-[1.75] text-ink/70">
                   {review.body}
                 </p>
                 <div className="mt-6 flex items-center justify-between border-t border-line pt-4">
                   <p className="text-[0.9rem]">{review.name}</p>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/35">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
                     {review.from}
                   </p>
                 </div>
@@ -88,7 +88,7 @@ export default function ReviewsPage() {
       <section className="border-t border-line py-16 md:py-24">
         <div className="shell grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <span className="eyebrow text-ink/45">Leave a note</span>
+            <span className="eyebrow text-ink/65">Leave a note</span>
             <h2 className="mt-4 text-[clamp(2rem,3.6vw,3.4rem)] leading-[0.98]">
               Stayed with us? <em className="text-clay">Tell it plainly.</em>
             </h2>
@@ -98,7 +98,7 @@ export default function ReviewsPage() {
               published.
             </p>
             <div className="mt-8 border-t border-line pt-5">
-              <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/35">
+              <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
                 Only 3–5 star ratings are accepted.
                 <br />
                 1 and 2 star submissions are not shown.

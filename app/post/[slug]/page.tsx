@@ -2,11 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, site } from "@/lib/content";
+import PostBody from "@/components/blog/PostBody";
+import { site } from "@/lib/content";
+import { getAllPostSlugs, getAllPosts, getPostBySlug } from "@/lib/posts";
 import { JsonLd, breadcrumb } from "@/lib/schema";
 
-export function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const slugs = await getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -15,17 +20,27 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) return { title: "Post not found" };
+
+  const title = post.seo?.metaTitle || post.title;
+  const description = post.seo?.metaDescription || post.excerpt;
+  const image = post.seo?.ogImage || post.image;
+
   return {
-    title: post.title,
-    description: post.excerpt,
-    alternates: { canonical: `/jade-river-resort/post/${post.slug}` },
+    title,
+    description,
+    keywords: post.seo?.keywords?.length ? post.seo.keywords : undefined,
+    alternates: {
+      canonical: post.seo?.canonicalUrl || `/jade-river-resort/post/${post.slug}`,
+    },
+    robots: post.seo?.noIndex ? { index: false, follow: false } : undefined,
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.excerpt,
-      images: [{ url: post.image, width: 1600, height: 900, alt: post.title }],
+      title,
+      description,
+      publishedTime: post.publishedAt,
+      images: [{ url: image, width: 1200, height: 630, alt: post.imageAlt }],
     },
   };
 }
@@ -36,10 +51,12 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const next = posts[(posts.findIndex((p) => p.slug === slug) + 1) % posts.length];
+  const all = await getAllPosts();
+  const index = all.findIndex((item) => item.slug === slug);
+  const next = index >= 0 && all.length > 1 ? all[(index + 1) % all.length] : null;
 
   return (
     <>
@@ -55,9 +72,13 @@ export default async function PostPage({
             "@type": "BlogPosting",
             headline: post.title,
             description: post.excerpt,
-            image: post.image,
-            datePublished: post.date,
-            author: { "@type": "Organization", name: "Jade River Resort" },
+            image: post.seo?.ogImage || post.image,
+            datePublished: post.publishedAt,
+            dateModified: post.publishedAt,
+            author: {
+              "@type": "Organization",
+              name: post.author || "Jade River Resort",
+            },
             publisher: { "@type": "Organization", name: site.name },
             mainEntityOfPage: `${site.url}/post/${post.slug}`,
           },
@@ -67,16 +88,17 @@ export default async function PostPage({
       <article className="pt-[68px] md:pt-[80px]">
         <header className="shell">
           <div className="flex items-center justify-between border-b border-line py-5">
-            <Link href="/post" className="eyebrow text-ink/50 hover:text-ink">
+            <Link href="/post" className="eyebrow text-ink/65 hover:text-ink">
               ← Journal
             </Link>
-            <span className="eyebrow text-ink/35">{post.category}</span>
+            <span className="eyebrow text-ink/65">{post.category}</span>
           </div>
 
           <div className="grid gap-8 pt-12 pb-10 md:grid-cols-12 md:pt-16">
             <div className="md:col-span-9">
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/40">
+              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                 {post.date} · {post.read} read
+                {post.author ? ` · ${post.author}` : ""}
               </p>
               <h1
                 className="mt-5 text-[clamp(2.6rem,6.4vw,6.4rem)] leading-[0.92] tracking-[-0.05em]"
@@ -85,7 +107,7 @@ export default async function PostPage({
                 {post.title}
               </h1>
             </div>
-            <p className="self-end font-display text-[1.1rem] italic leading-snug text-ink/50 md:col-span-3">
+            <p className="self-end font-display text-[1.1rem] italic leading-snug text-ink/65 md:col-span-3">
               {post.excerpt}
             </p>
           </div>
@@ -95,7 +117,7 @@ export default async function PostPage({
           <div className="relative aspect-[16/9] overflow-hidden bg-paper-2" data-reveal="mask">
             <Image
               src={post.image}
-              alt={post.title}
+              alt={post.imageAlt}
               fill
               priority
               sizes="100vw"
@@ -106,38 +128,42 @@ export default async function PostPage({
 
         <div className="shell py-14 md:py-20">
           <div className="mx-auto max-w-[68ch]">
-            {post.body.map((para, i) => (
-              <div key={i}>
-                <p
-                  className={`text-[1.05rem] leading-[1.85] text-ink/75 ${
-                    i === 0 ? "dropcap" : "mt-6"
-                  }`}
-                  data-reveal
-                >
-                  {para}
-                </p>
-                {i === 1 && (
-                  <blockquote
-                    className="my-12 border-l border-clay pl-6 md:pl-8"
+            {post.portableBody ? (
+              <PostBody value={post.portableBody} />
+            ) : (
+              post.body?.map((para, i) => (
+                <div key={i}>
+                  <p
+                    className={`text-[1.05rem] leading-[1.85] text-ink/75 ${
+                      i === 0 ? "dropcap" : "mt-6"
+                    }`}
                     data-reveal
                   >
-                    <p className="font-display text-[clamp(1.5rem,2.6vw,2.4rem)] leading-[1.2] tracking-[-0.03em] text-ink">
-                      “{post.quote}”
-                    </p>
-                  </blockquote>
-                )}
-              </div>
-            ))}
+                    {para}
+                  </p>
+                  {i === 1 && post.quote ? (
+                    <blockquote
+                      className="my-12 border-l border-clay pl-6 md:pl-8"
+                      data-reveal
+                    >
+                      <p className="font-display text-[clamp(1.5rem,2.6vw,2.4rem)] leading-[1.2] tracking-[-0.03em] text-ink">
+                        “{post.quote}”
+                      </p>
+                    </blockquote>
+                  ) : null}
+                </div>
+              ))
+            )}
 
             <div className="mt-14 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-6">
-              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/40">
+              <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                 Jade River Resort · Pahalgam
               </p>
               <div className="flex gap-6">
                 <Link href="/rooms" className="link-line font-mono text-[10px] uppercase tracking-[0.18em]">
                   See the rooms
                 </Link>
-                <Link href="/contact" className="link-line font-mono text-[10px] uppercase tracking-[0.18em] text-clay">
+                <Link href="/contact" className="link-line font-mono text-[10px] uppercase tracking-[0.18em] text-walnut">
                   Reserve →
                 </Link>
               </div>
@@ -145,23 +171,24 @@ export default async function PostPage({
           </div>
         </div>
 
-        <section className="border-t border-line py-14">
-          <div className="shell">
-            <p className="eyebrow text-ink/40">Next note</p>
-            <Link
-              href={`/post/${next.slug}`}
-              className="group mt-4 flex items-end justify-between gap-6"
-              data-cursor="Read"
-            >
-              <h2 className="max-w-[18ch] text-[clamp(1.8rem,4vw,4rem)] leading-[0.98] transition-colors duration-500 group-hover:text-clay">
-                {next.title}
-              </h2>
-              <span className="mb-2 text-3xl transition-transform duration-500 group-hover:translate-x-2">
-                →
-              </span>
-            </Link>
-          </div>
-        </section>
+        {next && next.slug !== post.slug ? (
+          <section className="border-t border-line py-14">
+            <div className="shell">
+              <p className="eyebrow text-ink/65">Next note</p>
+              <Link
+                href={`/post/${next.slug}`}
+                className="group mt-4 flex items-end justify-between gap-6"
+              >
+                <h2 className="max-w-[18ch] text-[clamp(1.8rem,4vw,4rem)] leading-[0.98] transition-colors duration-500 group-hover:text-clay">
+                  {next.title}
+                </h2>
+                <span className="mb-2 text-3xl transition-transform duration-500 group-hover:translate-x-2">
+                  →
+                </span>
+              </Link>
+            </div>
+          </section>
+        ) : null}
       </article>
     </>
   );

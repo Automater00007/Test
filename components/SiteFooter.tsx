@@ -19,15 +19,15 @@ const practical = [
 
 export default function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-ink text-paper">
+    <footer className="relative overflow-hidden bg-forest text-paper">
       <div className="shell pt-20 pb-8 md:pt-28">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-6">
-            <span className="eyebrow text-paper/45">Jade River Resort</span>
+            <span className="eyebrow text-paper/65">Jade River Resort</span>
             <p className="mt-6 max-w-[20ch] font-display text-[clamp(2.2rem,4.6vw,4.4rem)] leading-[0.98] tracking-[-0.04em]">
               Life, slowed by the <em className="text-clay">river.</em>
             </p>
-            <p className="mt-8 max-w-sm font-mono text-[11px] uppercase leading-[2.1] tracking-[0.16em] text-paper/45">
+            <p className="mt-8 max-w-sm font-mono text-[11px] uppercase leading-[2.1] tracking-[0.16em] text-paper/65">
               {site.address}
               <br />
               {site.coords}
@@ -36,7 +36,7 @@ export default function SiteFooter() {
 
           <div className="grid grid-cols-2 gap-10 md:col-span-4 md:col-start-8">
             <nav aria-label="Explore">
-              <p className="eyebrow mb-6 text-paper/35">Explore</p>
+              <p className="eyebrow mb-6 text-paper/65">Explore</p>
               <ul className="space-y-3.5">
                 {explore.map((l) => (
                   <li key={l.href}>
@@ -51,7 +51,7 @@ export default function SiteFooter() {
               </ul>
             </nav>
             <nav aria-label="Practical">
-              <p className="eyebrow mb-6 text-paper/35">Practical</p>
+              <p className="eyebrow mb-6 text-paper/65">Practical</p>
               <ul className="space-y-3.5">
                 {practical.map((l) => (
                   <li key={l.label}>
@@ -68,7 +68,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="md:col-span-2">
-            <div className="eyebrow mb-6 text-paper/35">Direct</div>
+            <div className="eyebrow mb-6 text-paper/65">Direct</div>
             <ul className="space-y-6">
               <li>
                 <a
@@ -77,7 +77,7 @@ export default function SiteFooter() {
                 >
                   {site.phone}
                 </a>
-                <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/35">
+                <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/65">
                   Phone &amp; WhatsApp
                 </p>
               </li>
@@ -88,7 +88,7 @@ export default function SiteFooter() {
                 >
                   {site.email}
                 </a>
-                <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/35">
+                <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/65">
                   Direct enquiries
                 </p>
               </li>
@@ -96,7 +96,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-line-light pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-paper/35 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-20 flex flex-col gap-4 border-t border-line-light pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-paper/65 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Defoy Hotels &amp; Resorts. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
             <Link href="/policies" className="hover:text-paper/70">
@@ -114,7 +114,7 @@ export default function SiteFooter() {
       >
         <p
           className="whitespace-nowrap text-center font-display text-[clamp(5rem,18.5vw,19rem)] leading-[0.8] tracking-[-0.055em]"
-          style={{ color: "transparent", WebkitTextStroke: "1px rgba(236,229,214,0.18)" }}
+          style={{ color: "transparent", WebkitTextStroke: "1px rgba(251,248,243,0.18)" }}
         >
           Jade River
         </p>

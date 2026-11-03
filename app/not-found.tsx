@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="pt-[68px] md:pt-[80px]">
       <div className="shell flex min-h-[78svh] flex-col justify-center py-20">
-        <span className="eyebrow text-ink/45">404 · Off the path</span>
+        <span className="eyebrow text-ink/65">404 · Off the path</span>
         <h1 className="mt-6 max-w-[16ch] text-[clamp(3rem,8vw,8rem)] leading-[0.9]">
           This way leads <em className="text-clay">nowhere.</em>
         </h1>

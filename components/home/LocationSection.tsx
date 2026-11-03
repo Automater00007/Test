@@ -29,7 +29,7 @@ export default function LocationSection() {
       <div className="shell">
         <div className="grid gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
-            <span className="eyebrow text-ink/50" data-reveal>
+            <span className="eyebrow text-ink/65" data-reveal>
               07 — Location
             </span>
             <h2
@@ -48,21 +48,21 @@ export default function LocationSection() {
 
             <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8" data-reveal>
               <div>
-                <dt className="eyebrow text-ink/40">Airport</dt>
+                <dt className="eyebrow text-ink/65">Airport</dt>
                 <dd className="mt-2 text-[0.95rem]">Srinagar · 96 km</dd>
               </div>
               <div>
-                <dt className="eyebrow text-ink/40">Drive</dt>
+                <dt className="eyebrow text-ink/65">Drive</dt>
                 <dd className="mt-2 text-[0.95rem]">2.5 – 3 hours</dd>
               </div>
               <div>
-                <dt className="eyebrow text-ink/40">Coordinates</dt>
+                <dt className="eyebrow text-ink/65">Coordinates</dt>
                 <dd className="mt-2 font-mono text-[0.8rem] tracking-tight">
                   33.883354, 75.269764
                 </dd>
               </div>
               <div>
-                <dt className="eyebrow text-ink/40">Address</dt>
+                <dt className="eyebrow text-ink/65">Address</dt>
                 <dd className="mt-2 text-[0.95rem]">{site.address}</dd>
               </div>
             </dl>
@@ -74,7 +74,7 @@ export default function LocationSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn"
-                  data-cursor="Map"
+
                 >
                   Get directions
                   <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -91,10 +91,10 @@ export default function LocationSection() {
           <div className="md:col-span-6 md:col-start-7" ref={ref}>
             <div className="relative overflow-hidden border border-line bg-paper-2 p-4 md:p-6">
               <div className="flex items-center justify-between pb-4">
-                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/45">
+                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                   Route sketch
                 </span>
-                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/30">
+                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                   Not to scale
                 </span>
               </div>
@@ -111,7 +111,7 @@ export default function LocationSection() {
                   <path
                     key={i}
                     d={`M-20 ${120 + i * 74} C 120 ${60 + i * 80}, 220 ${230 + i * 60}, 360 ${150 + i * 74} S 520 ${90 + i * 86}, 600 ${160 + i * 82}`}
-                    stroke="#10140f"
+                    stroke="#201B17"
                     strokeOpacity={0.08}
                     strokeWidth="1"
                   />
@@ -119,7 +119,7 @@ export default function LocationSection() {
 
                 <path
                   d="M70 430 C 120 360, 128 300, 214 268 S 330 236, 382 188 S 452 120, 496 96"
-                  stroke="#10140f"
+                  stroke="#201B17"
                   strokeOpacity="0.18"
                   strokeWidth="1"
                   strokeDasharray="2 8"
@@ -127,50 +127,50 @@ export default function LocationSection() {
 
                 <motion.path
                   d="M70 430 C 120 360, 128 300, 214 268 S 330 236, 382 188 S 452 120, 496 96"
-                  stroke="#c24e2c"
+                  stroke="#A87850"
                   strokeWidth="1.6"
                   style={{ pathLength: reduce ? 1 : draw }}
                 />
 
-                <circle cx="70" cy="430" r="4" fill="#10140f" />
-                <circle cx="70" cy="430" r="11" stroke="#10140f" strokeOpacity="0.2" />
+                <circle cx="70" cy="430" r="4" fill="#201B17" />
+                <circle cx="70" cy="430" r="11" stroke="#201B17" strokeOpacity="0.2" />
 
-                <circle cx="214" cy="268" r="4" fill="#10140f" />
-                <circle cx="214" cy="268" r="11" stroke="#10140f" strokeOpacity="0.2" />
+                <circle cx="214" cy="268" r="4" fill="#201B17" />
+                <circle cx="214" cy="268" r="11" stroke="#201B17" strokeOpacity="0.2" />
 
-                <circle cx="496" cy="96" r="5" fill="#c24e2c" />
+                <circle cx="496" cy="96" r="5" fill="#A87850" />
                 <motion.circle
                   cx="496"
                   cy="96"
                   r="10"
-                  stroke="#c24e2c"
+                  stroke="#A87850"
                   strokeOpacity="0.5"
                   initial={false}
                   animate={reduce ? {} : { r: [10, 24], opacity: [0.6, 0] }}
                   transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
                 />
 
-                <text x="58" y="468" fill="#10140f" fillOpacity="0.55" fontSize="10" fontFamily="monospace" letterSpacing="2">
+                <text x="58" y="468" fill="#201B17" fillOpacity="0.55" fontSize="10" fontFamily="monospace" letterSpacing="2">
                   SRINAGAR AIRPORT
                 </text>
-                <text x="188" y="244" fill="#10140f" fillOpacity="0.55" fontSize="10" fontFamily="monospace" letterSpacing="2">
+                <text x="188" y="244" fill="#201B17" fillOpacity="0.55" fontSize="10" fontFamily="monospace" letterSpacing="2">
                   PAHALGAM
                 </text>
-                <text x="360" y="76" fill="#c24e2c" fontSize="10" fontFamily="monospace" letterSpacing="2">
+                <text x="360" y="76" fill="#A87850" fontSize="10" fontFamily="monospace" letterSpacing="2">
                   JADE RIVER
                 </text>
 
-                <text x="72" y="492" fill="#10140f" fillOpacity="0.3" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
+                <text x="72" y="492" fill="#201B17" fillOpacity="0.3" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
                   96 KM · 2.5–3 HRS
                 </text>
-                <text x="360" y="54" fill="#10140f" fillOpacity="0.3" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
+                <text x="360" y="54" fill="#201B17" fillOpacity="0.3" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
                   2,130 M
                 </text>
               </svg>
 
               <div className="flex items-end justify-between border-t border-line pt-4">
                 <div>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/40">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                     Exact location
                   </p>
                   <p className="mt-1 font-mono text-[11px] tracking-tight">
@@ -178,7 +178,7 @@ export default function LocationSection() {
                   </p>
                 </div>
                 <span className="flex h-10 w-10 items-center justify-center border border-line">
-                  <span className="block h-2 w-2 bg-clay" />
+                  <span className="block h-2 w-2 bg-copper" />
                 </span>
               </div>
             </div>
@@ -191,7 +191,7 @@ export default function LocationSection() {
                   data-reveal
                   style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
                 >
-                  <span className="num text-ink/35">0{i + 1}</span>
+                  <span className="num text-ink/65">0{i + 1}</span>
                   <span className="text-[0.92rem]">{a}</span>
                 </div>
               ))}

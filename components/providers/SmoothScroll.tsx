@@ -22,11 +22,11 @@ export default function SmoothScroll() {
     const start = () => {
       if (lenis || reduce.matches || !desktop.matches) return;
       lenis = new Lenis({
-        duration: 1.15,
-        easing: (t: number) => 1 - Math.pow(1 - t, 3.2),
+        duration: 0.9,
+        easing: (t: number) => 1 - Math.pow(1 - t, 3),
         smoothWheel: true,
-        wheelMultiplier: 0.95,
-        touchMultiplier: 1.6,
+        wheelMultiplier: 1,
+        touchMultiplier: 1.4,
         syncTouch: false,
       });
 

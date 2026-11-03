@@ -40,12 +40,12 @@ export default async function ContactPage({
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
-              <p className="eyebrow text-ink/40">Direct line</p>
+              <p className="eyebrow text-ink/65">Direct line</p>
               <a href={site.phoneHref} className="link-line mt-1 block font-display text-[1.5rem]">
                 {site.phone}
               </a>
             </div>
-            <span className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/35">
+            <span className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
               Phone &amp; WhatsApp
             </span>
           </div>
@@ -61,11 +61,11 @@ export default async function ContactPage({
           <aside className="md:col-span-4 md:col-start-9">
             <div className="md:sticky md:top-28 space-y-8">
               <div className="border-t border-line pt-5">
-                <p className="eyebrow text-ink/40">The resort</p>
+                <p className="eyebrow text-ink/65">The resort</p>
                 <p className="mt-4 font-display text-[1.5rem] leading-tight">
                   Jade River Resort
                 </p>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-ink/60">
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-ink/70">
                   {site.address}
                   <br />
                   {site.coords}
@@ -76,22 +76,18 @@ export default async function ContactPage({
               </div>
 
               <div className="border-t border-line pt-5">
-                <p className="eyebrow text-ink/40">Reservations &amp; policies</p>
-                <p className="mt-4 text-[0.9rem] leading-[1.8] text-ink/60">
-                  Group reservations &amp; policy:{" "}
-                  <a href="mailto:info@defoy.in" className="link-line text-ink">
-                    info@defoy.in
-                  </a>
+                <p className="eyebrow text-ink/65">Reservations &amp; policies</p>
+                <p className="mt-4 text-[0.9rem] leading-[1.8] text-ink/70">
+                  Group reservations, policy, GST &amp; invoices:
                   <br />
-                  GST &amp; invoices:{" "}
-                  <a href="mailto:accounts@defoy.in" className="link-line text-ink">
-                    accounts@defoy.in
+                  <a href={`mailto:${site.email}`} className="link-line text-ink">
+                    {site.email}
                   </a>
                 </p>
               </div>
 
               <div className="border-t border-line pt-5">
-                <p className="eyebrow text-ink/40">Before you book</p>
+                <p className="eyebrow text-ink/65">Before you book</p>
                 <ul className="mt-4 space-y-2.5">
                   {[
                     "50% advance confirms the booking",
@@ -99,8 +95,8 @@ export default async function ContactPage({
                     "Government photo ID required",
                     "Free cancellation 15+ days out",
                   ].map((item) => (
-                    <li key={item} className="flex items-baseline gap-3 text-[0.9rem] text-ink/60">
-                      <span className="h-1 w-1 shrink-0 translate-y-[-2px] bg-clay" />
+                    <li key={item} className="flex items-baseline gap-3 text-[0.9rem] text-ink/70">
+                      <span className="h-1 w-1 shrink-0 translate-y-[-2px] bg-copper" />
                       {item}
                     </li>
                   ))}
@@ -110,8 +106,8 @@ export default async function ContactPage({
                 </Link>
               </div>
 
-              <div className="bg-ink p-6 text-paper">
-                <p className="eyebrow text-paper/40">Prefer to talk?</p>
+              <div className="bg-forest p-6 text-paper">
+                <p className="eyebrow text-paper/65">Prefer to talk?</p>
                 <p className="mt-3 font-display text-[1.5rem] leading-tight">
                   A direct line to the people who run the place.
                 </p>

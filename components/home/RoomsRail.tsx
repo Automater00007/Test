@@ -20,18 +20,17 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
       <Link
         href={`/rooms/${room.slug}`}
         className="group flex h-full flex-col"
-        data-cursor="View"
       >
-        <div className="relative overflow-hidden bg-ink-2">
+        <div className="relative overflow-hidden bg-forest">
           <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[54vh]">
             <Image
               src={room.image}
               alt={`${room.name} at Jade River Resort`}
               fill
               sizes="(min-width: 768px) 42vw, 100vw"
-              className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.055]"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             />
-            <div className="absolute inset-0 bg-ink/10 transition-opacity duration-700 group-hover:opacity-0" />
+            <div className="absolute inset-0 bg-forest/10 transition-opacity duration-700 group-hover:opacity-0" />
           </div>
           <div className="absolute left-5 top-5 bg-paper px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-ink">
             {room.count}
@@ -40,7 +39,7 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
             <span className="font-mono text-[10px] uppercase tracking-[0.18em]">
               {room.bestFor}
             </span>
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/40 transition-all duration-500 group-hover:border-clay group-hover:bg-clay">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/40 transition-all duration-500 group-hover:border-clay group-hover:bg-walnut-brown">
               <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
               </svg>
@@ -51,18 +50,18 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
         <div className="flex items-start justify-between gap-4 pt-5">
           <div>
             <div className="flex items-baseline gap-3">
-              <span className="num text-paper/35">0{index + 1}</span>
+              <span className="num text-paper/65">0{index + 1}</span>
               <h3 className="font-display text-[clamp(1.3rem,1.9vw,1.8rem)] leading-none text-paper">
                 {room.name}
               </h3>
             </div>
-            <p className="mt-2 max-w-[34ch] text-[0.9rem] leading-relaxed text-paper/50">
+            <p className="mt-2 max-w-[34ch] text-[0.9rem] leading-relaxed text-paper/65">
               {room.description}
             </p>
           </div>
-          <p className="shrink-0 whitespace-nowrap pt-1 font-mono text-[10px] uppercase tracking-[0.1em] text-paper/55">
+          <p className="shrink-0 whitespace-nowrap pt-1 font-mono text-[10px] uppercase tracking-[0.1em] text-paper/70">
             {formatPrice(room.price)}
-            <span className="block text-right text-[8px] text-paper/30">per night</span>
+            <span className="block text-right text-[8px] text-paper/65">per night</span>
           </p>
         </div>
       </Link>
@@ -109,7 +108,7 @@ export default function RoomsRail() {
     <section
       ref={section}
       id="stay"
-      className="relative bg-ink text-paper md:h-[340vh]"
+      className="relative bg-forest text-paper md:h-[260vh]"
       aria-labelledby="stay-heading"
     >
       {/* desktop pinned rail */}
@@ -117,7 +116,7 @@ export default function RoomsRail() {
         <div className="flex h-full flex-col">
           <div className="shell flex items-end justify-between gap-8 pt-24 pb-8 lg:pt-28">
             <div>
-              <span className="eyebrow text-paper/40">03 — Stay</span>
+              <span className="eyebrow text-paper/65">03 — Stay</span>
               <h2
                 id="stay-heading"
                 className="mt-3 text-[clamp(2rem,3.4vw,3.4rem)] leading-[0.95] text-paper"
@@ -126,8 +125,8 @@ export default function RoomsRail() {
               </h2>
             </div>
             <div className="flex items-center gap-6">
-              <span className="font-mono text-[11px] tracking-[0.12em] text-paper/40">
-                0{active + 1} <span className="text-paper/20">/ 03</span>
+              <span className="font-mono text-[11px] tracking-[0.12em] text-paper/65">
+                0{active + 1} <span className="text-paper/65">/ 03</span>
               </span>
               <Link
                 href="/rooms"
@@ -152,11 +151,11 @@ export default function RoomsRail() {
                   <br />
                   <em className="text-clay">No more.</em>
                 </p>
-                <p className="mt-6 max-w-[26ch] text-[0.92rem] leading-relaxed text-paper/50">
+                <p className="mt-6 max-w-[26ch] text-[0.92rem] leading-relaxed text-paper/65">
                   A balcony, a suite, or two floors for the family. Every room opens
                   toward water or pine.
                 </p>
-                <div className="mt-10 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/35">
+                <div className="mt-10 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/65">
                   <span className="inline-block h-px w-8 bg-paper/25" />
                   Scroll to move sideways
                 </div>
@@ -174,7 +173,7 @@ export default function RoomsRail() {
                 </p>
                 <Link
                   href="/reviews"
-                  className="link-line mt-6 inline-block font-mono text-[10px] uppercase tracking-[0.18em] text-paper/45"
+                  className="link-line mt-6 inline-block font-mono text-[10px] uppercase tracking-[0.18em] text-paper/65"
                 >
                   Read guest notes
                 </Link>
@@ -185,11 +184,11 @@ export default function RoomsRail() {
           <div className="shell flex items-center gap-6 pb-8 pt-4">
             <div className="relative h-px flex-1 bg-paper/15">
               <motion.div
-                className="absolute inset-y-0 left-0 w-full origin-left bg-clay"
+                className="absolute inset-y-0 left-0 w-full origin-left bg-copper"
                 style={{ scaleX: line }}
               />
             </div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-paper/35">
+            <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-paper/65">
               Pinned scroll
             </span>
           </div>
@@ -198,7 +197,7 @@ export default function RoomsRail() {
 
       {/* mobile stack */}
       <div className="px-[clamp(1.15rem,4.2vw,5rem)] py-20 md:hidden">
-        <span className="eyebrow text-paper/40" data-reveal>
+        <span className="eyebrow text-paper/65" data-reveal>
           03 — Stay
         </span>
         <h2

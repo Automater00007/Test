@@ -1,13 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope, DM_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/providers/SmoothScroll";
-import RevealObserver from "@/components/providers/RevealObserver";
-import SignatureIntro from "@/components/SignatureIntro";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import RiverProgress from "@/components/RiverProgress";
+import SiteChrome from "@/components/SiteChrome";
 import { site } from "@/lib/content";
 
 const fraunces = Fraunces({
@@ -79,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10140f",
+  themeColor: "#fbf8f3",
   colorScheme: "light",
 };
 
@@ -90,7 +84,7 @@ const jsonLd = {
   description: site.description,
   url: "https://defoyhotelsandresorts.com/jade-river-resort",
   telephone: "+917780868926",
-  email: "info@xogul.com",
+  email: "hello@jaderiverresort.example",
   priceRange: "₹6,000 – ₹13,000",
   numberOfRooms: 13,
   parentOrganization: { "@type": "Organization", name: "Defoy Hotels & Resorts" },
@@ -137,7 +131,7 @@ export default function RootLayout({
       <body>
         <a
           href="#main"
-          className="fixed left-4 top-4 z-[120] -translate-y-24 bg-ink px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-paper transition-transform focus:translate-y-0"
+          className="fixed left-4 top-4 z-[120] -translate-y-24 bg-forest px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-paper transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>
@@ -146,16 +140,7 @@ export default function RootLayout({
           <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}.intro-stage{display:none!important}`}</style>
         </noscript>
 
-        <SmoothScroll />
-        <RevealObserver />
-        <SignatureIntro />
-        <div className="grain" aria-hidden="true" />
-
-        <SiteNav />
-        <RiverProgress />
-        <main id="main">{children}</main>
-        <SiteFooter />
-        <FloatingWhatsApp />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

@@ -8,9 +8,9 @@ export default function FloatingWhatsApp() {
       )}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="group fixed bottom-5 right-5 z-40 flex items-center gap-0 overflow-hidden rounded-full bg-moss pl-4 pr-4 text-paper shadow-[0_10px_40px_rgba(16,20,15,0.22)] transition-all duration-500 ease-[var(--ease-out-expo)] hover:gap-3 hover:pr-6 md:bottom-8 md:right-8"
+      className="group fixed bottom-5 right-5 z-40 flex items-center gap-0 overflow-hidden rounded-full bg-forest pl-4 pr-4 text-paper shadow-[0_10px_40px_rgba(33,51,41,0.22)] transition-all duration-500 ease-[var(--ease-out-expo)] hover:gap-3 hover:pr-6 md:bottom-8 md:right-8"
       aria-label="Chat with Jade River Resort on WhatsApp"
-      data-cursor="Chat"
+
     >
       <span className="flex h-12 w-12 shrink-0 items-center justify-center">
         <svg
@@ -30,7 +30,7 @@ export default function FloatingWhatsApp() {
       <span className="max-w-0 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] opacity-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:max-w-[9rem] group-hover:opacity-100">
         WhatsApp us
       </span>
-      <span className="pointer-events-none absolute right-3 top-3 h-2 w-2 rounded-full bg-clay" />
+      <span className="pointer-events-none absolute right-3 top-3 h-2 w-2 rounded-full bg-copper" />
     </a>
   );
 }

@@ -37,13 +37,13 @@ export default function SignatureIntro() {
 
     document.documentElement.classList.add("intro-lock");
 
-    const openTimer = window.setTimeout(() => setOpening(true), 1400);
-    const doneTimer = window.setTimeout(finish, 2250);
+    const openTimer = window.setTimeout(() => setOpening(true), 1100);
+    const doneTimer = window.setTimeout(finish, 1750);
 
     let skipTimer = 0;
     const skip = () => {
       setOpening(true);
-      skipTimer = window.setTimeout(finish, 780);
+      skipTimer = window.setTimeout(finish, 620);
     };
 
     window.addEventListener("pointerdown", skip, { once: true });
@@ -66,31 +66,31 @@ export default function SignatureIntro() {
 
   return (
     <div
-      className="intro-stage fixed inset-0 z-[100] bg-ink"
+      className="intro-stage fixed inset-0 z-[100] bg-forest"
       aria-hidden="true"
       data-intro-stage
     >
       <motion.div
-        className="absolute inset-x-0 top-0 h-1/2 bg-ink"
+        className="absolute inset-x-0 top-0 h-1/2 bg-forest"
         initial={false}
         animate={{ y: opening ? "-101%" : "0%" }}
-        transition={{ duration: 0.95, ease: EASE }}
+        transition={{ duration: 0.8, ease: EASE }}
       />
       <motion.div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-ink"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-forest"
         initial={false}
         animate={{ y: opening ? "101%" : "0%" }}
-        transition={{ duration: 0.95, ease: EASE, delay: 0.03 }}
+        transition={{ duration: 0.8, ease: EASE, delay: 0.03 }}
       />
 
       <motion.div
-        className="absolute inset-0 flex flex-col justify-between px-[clamp(1.2rem,4vw,4rem)] py-8 text-paper"
+        className="absolute inset-0 flex flex-col justify-between bg-forest px-[clamp(1.2rem,4vw,4rem)] py-8 text-paper"
         animate={{ opacity: opening ? 0 : 1 }}
         transition={{ duration: 0.28, ease: "easeOut" }}
       >
         <div className="flex items-center justify-between">
-          <span className="eyebrow text-paper/55">Defoy Hotels &amp; Resorts</span>
-          <span className="eyebrow text-paper/55">Est. Pahalgam</span>
+          <span className="eyebrow text-paper">Defoy Hotels &amp; Resorts</span>
+          <span className="eyebrow text-paper">Est. Pahalgam</span>
         </div>
 
         <div className="relative mx-auto flex w-full max-w-[1000px] flex-col items-center">
@@ -104,7 +104,7 @@ export default function SignatureIntro() {
               className="intro-line"
               pathLength={1}
               d="M0 76 C 140 76, 160 26, 300 38 S 470 104, 610 82 S 820 20, 1000 34"
-              stroke="#c24e2c"
+              stroke="#A87850"
               strokeWidth="1.4"
               vectorEffect="non-scaling-stroke"
             />
@@ -112,7 +112,7 @@ export default function SignatureIntro() {
               className="intro-line intro-line-2"
               pathLength={1}
               d="M0 86 C 160 86, 190 40, 330 50 S 500 112, 640 90 S 850 34, 1000 46"
-              stroke="#ece5d6"
+              stroke="#FBF8F3"
               strokeOpacity="0.24"
               strokeWidth="1"
               vectorEffect="non-scaling-stroke"
@@ -125,17 +125,17 @@ export default function SignatureIntro() {
             </h1>
           </div>
 
-          <p className="intro-fade mt-5 text-center font-display text-[clamp(1.1rem,2.2vw,1.8rem)] italic text-paper/70">
+          <p className="intro-fade mt-5 text-center font-display text-[clamp(1.1rem,2.2vw,1.8rem)] italic text-paper/90">
             Life, slowed by the river.
           </p>
         </div>
 
         <div className="flex items-end justify-between gap-6">
-          <span className="eyebrow leading-[1.9] text-paper/55">
+          <span className="eyebrow leading-[1.9] text-paper">
             <span className="block">Pahalgam · Jammu &amp; Kashmir</span>
             <span className="block">33.8834° N, 75.2698° E</span>
           </span>
-          <span className="eyebrow text-paper/40">Click to skip</span>
+          <span className="eyebrow text-paper">Click to skip</span>
         </div>
       </motion.div>
     </div>

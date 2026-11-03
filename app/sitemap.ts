@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
-import { posts, rooms } from "@/lib/content";
+import { rooms } from "@/lib/content";
+import { getAllPosts } from "@/lib/posts";
 
 const base = "https://defoyhotelsandresorts.com/jade-river-resort";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     "",
     "/rooms",
@@ -29,9 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const posts = await getAllPosts();
   const postRoutes = posts.map((post) => ({
     url: `${base}/post/${post.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(post.publishedAt),
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));

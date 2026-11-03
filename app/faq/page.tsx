@@ -43,12 +43,12 @@ export default function FaqPage() {
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
-              <p className="eyebrow text-ink/40">Still unsure?</p>
+              <p className="eyebrow text-ink/65">Still unsure?</p>
               <a href={site.phoneHref} className="link-line mt-1 block text-[0.95rem]">
                 {site.phone}
               </a>
             </div>
-            <a href={`mailto:${site.email}`} className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/35">
+            <a href={`mailto:${site.email}`} className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
               Email us
             </a>
           </div>
@@ -59,12 +59,12 @@ export default function FaqPage() {
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-3">
             <div className="md:sticky md:top-28">
-              <p className="eyebrow text-ink/40">12 questions</p>
-              <p className="mt-5 max-w-[22ch] text-[0.95rem] leading-[1.7] text-ink/55">
+              <p className="eyebrow text-ink/65">12 questions</p>
+              <p className="mt-5 max-w-[22ch] text-[0.95rem] leading-[1.7] text-ink/70">
                 The same answers we give on the phone. If yours isn’t here, ask us
                 directly.
               </p>
-              <Link href="/contact" className="btn mt-6 w-full justify-center" data-cursor="Ask">
+              <Link href="/contact" className="btn mt-6 w-full justify-center">
                 Ask the resort
               </Link>
             </div>

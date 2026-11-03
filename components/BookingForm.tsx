@@ -43,14 +43,14 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
       }}
     >
       <fieldset className="grid gap-3">
-        <legend className="eyebrow mb-1 text-ink/45">01 — Choose a room</legend>
+        <legend className="eyebrow mb-1 text-ink/65">01 — Choose a room</legend>
         <div className="grid gap-2">
           {rooms.map((r) => (
             <label
               key={r.slug}
               className={`group flex cursor-pointer items-center justify-between gap-4 border px-4 py-4 transition-colors duration-300 ${
                 room === r.slug
-                  ? "border-ink bg-ink text-paper"
+                  ? "border-ink bg-forest text-paper"
                   : "border-line hover:border-ink/40"
               }`}
             >
@@ -70,7 +70,7 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
                 >
                   <span
                     className={`h-1.5 w-1.5 rounded-full transition-transform ${
-                      room === r.slug ? "scale-100 bg-clay" : "scale-0"
+                      room === r.slug ? "scale-100 bg-copper" : "scale-0"
                     }`}
                   />
                 </span>
@@ -78,7 +78,7 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
                   <span className="block font-display text-[1.1rem] leading-tight">{r.name}</span>
                   <span
                     className={`mt-0.5 block font-mono text-[9px] uppercase tracking-[0.14em] ${
-                      room === r.slug ? "text-paper/50" : "text-ink/40"
+                      room === r.slug ? "text-paper/65" : "text-ink/65"
                     }`}
                   >
                     {r.count} · {r.bestFor}
@@ -101,7 +101,7 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
             onChange={(e) => setName(e.target.value)}
             placeholder="Full name"
             autoComplete="name"
-            className="w-full bg-transparent py-3 text-[1rem] outline-none placeholder:text-ink/25"
+            className="w-full bg-transparent py-3 text-[1rem] outline-none placeholder:text-ink/65"
           />
         </Field>
         <Field label="03 — Guests" htmlFor="guests">
@@ -145,19 +145,19 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
           placeholder="Anniversary, children's ages, a pickup from Srinagar…"
-          className="w-full resize-none bg-transparent py-3 text-[1rem] outline-none placeholder:text-ink/25"
+          className="w-full resize-none bg-transparent py-3 text-[1rem] outline-none placeholder:text-ink/65"
         />
       </Field>
 
       <div className="border-t border-line pt-6">
-        <p className="eyebrow text-ink/40">Your message</p>
-        <pre className="mt-3 whitespace-pre-wrap font-mono text-[11px] leading-[1.8] text-ink/55">
+        <p className="eyebrow text-ink/65">Your message</p>
+        <pre className="mt-3 whitespace-pre-wrap font-mono text-[11px] leading-[1.8] text-ink/70">
           {message}
         </pre>
       </div>
 
       <div className="flex flex-wrap items-center gap-5">
-        <button type="submit" className="btn btn-clay" data-cursor="Send">
+        <button type="submit" className="btn btn-clay">
           Send on WhatsApp
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
@@ -168,7 +168,7 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
         </a>
       </div>
 
-      <p className="max-w-lg font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/35">
+      <p className="max-w-lg font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
         Direct booking only. A 50% advance confirms the stay. Check-in 2:00 PM,
         check-out 12:00 noon. Cancellation within 10 days carries 100% retention.
       </p>
@@ -187,7 +187,7 @@ function Field({
 }) {
   return (
     <div className="group border-b border-line pb-1 focus-within:border-clay">
-      <label htmlFor={htmlFor} className="eyebrow block text-ink/45">
+      <label htmlFor={htmlFor} className="eyebrow block text-ink/65">
         {label}
       </label>
       {children}

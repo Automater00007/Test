@@ -4,11 +4,12 @@ import RoomsRail from "@/components/home/RoomsRail";
 import Experiences from "@/components/home/Experiences";
 import GalleryMarquee from "@/components/home/GalleryMarquee";
 import FilmSection from "@/components/home/FilmSection";
-import StoryParallax from "@/components/home/StoryParallax";
 import LocationSection from "@/components/home/LocationSection";
 import GuestNotes from "@/components/home/GuestNotes";
 import JournalTeaser from "@/components/home/JournalTeaser";
 import ClosingCTA from "@/components/home/ClosingCTA";
+
+export const revalidate = 60;
 
 export default function HomePage() {
   return (
@@ -19,7 +20,6 @@ export default function HomePage() {
       <Experiences />
       <GalleryMarquee />
       <FilmSection />
-      <StoryParallax />
       <LocationSection />
       <GuestNotes />
       <JournalTeaser />

@@ -7,7 +7,7 @@ export const site = {
   phone: "+91 7780868926",
   phoneHref: "tel:+917780868926",
   whatsapp: "917780868926",
-  email: "info@xogul.com",
+  email: "hello@jaderiverresort.example",
   address: "Pahalgam, Jammu & Kashmir — 192125",
   coords: "33.883354, 75.269764",
   elevation: "2,130 m",
@@ -363,7 +363,7 @@ export const faqs = [
   },
   {
     q: "Who do I contact for invoices or policy queries?",
-    a: "For group-level reservation and policy queries email info@defoy.in. For GST and invoices email accounts@defoy.in. For resort stays and direct booking, email info@xogul.com or message +91 7780868926.",
+    a: "For group reservations, policy questions, GST, and invoices, email hello@jaderiverresort.example or message +91 7780868926. The address is a placeholder until the resort's live email is confirmed.",
   },
 ];
 

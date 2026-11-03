@@ -40,7 +40,7 @@ export default function LocationPage() {
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
-              <p className="eyebrow text-ink/40">Coordinates</p>
+              <p className="eyebrow text-ink/65">Coordinates</p>
               <p className="mt-1 font-mono text-[11px] tracking-tight">{site.coords}</p>
             </div>
             <a
@@ -65,7 +65,7 @@ export default function LocationPage() {
             referrerPolicy="no-referrer-when-downgrade"
           />
           <div className="pointer-events-none absolute bottom-4 left-4 bg-paper px-4 py-3">
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/45">
+            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
               Jade River Resort
             </p>
             <p className="mt-1 font-display text-[1.1rem] leading-none">Pahalgam, Kashmir</p>
@@ -95,7 +95,7 @@ export default function LocationPage() {
                 ["Address", "Pahalgam, J&K 192125"],
               ].map(([k, v]) => (
                 <div key={k}>
-                  <p className="eyebrow text-ink/40">{k}</p>
+                  <p className="eyebrow text-ink/65">{k}</p>
                   <p className="mt-2 text-[0.95rem]">{v}</p>
                 </div>
               ))}
@@ -112,7 +112,7 @@ export default function LocationPage() {
           </div>
 
           <div className="md:col-span-6 md:col-start-7">
-            <span className="eyebrow text-ink/45">Nearby, all a short drive</span>
+            <span className="eyebrow text-ink/65">Nearby, all a short drive</span>
             <div className="mt-6">
               {nearby.map((n, i) => (
                 <div
@@ -122,17 +122,17 @@ export default function LocationPage() {
                   style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
                 >
                   <div className="flex items-baseline gap-5">
-                    <span className="num text-ink/30">0{i + 1}</span>
+                    <span className="num text-ink/65">0{i + 1}</span>
                     <div>
                       <p className="font-display text-[clamp(1.3rem,2.2vw,1.9rem)] leading-tight transition-colors duration-500 group-hover:text-clay">
                         {n.name}
                       </p>
-                      <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/35">
+                      <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
                         {n.note}
                       </p>
                     </div>
                   </div>
-                  <span className="text-ink/25 transition-transform duration-500 group-hover:translate-x-1">
+                  <span className="text-ink/65 transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export default function LocationPage() {
             </div>
 
             <div className="mt-10 border border-line bg-paper-2 p-6">
-              <p className="eyebrow text-ink/40">Resort contact</p>
+              <p className="eyebrow text-ink/65">Resort contact</p>
               <div className="mt-4 space-y-3 text-[0.95rem]">
                 <p>{site.address}</p>
                 <a href={site.phoneHref} className="link-line block">

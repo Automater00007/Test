@@ -33,7 +33,7 @@ export default function ExperiencesPage() {
         intro="A fire is lit after dark. A path follows the water. The valley does the rest. None of it is scheduled for you."
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
-            <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/45">
+            <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
               Inclusive of the property
               <br />
               Ask us to arrange the rest
@@ -78,7 +78,7 @@ export default function ExperiencesPage() {
                 }`}
                 data-reveal
               >
-                <span className="num text-ink/35">0{i + 1}</span>
+                <span className="num text-ink/65">0{i + 1}</span>
                 <h2 className="mt-4 text-[clamp(2rem,3.6vw,3.5rem)] leading-[0.96]">
                   {exp.title}
                 </h2>
@@ -88,7 +88,7 @@ export default function ExperiencesPage() {
                 <p className="body-copy mt-5">{exp.body}</p>
                 <div className="mt-7 flex items-center gap-4">
                   <span className="h-px w-10 bg-line" />
-                  <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/40">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                     {exp.meta}
                   </span>
                 </div>
@@ -98,10 +98,10 @@ export default function ExperiencesPage() {
         })}
       </section>
 
-      <section className="relative overflow-hidden bg-ink py-20 text-paper">
+      <section className="relative overflow-hidden bg-forest py-20 text-paper">
         <div className="shell flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <div>
-            <span className="eyebrow text-paper/40" data-reveal>
+            <span className="eyebrow text-paper/65" data-reveal>
               One more thing
             </span>
             <p

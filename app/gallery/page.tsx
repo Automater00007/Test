@@ -30,12 +30,12 @@ export default function GalleryPage() {
         intro="Wooden facades, a stream in front, pine forest behind. The light changes every hour and never repeats itself."
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
-            <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/45">
+            <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
               Property photography
               <br />
               Pahalgam · Kashmir
             </p>
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/35">
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65">
               12 frames
             </span>
           </div>

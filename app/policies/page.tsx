@@ -33,12 +33,12 @@ export default function PoliciesPage() {
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
-              <p className="eyebrow text-ink/40">Policy queries</p>
-              <a href="mailto:info@defoy.in" className="link-line mt-1 block text-[0.95rem]">
-                info@defoy.in
+              <p className="eyebrow text-ink/65">Policy queries</p>
+              <a href={`mailto:${site.email}`} className="link-line mt-1 block text-[0.95rem]">
+                {site.email}
               </a>
             </div>
-            <span className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/35">
+            <span className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
               Defoy Hotels
             </span>
           </div>
@@ -49,15 +49,15 @@ export default function PoliciesPage() {
         <div className="grid gap-12 md:grid-cols-12">
           <aside className="md:col-span-3">
             <div className="md:sticky md:top-28">
-              <p className="eyebrow text-ink/40">On this page</p>
+              <p className="eyebrow text-ink/65">On this page</p>
               <ul className="mt-5 space-y-3">
                 {policies.map((p, i) => (
                   <li key={p.title}>
                     <a
                       href={`#${p.title.toLowerCase().replace(/[^a-z]+/g, "-")}`}
-                      className="link-line flex items-baseline gap-3 text-[0.92rem] text-ink/60 hover:text-ink"
+                      className="link-line flex items-baseline gap-3 text-[0.92rem] text-ink/70 hover:text-ink"
                     >
-                      <span className="num text-ink/30">0{i + 1}</span>
+                      <span className="num text-ink/65">0{i + 1}</span>
                       {p.title}
                     </a>
                   </li>
@@ -65,9 +65,9 @@ export default function PoliciesPage() {
               </ul>
 
               <div className="mt-10 border-t border-line pt-5">
-                <p className="eyebrow text-ink/40">GST &amp; invoices</p>
-                <a href="mailto:accounts@defoy.in" className="link-line mt-2 inline-block text-[0.9rem]">
-                  accounts@defoy.in
+                <p className="eyebrow text-ink/65">GST &amp; invoices</p>
+                <a href={`mailto:${site.email}`} className="link-line mt-2 inline-block text-[0.9rem]">
+                  {site.email}
                 </a>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function PoliciesPage() {
                     <h2 className="text-[clamp(1.9rem,3.4vw,3.2rem)] leading-none">
                       {section.title}
                     </h2>
-                    <span className="num text-ink/30">0{i + 1}</span>
+                    <span className="num text-ink/65">0{i + 1}</span>
                   </div>
                   <ul className="mt-8 space-y-4">
                     {section.items.map((item) => (
@@ -95,7 +95,7 @@ export default function PoliciesPage() {
                         key={item}
                         className="flex items-baseline gap-4 border-b border-line pb-4 text-[1rem] leading-relaxed text-ink/70"
                       >
-                        <span className="mt-[0.55em] h-1 w-1 shrink-0 bg-clay" />
+                        <span className="mt-[0.55em] h-1 w-1 shrink-0 bg-copper" />
                         {item}
                       </li>
                     ))}
@@ -105,16 +105,12 @@ export default function PoliciesPage() {
             })}
 
             <div className="border-t border-line pt-8" data-reveal>
-              <p className="font-mono text-[9px] uppercase leading-[2] tracking-[0.16em] text-ink/40">
+              <p className="font-mono text-[9px] uppercase leading-[2] tracking-[0.16em] text-ink/65">
                 This page reflects the reservation and stay policy supplied by Defoy
                 Hotels &amp; Resorts. The complete policy document is provided with
-                your booking confirmation. For policy questions email{" "}
-                <a href="mailto:info@defoy.in" className="underline">
-                  info@defoy.in
-                </a>
-                . For GST and invoices email{" "}
-                <a href="mailto:accounts@defoy.in" className="underline">
-                  accounts@defoy.in
+                your booking confirmation. For policy questions, GST, or invoices email{" "}
+                <a href={`mailto:${site.email}`} className="underline">
+                  {site.email}
                 </a>
                 . For direct stay enquiries, contact the resort on{" "}
                 <a href={site.phoneHref} className="underline">

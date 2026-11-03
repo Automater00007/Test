@@ -43,7 +43,7 @@ export default function GalleryGrid() {
             type="button"
             onClick={() => setIndex(i)}
             className="group relative block w-full break-inside-avoid overflow-hidden bg-paper-2 text-left"
-            data-cursor="View"
+
             data-reveal="mask"
             aria-label={`Open image: ${item.alt}`}
           >
@@ -64,7 +64,7 @@ export default function GalleryGrid() {
                 className="reveal-media object-cover transition-transform duration-[1300ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
               />
             </div>
-            <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/20" />
+            <div className="absolute inset-0 bg-forest/0 transition-colors duration-500 group-hover:bg-forest/20" />
             <span className="absolute bottom-4 left-4 max-w-[80%] font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-paper opacity-0 transition-opacity duration-500 group-hover:opacity-90">
               {item.alt}
             </span>
@@ -80,7 +80,7 @@ export default function GalleryGrid() {
       {index !== null && (
         <motion.div
           key="gallery-lightbox"
-          className="fixed inset-0 z-[110] flex flex-col bg-ink/97 text-paper"
+          className="fixed inset-0 z-[110] flex flex-col bg-forest/97 text-paper"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -90,13 +90,13 @@ export default function GalleryGrid() {
             aria-label="Gallery image"
           >
             <div className="flex items-center justify-between px-5 py-5">
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-paper/50">
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-paper/65">
                 {String(index + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
               </span>
               <button
                 type="button"
                 onClick={close}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 transition-colors hover:border-clay hover:bg-clay"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 transition-colors hover:border-clay hover:bg-walnut-brown"
                 aria-label="Close gallery"
               >
                 <span className="relative block h-4 w-4">
@@ -126,14 +126,14 @@ export default function GalleryGrid() {
             </div>
 
             <div className="flex items-center justify-between gap-6 border-t border-paper/15 px-5 py-5">
-              <p className="max-w-[50ch] font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-paper/55">
+              <p className="max-w-[50ch] font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-paper/70">
                 {gallery[index].alt}
               </p>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={prev}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 transition-colors hover:border-clay hover:bg-clay"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 transition-colors hover:border-clay hover:bg-walnut-brown"
                   aria-label="Previous image"
                 >
                   <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -143,7 +143,7 @@ export default function GalleryGrid() {
                 <button
                   type="button"
                   onClick={next}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 transition-colors hover:border-clay hover:bg-clay"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 transition-colors hover:border-clay hover:bg-walnut-brown"
                   aria-label="Next image"
                 >
                   <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">

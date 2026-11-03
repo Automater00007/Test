@@ -17,8 +17,8 @@ export default function PageHeader({
     <header className="pt-[68px] md:pt-[80px]">
       <div className="shell">
         <div className="flex items-center justify-between border-b border-line py-5">
-          <span className="eyebrow text-ink/50">{eyebrow}</span>
-          <span className="eyebrow text-ink/35">Jade River Resort</span>
+          <span className="eyebrow text-ink/65">{eyebrow}</span>
+          <span className="eyebrow text-ink/65">Jade River Resort</span>
         </div>
 
         <div className="grid gap-10 pt-12 pb-14 md:grid-cols-12 md:pt-20 md:pb-20">

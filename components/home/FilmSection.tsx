@@ -37,7 +37,7 @@ export default function FilmSection() {
     <>
       <section
         ref={ref}
-        className="relative flex min-h-[76svh] items-end overflow-hidden bg-ink text-paper"
+        className="relative flex min-h-[76svh] items-end overflow-hidden bg-forest text-paper"
         aria-labelledby="film-heading"
       >
         <motion.div className="absolute inset-[-10%] " style={{ y }}>
@@ -49,25 +49,25 @@ export default function FilmSection() {
             className="object-cover"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-ink/45" aria-hidden="true" />
+        <div className="absolute inset-0 bg-forest/45" aria-hidden="true" />
 
         <div className="absolute inset-x-0 top-0 flex items-center justify-between p-[clamp(1.15rem,4.2vw,5rem)] pt-8">
-          <span className="eyebrow text-paper/60">10 — Film</span>
-          <span className="eyebrow text-paper/40">Pahalgam · 2026</span>
+          <span className="eyebrow text-paper/70">06 — Film</span>
+          <span className="eyebrow text-paper/65">Pahalgam · 2026</span>
         </div>
 
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="group absolute left-1/2 top-1/2 flex h-[clamp(100px,12vw,150px)] w-[clamp(100px,12vw,150px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-clay text-paper transition-transform duration-700 ease-[var(--ease-out-expo)] hover:scale-105"
-          aria-label="Play the property film"
-          data-cursor="Play"
+          className="group absolute left-1/2 top-1/2 flex h-[clamp(100px,12vw,150px)] w-[clamp(100px,12vw,150px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-paper/25 bg-walnut text-paper transition-colors duration-300 hover:bg-walnut-brown"
+          aria-label="Play film"
+
         >
           <span className="absolute inset-0 rounded-full border border-paper/40 transition-transform duration-[1200ms] ease-out group-hover:scale-125" />
           <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true" className="ml-1">
             <path d="M25 15L1 29V1L25 15Z" fill="currentColor" />
           </svg>
-          <span className="absolute -bottom-8 whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.2em] text-paper/60">
+          <span className="absolute -bottom-8 whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.2em] text-paper/70">
             Play film
           </span>
         </button>
@@ -80,7 +80,7 @@ export default function FilmSection() {
           >
             The property, <em className="text-paper/70">in motion.</em>
           </h2>
-          <p className="max-w-sm text-[0.95rem] leading-[1.7] text-paper/60" data-reveal>
+          <p className="max-w-sm text-[0.95rem] leading-[1.7] text-paper/70" data-reveal>
             Drone passes over the wooden roofs, the stream, and the pines behind. The
             film is being cut from the property’s own footage.
           </p>
@@ -90,7 +90,7 @@ export default function FilmSection() {
       {open && (
         <motion.div
           key="film-lightbox"
-          className="fixed inset-0 z-[110] flex items-center justify-center bg-ink/95 p-5"
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-forest/95 p-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -102,7 +102,7 @@ export default function FilmSection() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors hover:border-clay hover:bg-clay"
+              className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors hover:border-clay hover:bg-walnut-brown"
               aria-label="Close film"
             >
               <span className="relative block h-4 w-4">
@@ -118,11 +118,11 @@ export default function FilmSection() {
               exit={{ y: 20, opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="eyebrow text-ink/45">A note from the property</span>
+              <span className="eyebrow text-ink/65">A note from the property</span>
               <p className="mt-5 font-display text-[clamp(1.8rem,3.6vw,3rem)] leading-[1.02] tracking-[-0.04em]">
                 The film is still in the <em className="text-clay">cutting room.</em>
               </p>
-              <p className="mt-5 max-w-lg text-[0.95rem] leading-[1.7] text-ink/60">
+              <p className="mt-5 max-w-lg text-[0.95rem] leading-[1.7] text-ink/70">
                 Real property footage is on its way. Until the first cut is ready, the
                 gallery has the frames — or message us and we will send it to you
                 directly.
@@ -132,7 +132,7 @@ export default function FilmSection() {
                   href="/gallery"
                   onClick={() => setOpen(false)}
                   className="btn"
-                  data-cursor="Open"
+
                 >
                   Open the gallery
                 </Link>

@@ -23,7 +23,7 @@ export default function FaqAccordion() {
               >
                 <span
                   className={`num shrink-0 transition-colors duration-300 ${
-                    isOpen ? "text-clay" : "text-ink/30 group-hover:text-ink/60"
+                    isOpen ? "text-clay" : "text-ink/65 group-hover:text-ink/70"
                   }`}
                 >
                   {String(i + 1).padStart(2, "0")}
