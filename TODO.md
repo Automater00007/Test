@@ -51,6 +51,11 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Add scroll-triggered reveal/zoom variants across every homepage section and all inner pages. **(`data-reveal` + `data-reveal="zoom|fade|mask"`, staggered delays, mobile-first.)**
 - [x] Keep every arrow static — no arrow hover-slide or scroll animation. **(`→` glyphs, nav arrow, CTA arrow icons.)**
 - [x] Keep reveals compositor-only (opacity/transform) and re-scan on client navigation. **(Lighthouse 100/100/100 on `/` and `/post/[slug]` after the pass.)**
+- [x] Add a `Back to home` control to every inner page. **(Shared `BackToHome` in `PageHeader`, plus room and post detail headers.)**
+- [x] Convert the mobile Stay section to a horizontal snap carousel with zoom reveals and static controls. **(Desktop pinned rail unchanged.)**
+- [x] Rename all visible Journal naming to Blog while keeping `/post`. **(Nav, footer, homepage teaser, listing/detail copy and metadata, Studio schema title.)**
+- [x] Fix review card text contrast on the Forest Green section. **(Ivory cards now set `text-ink`; verified computed colour `rgb(32, 27, 23)`.)**
+- [x] Remove the `.grain` DOM/CSS layer and unused `.vertical-text` utility.
 
 ## 7. Sanity CMS + blog (SEO priority)
 - [x] Confirm Sanity project ID, dataset, and API token. **Connected: project `tcbet7sh`, dataset `production`.**
@@ -61,8 +66,8 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Add SEO fields: meta title, meta description, keywords, canonical, no-index, OG image.
 - [x] Add Studio route (`/studio`) and `sanity.config.ts`.
 - [x] Add typed GROQ queries and image URL builder.
-- [x] Add a unified journal data layer with a static fallback when credentials are absent.
-- [x] Replace the static journal listing/detail reads with the data layer.
+- [x] Add a unified blog data layer with a static fallback when credentials are absent.
+- [x] Replace the static blog listing/detail reads with the data layer.
 - [x] Render Portable Text (including custom blocks) on `/post/[slug]`.
 - [x] Add draft preview (`/api/draft`, `/api/disable-draft`) and revalidation webhook (`/api/revalidate`).
 - [x] Add the latest 3 posts to the homepage.
@@ -71,8 +76,10 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Add the real credentials to `.env.local` and confirm live fetches.
 - [x] Seed the Studio with authors, categories, and the three existing posts.
 - [x] Configure CORS origins for `localhost:3000` and the production domains.
-- [ ] Configure the Sanity webhook → `/api/revalidate` in the Sanity dashboard (needs a deployed URL).
+- [x] Configure the Sanity webhook → `/api/revalidate` in the Sanity dashboard. **(Configured 4 Nov 2026: “Next.js revalidate — Jade River blog” → `https://test-kappa-lovat-59.vercel.app/api/revalidate`, create/update/delete, `_type == "post"`.)**
+- [ ] Update the webhook URL to the final production domain when it is live.
 - [ ] Add the Studio deployment/hostname to Sanity CORS origins when the final domain is known.
+- [x] Make blog caching publish-only. **(Removed 60s ISR from `/`, `/post`, `/post/[slug]`; Sanity fetches use `revalidate: false` + `post` tag; webhook clears the tag and paths.)**
 
 ## 8. YouTube Guest Stories (deferred)
 - [ ] Revisit when the owner is ready. The blog is the current priority.
@@ -83,9 +90,10 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [ ] Confirm final room descriptions, policies, and reviews.
 
 ## 10. Final QA
-- [x] Responsive check at 390 / 768 / 1024 / 1440. **(Checked via headless Chrome at 390, 768, 1024, 1440; journal and post detail render cleanly.)**
+- [x] Responsive check at 390 / 768 / 1024 / 1440. **(Checked via headless Chrome at 390, 768, 1024, 1440; blog and post detail render cleanly.)**
 - [x] Keyboard and screen-reader pass. **(Lighthouse accessibility 100; aria-labels fixed; contrast raised.)**
 - [x] Lighthouse: performance, accessibility, SEO. **(Homepage and /post/[slug] all score 100/100/100.)**
 - [x] Verify JSON-LD, sitemap, robots, `llms.txt`. **(Sitemap lists all 3 Sanity posts; robots disallows /studio and /api/.)**
-- [x] Run `npm run build` and confirm all routes. **(Passed: 24 routes.)**
+- [x] Run `npm run build` and confirm all routes. **(Passed: 25 routes; blog routes show no timed Revalidate.)**
 - [x] Re-run the build after Sanity/YouTube are added. **(Sanity is in; build passes.)**
+- [x] Verify the back control, Blog naming, review contrast, grain removal, and mobile carousel. **(Checked at 390px via headless Chrome; carousel scrolls with 3 snap cards, back link present on `/post`, `/reviews`, and room detail.)**

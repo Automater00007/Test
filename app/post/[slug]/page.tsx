@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BackToHome from "@/components/BackToHome";
 import PostBody from "@/components/blog/PostBody";
 import { site } from "@/lib/content";
 import { getAllPostSlugs, getAllPosts, getPostBySlug } from "@/lib/posts";
 import { JsonLd, breadcrumb } from "@/lib/schema";
-
-export const revalidate = 60;
 
 export async function generateStaticParams() {
   const slugs = await getAllPostSlugs();
@@ -64,7 +63,7 @@ export default async function PostPage({
         data={[
           breadcrumb([
             { name: "Home", path: "/jade-river-resort" },
-            { name: "Journal", path: "/jade-river-resort/post" },
+            { name: "Blog", path: "/jade-river-resort/post" },
             { name: post.title, path: `/jade-river-resort/post/${post.slug}` },
           ]),
           {
@@ -87,11 +86,14 @@ export default async function PostPage({
 
       <article className="pt-[68px] md:pt-[80px]">
         <header className="shell">
-          <div className="flex items-center justify-between border-b border-line py-5">
-            <Link href="/post" className="eyebrow text-ink/65 hover:text-ink">
-              ← Journal
-            </Link>
-            <span className="eyebrow text-ink/65">{post.category}</span>
+          <div className="flex items-center justify-between gap-4 border-b border-line py-5">
+            <div className="flex items-center gap-5">
+              <BackToHome />
+              <Link href="/post" className="eyebrow text-ink/65 hover:text-ink">
+                Blog
+              </Link>
+            </div>
+            <span className="eyebrow hidden shrink-0 text-ink/65 sm:inline">{post.category}</span>
           </div>
 
           <div className="grid gap-8 pt-12 pb-10 md:grid-cols-12 md:pt-16">

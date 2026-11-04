@@ -30,7 +30,6 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
       <SmoothScroll />
       <RevealObserver />
       <SignatureIntro />
-      <div className="grain" aria-hidden="true" />
 
       <SiteNav />
       <main id="main">{children}</main>

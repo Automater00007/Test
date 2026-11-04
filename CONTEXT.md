@@ -1,6 +1,6 @@
 # Jade River Resort — Working Context
 
-_Last updated: 3 November 2026 (final QA pass)_
+_Last updated: 4 November 2026 (UX + publishing pass)_
 
 ## Project
 Marketing website for **Jade River Resort**, Pahalgam, Jammu & Kashmir — a 13-room boutique resort on the Lidder River, part of Defoy Hotels & Resorts.
@@ -47,7 +47,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 
 ## Current decisions
 - **Blog route confirmed:** keep `/post` and `/post/[slug]`. The guide's `/blog/[slug]` structure will not be used.
-- **Sanity is connected.** Project `tcbet7sh`, dataset `production`; credentials in `.env.local` (never committed). The journal reads from Sanity with a static fallback when unconfigured. Three posts, one author, and three categories are seeded; `npm run seed` re-runs the seed. CORS origins include `localhost:3000` and both production domains. The only remaining ops step is configuring the publish webhook in the Sanity dashboard once a deployed URL exists.
+- **Sanity is connected.** Project `tcbet7sh`, dataset `production`; credentials in `.env.local` (never committed). The blog reads from Sanity with a static fallback when unconfigured. Three posts, one author, and three categories are seeded; `npm run seed` re-runs the seed. CORS origins include `localhost:3000` and both production domains. The publish webhook is configured against the current Vercel deployment; update its URL when the final production domain is live.
 - **Studio lives at `/studio`.** It is lazy-loaded and hidden from search engines; the marketing chrome is suppressed on that route.
 - **Draft preview** is at `/api/draft?slug=…` (optional `&secret=`), and the publish webhook is `/api/revalidate` with `SANITY_REVALIDATE_SECRET`.
 - **YouTube:** deferred for now; the blog is the priority. The fetch/lightbox code is not being added yet.
@@ -62,6 +62,12 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - The pinned Rooms rail runway was shortened from 340vh to 260vh so it feels faster.
 - **Scroll motion:** every section uses the shared `[data-reveal]` system. Variants are `up` (default), `fade`, `zoom`, `zoom-lg`, `left`, `right`, and `mask` (clip-path curtain on `.reveal-media`). Delays are set per element with `--reveal-delay` for a soft stagger. `RevealObserver` uses one IntersectionObserver, re-scans on client navigation/late mounts, and never re-animates an element. Only `opacity` and `transform` are animated, so reveals stay on the compositor and mobile stays smooth.
 - **Arrows are intentionally static.** The `→` glyphs, nav arrow and CTA arrow icons no longer translate on hover; all other hover/reveal motion remains.
+- **Back to home:** every inner page shows a `Back to home` control. `PageHeader` renders it on listing/static pages; the room and post detail headers render it directly. The homepage has no back control.
+- **Mobile Stay carousel:** below `md`, the Stay section is a horizontal snap carousel with `data-reveal="zoom"` cards, a progress rule, a live counter, and static prev/next buttons. The desktop pinned horizontal rail is unchanged.
+- **Blog naming:** all visible “Journal” copy is now “Blog”; the route remains `/post` and `/post/[slug]`.
+- **Review contrast:** review cards on the Forest Green section explicitly set `text-ink`, so card text is charcoal on ivory rather than inheriting `text-paper`.
+- **Dead code:** the fixed `.grain` SVG overlay and unused `.vertical-text` rule were removed.
+- **Blog caching is publish-only:** there is no timed ISR. Sanity fetches use `revalidate: false` with the `post` tag; the Sanity webhook calls `revalidateTag("post")` plus `revalidatePath("/")`, `/post`, and the changed slug.
 - `prefers-reduced-motion` short-circuits both the observer and CSS transitions; a `<noscript>` fallback keeps content visible without JS.
 
 ## Palette implementation notes
@@ -74,7 +80,16 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `--color-warm-grey` = Warm Grey (available for secondary copy).
 - No gradients. No `bg-black`/`bg-white`/non-brand dark surfaces remain.
 
-## Completed in this pass (3 Nov 2026)
+## Completed in this pass (4 Nov 2026)
+- Added a `Back to home` control to every inner page (shared `PageHeader`, room detail hero, and post detail header).
+- Replaced the mobile Stay vertical stack with a swipeable snap carousel, including progress, counter, static arrows, and staggered zoom reveals.
+- Renamed all visible Journal naming to Blog (`nav`, footer, homepage teaser, listing/detail metadata and copy, Studio schema title). The `/post` route is unchanged.
+- Fixed review card contrast by adding `text-ink` to the ivory cards inside the Forest Green reviews section.
+- Removed the `.grain` DOM node and CSS, plus the unused `.vertical-text` utility.
+- Removed the 60-second ISR from `/`, `/post`, and `/post/[slug]`; Sanity fetches now cache indefinitely with the `post` tag and refresh only through the publish webhook.
+- Configured the Sanity document webhook to the deployed `/api/revalidate` endpoint (create/update/delete, `_type == "post"`).
+
+## Completed in the previous pass (3 Nov 2026)
 - Replaced the entire palette in `app/globals.css` and migrated every component off the old tokens.
 - Removed all old email addresses; placeholder wired through `site.email` and JSON-LD.
 - Removed `StoryParallax`, the Experiences hover preview, the closing marquees, and the spinning CTA badge.
@@ -84,19 +99,21 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - Added `cdn.sanity.io`, `img.youtube.com`, and `i.ytimg.com` to `next.config.ts`.
 - Verified desktop 1440 and mobile 390 renders; `npm run build` passes (21 pages).
 - Wired Sanity end to end: schemas, Studio, typed GROQ, Portable Text, draft preview, webhook, homepage teaser, sitemap.
-- The public journal now reads through `lib/posts.ts`, which falls back to static posts when Sanity is not configured.
+- The public blog now reads through `lib/posts.ts`, which falls back to static posts when Sanity is not configured.
 - Re-verified `/post`, `/post/[slug]` and the `/studio` setup state; build passes with 24 routes.
 
 ## File map
 - `app/globals.css` — palette tokens, reveal system, intro, lightbox, Lenis, reduced motion.
 - `app/layout.tsx` — fonts, metadata, JSON-LD, intro script, skip link; renders `SiteChrome`.
-- `components/SiteChrome.tsx` — hides nav/footer/motion on `/studio`.
-- `app/page.tsx` — homepage order: Hero, Philosophy, RoomsRail, Experiences, GalleryMarquee, FilmSection, LocationSection, GuestNotes, JournalTeaser, ClosingCTA.
+- `components/SiteChrome.tsx` — hides nav/footer/motion on `/studio`; no grain overlay.
+- `components/BackToHome.tsx` — shared static-arrow back link used by inner pages.
+- `app/page.tsx` — homepage order: Hero, Philosophy, RoomsRail, Experiences, GalleryMarquee, FilmSection, LocationSection, GuestNotes, BlogTeaser, ClosingCTA.
 - `lib/content.ts` — resort facts, rooms, experiences, gallery, static fallback posts, reviews, FAQs, policies.
-- `lib/posts.ts` — unified journal data layer (Sanity + static fallback, draft aware).
+- `lib/posts.ts` — unified blog data layer (Sanity + static fallback, draft aware, publish-only cache).
 - `components/blog/PostBody.tsx` — Portable Text renderer and custom blocks.
-- `components/home/JournalTeaser.tsx` — server component; latest 3 posts.
-- `app/post/page.tsx` — journal listing (async, ISR 60s).
+- `components/home/BlogTeaser.tsx` — server component; latest 3 posts.
+- `components/home/RoomsRail.tsx` — desktop pinned rail + mobile snap carousel.
+- `app/post/page.tsx` — blog listing (static, revalidated by the Sanity webhook).
 - `app/post/[slug]/page.tsx` — post detail, SEO metadata, JSON-LD, related/next post.
 - `app/studio/[[...tool]]/` — lazy-loaded Sanity Studio with an unconfigured-state notice.
 - `app/api/draft/route.ts` — enables Next.js draft mode.
@@ -116,10 +133,12 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `public/video/` — drop `hero.mp4` / `hero.webm` here (see README).
 
 ## Sanity setup (connected)
-Project `tcbet7sh`, dataset `production`. Credentials live in `.env.local` (never committed) and the schema is seeded with one author, three categories, and the three existing journal posts. `npm run seed` re-runs the seed script.
+Project `tcbet7sh`, dataset `production`. Credentials live in `.env.local` (never committed) and the schema is seeded with one author, three categories, and the three existing blog posts. `npm run seed` re-runs the seed script.
+
+Webhook: configured on 4 Nov 2026 as **“Next.js revalidate — Jade River blog”** → `https://test-kappa-lovat-59.vercel.app/api/revalidate`. It triggers on create/update/delete for `_type == "post"` with the projection `{_type, "slug": slug}` and uses `SANITY_REVALIDATE_SECRET`. Update the URL when the final production domain is live.
 
 Remaining ops tasks:
-1. Configure a Sanity webhook → `https://<domain>/api/revalidate` with `SANITY_REVALIDATE_SECRET` (needs the deployed URL).
+1. Update the webhook URL to the final production domain when it is live.
 2. Add any additional production/preview origins to Sanity → API → CORS origins (already added: `localhost:3000`, `defoyhotelsandresorts.com`, `www.defoyhotelsandresorts.com`).
 
 Env vars (`.env.local`, never commit — see `.env.example`):
@@ -153,5 +172,5 @@ Drop the real film at `public/video/hero.mp4` and/or `public/video/hero.webm`. U
 
 ## Known gaps
 - No real resort photography or hero video yet; Unsplash placeholders remain.
-- Sanity credentials live in `.env.local`; they still need to be added to Vercel before the deployed Studio and live journal work.
+- Sanity credentials live in `.env.local`; the deployed `/api/revalidate` endpoint already has the matching secret. Confirm the public project ID/dataset and read token are also set in Vercel for the deployed Studio.
 - Reviews shown are sample copy, not verified guest submissions.

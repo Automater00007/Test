@@ -1,5 +1,5 @@
 /**
- * Seeds the Sanity dataset with the journal content that currently lives in
+ * Seeds the Sanity dataset with the blog content that currently lives in
  * `lib/content.ts`. Safe to re-run: documents use deterministic IDs.
  *
  *   node --env-file=.env.local scripts/seed-sanity.mjs

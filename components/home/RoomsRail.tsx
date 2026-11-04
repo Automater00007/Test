@@ -72,8 +72,11 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
 export default function RoomsRail() {
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
+  const mobileRail = useRef<HTMLDivElement>(null);
+  const mobileRaf = useRef(0);
   const [distance, setDistance] = useState(0);
   const [active, setActive] = useState(0);
+  const [mobileActive, setMobileActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: section,
@@ -103,6 +106,44 @@ export default function RoomsRail() {
       window.clearTimeout(t);
     };
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (mobileRaf.current) window.cancelAnimationFrame(mobileRaf.current);
+    };
+  }, []);
+
+  const goToRoom = (index: number) => {
+    const el = mobileRail.current;
+    if (!el) return;
+    const card = el.children[index] as HTMLElement | undefined;
+    if (!card) return;
+    const paddingLeft = Number.parseFloat(window.getComputedStyle(el).paddingLeft) || 0;
+    const left = card.offsetLeft - paddingLeft;
+    el.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+  };
+
+  const handleMobileScroll = () => {
+    if (mobileRaf.current) return;
+    mobileRaf.current = window.requestAnimationFrame(() => {
+      mobileRaf.current = 0;
+      const el = mobileRail.current;
+      if (!el) return;
+      const railRect = el.getBoundingClientRect();
+      const center = railRect.left + el.clientWidth / 2;
+      let next = 0;
+      let closest = Number.POSITIVE_INFINITY;
+      Array.from(el.children).forEach((child, i) => {
+        const rect = (child as HTMLElement).getBoundingClientRect();
+        const distanceToCenter = Math.abs(rect.left + rect.width / 2 - center);
+        if (distanceToCenter < closest) {
+          closest = distanceToCenter;
+          next = i;
+        }
+      });
+      setMobileActive((prev) => (prev === next ? prev : next));
+    });
+  };
 
   return (
     <section
@@ -199,39 +240,123 @@ export default function RoomsRail() {
         </div>
       </div>
 
-      {/* mobile stack */}
-      <div className="px-[clamp(1.15rem,4.2vw,5rem)] py-20 md:hidden">
-        <span className="eyebrow text-paper/65" data-reveal>
-          03 — Stay
-        </span>
-        <h2
-          id="stay-heading-mobile"
-          className="mt-3 text-[clamp(2.2rem,8vw,3rem)] leading-[0.98] text-paper"
-          data-reveal
-          style={{ ["--reveal-delay" as string]: "60ms" }}
+      {/* mobile carousel */}
+      <div className="py-20 md:hidden">
+        <div className="px-[clamp(1.15rem,4.2vw,5rem)]">
+          <span className="eyebrow text-paper/65" data-reveal>
+            03 — Stay
+          </span>
+          <h2
+            id="stay-heading-mobile"
+            className="mt-3 text-[clamp(2.2rem,8vw,3rem)] leading-[0.98] text-paper"
+            data-reveal
+            style={{ ["--reveal-delay" as string]: "60ms" }}
+          >
+            Three shapes of <em className="text-clay">quiet.</em>
+          </h2>
+          <p
+            className="mt-5 max-w-[32ch] text-[0.92rem] leading-relaxed text-paper/65"
+            data-reveal
+            style={{ ["--reveal-delay" as string]: "110ms" }}
+          >
+            A balcony, a suite, or two floors for the family. Every room opens
+            toward water or pine.
+          </p>
+        </div>
+
+        <div
+          ref={mobileRail}
+          onScroll={handleMobileScroll}
+          className="no-scrollbar relative mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+          style={{
+            paddingInline: "clamp(1.15rem,4.2vw,5rem)",
+            scrollPaddingInline: "clamp(1.15rem,4.2vw,5rem)",
+          }}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Rooms"
         >
-          Three shapes of <em className="text-clay">quiet.</em>
-        </h2>
-        <div className="mt-10 flex flex-col gap-14">
           {rooms.map((room, i) => (
             <div
               key={room.slug}
+              className="w-[min(82vw,380px)] shrink-0 snap-start"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${rooms.length}: ${room.name}`}
               data-reveal="zoom"
-              style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
+              style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
             >
               <RoomCard room={room} index={i} />
             </div>
           ))}
         </div>
-        <Link
-          href="/rooms"
-          className="btn mt-12 w-full justify-center border-paper/30 text-paper"
-          data-reveal="zoom"
-          style={{ ["--reveal-delay" as string]: "140ms" }}
-        >
-          All rooms
-        </Link>
+
+        <div className="mt-6 flex items-center gap-4 px-[clamp(1.15rem,4.2vw,5rem)]">
+          <div className="relative h-px flex-1 bg-paper/15" aria-hidden="true">
+            <span
+              className="absolute inset-y-0 left-0 bg-copper transition-[width] duration-500 ease-[var(--ease-out-expo)]"
+              style={{ width: `${((mobileActive + 1) / rooms.length) * 100}%` }}
+            />
+          </div>
+          <span
+            className="font-mono text-[11px] tracking-[0.12em] text-paper/65"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            0{mobileActive + 1} <span className="text-paper/65">/ 0{rooms.length}</span>
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => goToRoom(mobileActive - 1)}
+              disabled={mobileActive === 0}
+              aria-label="Previous room"
+              className="flex h-10 w-10 items-center justify-center border border-paper/20 text-paper/70 transition-colors hover:border-paper/50 hover:text-paper disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              <Arrow dir="left" />
+            </button>
+            <button
+              type="button"
+              onClick={() => goToRoom(mobileActive + 1)}
+              disabled={mobileActive === rooms.length - 1}
+              aria-label="Next room"
+              className="flex h-10 w-10 items-center justify-center border border-paper/20 text-paper/70 transition-colors hover:border-paper/50 hover:text-paper disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              <Arrow dir="right" />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-8 px-[clamp(1.15rem,4.2vw,5rem)]">
+          <Link
+            href="/rooms"
+            className="btn w-full justify-center border-paper/30 text-paper"
+            data-reveal="zoom"
+            style={{ ["--reveal-delay" as string]: "140ms" }}
+          >
+            All rooms
+          </Link>
+        </div>
       </div>
     </section>
+  );
+}
+
+function Arrow({ dir }: { dir: "left" | "right" }) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      className="arrow-static"
+    >
+      <path
+        d={dir === "left" ? "M13 7H1M6 2L1 7l5 5" : "M1 7h12M8 2l5 5-5 5"}
+        stroke="currentColor"
+        strokeWidth="1.1"
+      />
+    </svg>
   );
 }

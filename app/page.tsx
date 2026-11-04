@@ -6,10 +6,8 @@ import GalleryMarquee from "@/components/home/GalleryMarquee";
 import FilmSection from "@/components/home/FilmSection";
 import LocationSection from "@/components/home/LocationSection";
 import GuestNotes from "@/components/home/GuestNotes";
-import JournalTeaser from "@/components/home/JournalTeaser";
+import BlogTeaser from "@/components/home/BlogTeaser";
 import ClosingCTA from "@/components/home/ClosingCTA";
-
-export const revalidate = 60;
 
 export default function HomePage() {
   return (
@@ -22,7 +20,7 @@ export default function HomePage() {
       <FilmSection />
       <LocationSection />
       <GuestNotes />
-      <JournalTeaser />
+      <BlogTeaser />
       <ClosingCTA />
     </>
   );

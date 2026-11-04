@@ -3,19 +3,19 @@ import Link from "next/link";
 import TiltCard from "@/components/ui/TiltCard";
 import { getLatestPosts } from "@/lib/posts";
 
-export default async function JournalTeaser() {
+export default async function BlogTeaser() {
   const posts = await getLatestPosts(3);
 
   return (
-    <section className="relative py-20 md:py-28" aria-labelledby="journal-heading">
+    <section className="relative py-20 md:py-28" aria-labelledby="blog-heading">
       <div className="shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <span className="eyebrow text-ink/65" data-reveal>
-              08 — Journal
+              08 — Blog
             </span>
             <h2
-              id="journal-heading"
+              id="blog-heading"
               className="mt-4 text-[clamp(2.3rem,5.2vw,5rem)] leading-[0.94]"
               data-reveal
             >
@@ -27,7 +27,7 @@ export default async function JournalTeaser() {
             className="link-line self-start font-mono text-[10px] uppercase tracking-[0.2em] md:self-end"
             data-reveal="fade"
           >
-            All journal entries →
+            All blog entries →
           </Link>
         </div>
 

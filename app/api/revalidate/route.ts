@@ -24,6 +24,9 @@ export async function POST(request: NextRequest) {
     revalidateTag("post");
     revalidatePath("/");
     revalidatePath("/post");
+    revalidatePath("/sitemap.xml");
+    // Cover new and removed slugs even when the webhook payload has no slug.
+    revalidatePath("/post/[slug]", "page");
 
     if (body?.slug?.current) {
       revalidatePath(`/post/${body.slug.current}`);

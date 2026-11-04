@@ -82,7 +82,7 @@ export default function GuestNotes() {
         {reviews.map((review, i) => (
           <article
             key={review.name}
-            className="group w-[min(84vw,360px)] shrink-0 snap-start border border-line bg-paper p-6 transition-colors duration-500 hover:border-ink/40"
+            className="group w-[min(84vw,360px)] shrink-0 snap-start border border-line bg-paper p-6 text-ink transition-colors duration-500 hover:border-ink/40"
             data-reveal="zoom"
             style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
           >

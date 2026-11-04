@@ -59,7 +59,7 @@ disallows `/studio`).
 
 The schemas (defined in `sanity/schemaTypes/`) are:
 
-- **Post** — a journal article.
+- **Post** — a blog article.
   - Title, slug (URL), excerpt, author, category
   - Main image (cover) with alt text
   - Published date, read time, "featured" flag
@@ -80,8 +80,10 @@ The schemas (defined in `sanity/schemaTypes/`) are:
 - `app/post/page.tsx` calls `getAllPosts()` from `lib/posts.ts`.
 - That function asks Sanity (via GROQ `allPostsQuery`) for all published posts,
   newest first.
-- Each post is mapped to a `JournalPost` with a formatted date and a CDN image URL.
-- The homepage teaser (`JournalTeaser`) uses `getLatestPosts(3)`.
+- Each post is mapped to a `BlogPost` with a formatted date and a CDN image URL.
+- The homepage teaser (`BlogTeaser`) uses `getLatestPosts(3)`.
+- The blog has no timed ISR. Sanity fetches cache indefinitely with the `post` tag;
+  the publish webhook calls `revalidateTag("post")` and the relevant paths.
 
 ### Detail page (`/post/[slug]`)
 - `app/post/[slug]/page.tsx` calls `getPostBySlug(slug)`.
@@ -198,7 +200,7 @@ queries against your dataset, useful for debugging. Example:
 ## 11. Fallback behaviour
 
 - If `NEXT_PUBLIC_SANITY_PROJECT_ID` is missing, `sanityConfigured` is `false`
-  and the journal uses the three static posts in `lib/content.ts`.
+  and the blog uses the three static posts in `lib/content.ts`.
 - If a Sanity fetch fails at runtime, the data layer catches the error and falls
   back to static posts (for listings) or returns `null` (for a single post).
 - The Studio shows a "needs a project" notice when credentials are missing.

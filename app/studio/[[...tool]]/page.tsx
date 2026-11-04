@@ -22,7 +22,7 @@ export default function StudioPage() {
           {`NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id\nNEXT_PUBLIC_SANITY_DATASET=production\nSANITY_API_TOKEN=your_read_token`}
         </pre>
         <p className="mt-6 text-[0.92rem] leading-[1.75] text-ink/70">
-          Until then the public journal keeps using the built-in sample posts.
+          Until then the public blog keeps using the built-in sample posts.
         </p>
         <Link
           href="/"

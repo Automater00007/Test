@@ -2,7 +2,7 @@
  * Sanity environment.
  *
  * The site is designed to run without Sanity credentials: when
- * NEXT_PUBLIC_SANITY_PROJECT_ID is missing, the journal falls back to the
+ * NEXT_PUBLIC_SANITY_PROJECT_ID is missing, the blog falls back to the
  * static posts in `lib/content.ts`. This keeps local development and builds
  * working before the CMS is connected.
  */

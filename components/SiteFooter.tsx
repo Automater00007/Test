@@ -5,7 +5,7 @@ const explore = [
   { label: "Rooms & Suites", href: "/rooms" },
   { label: "Experiences", href: "/experiences" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Journal", href: "/post" },
+  { label: "Blog", href: "/post" },
   { label: "Reviews", href: "/reviews" },
 ];
 

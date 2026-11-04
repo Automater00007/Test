@@ -19,7 +19,7 @@ export const nav = [
   { label: "Rooms", href: "/rooms" },
   { label: "Experiences", href: "/experiences" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Journal", href: "/post" },
+  { label: "Blog", href: "/post" },
   { label: "Location", href: "/location" },
 ];
 

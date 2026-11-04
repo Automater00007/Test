@@ -15,7 +15,7 @@ import type { SanityImage, SanityPost, SanityPostListItem } from "@/sanity/lib/t
 
 const FALLBACK_IMAGE = img.aerial;
 
-export type JournalPost = {
+export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
@@ -72,7 +72,7 @@ function imageUrl(image?: SanityImage | null, width = 1600) {
   return builder.width(width).height(Math.round((width * 9) / 16)).fit("crop").url();
 }
 
-function mapSanityPost(post: SanityPostListItem | SanityPost): JournalPost {
+function mapSanityPost(post: SanityPostListItem | SanityPost): BlogPost {
   const full = post as SanityPost;
   return {
     slug: post.slug,
@@ -80,7 +80,7 @@ function mapSanityPost(post: SanityPostListItem | SanityPost): JournalPost {
     excerpt: post.excerpt,
     date: formatDate(post.publishedAt),
     publishedAt: post.publishedAt,
-    category: post.category?.title || "Journal",
+    category: post.category?.title || "Blog",
     read: normaliseRead(post.readTime),
     image: imageUrl(post.mainImage),
     imageAlt: post.mainImage?.alt || post.title,
@@ -112,7 +112,7 @@ function mapSanityPost(post: SanityPostListItem | SanityPost): JournalPost {
   };
 }
 
-function mapStaticPost(post: (typeof staticPosts)[number]): JournalPost {
+function mapStaticPost(post: (typeof staticPosts)[number]): BlogPost {
   return {
     slug: post.slug,
     title: post.title,
@@ -129,47 +129,47 @@ function mapStaticPost(post: (typeof staticPosts)[number]): JournalPost {
   };
 }
 
-const staticJournal = () => staticPosts.map(mapStaticPost);
+const staticBlogPosts = () => staticPosts.map(mapStaticPost);
 
-/** All published posts, newest first. Falls back to static content without CMS credentials. */
-export const getAllPosts = cache(async (): Promise<JournalPost[]> => {
+/** All published blog posts, newest first. Falls back to static content without CMS credentials. */
+export const getAllPosts = cache(async (): Promise<BlogPost[]> => {
   const client = getSanityClient();
-  if (!client) return staticJournal();
+  if (!client) return staticBlogPosts();
 
   try {
     const posts = await client.fetch<SanityPostListItem[]>(
       allPostsQuery,
       {},
-      { next: { revalidate: 60, tags: ["post"] } },
+      { next: { revalidate: false, tags: ["post"] } },
     );
     return posts.map(mapSanityPost);
   } catch {
-    return staticJournal();
+    return staticBlogPosts();
   }
 });
 
 /** Latest posts for the homepage teaser. */
-export const getLatestPosts = cache(async (limit = 3): Promise<JournalPost[]> => {
+export const getLatestPosts = cache(async (limit = 3): Promise<BlogPost[]> => {
   const client = getSanityClient();
-  if (!client) return staticJournal().slice(0, limit);
+  if (!client) return staticBlogPosts().slice(0, limit);
 
   try {
     const posts = await client.fetch<SanityPostListItem[]>(
       latestPostsQuery,
       { limit },
-      { next: { revalidate: 60, tags: ["post"] } },
+      { next: { revalidate: false, tags: ["post"] } },
     );
     return posts.map(mapSanityPost);
   } catch {
-    return staticJournal().slice(0, limit);
+    return staticBlogPosts().slice(0, limit);
   }
 });
 
 /** A single post, including drafts when Next.js draft mode is enabled. */
-export const getPostBySlug = cache(async (slug: string): Promise<JournalPost | null> => {
+export const getPostBySlug = cache(async (slug: string): Promise<BlogPost | null> => {
   const client = getSanityClient();
   if (!client) {
-    return staticJournal().find((post) => post.slug === slug) ?? null;
+    return staticBlogPosts().find((post) => post.slug === slug) ?? null;
   }
 
   const { isEnabled } = await draftMode();
@@ -178,7 +178,7 @@ export const getPostBySlug = cache(async (slug: string): Promise<JournalPost | n
     const post = await client.fetch<SanityPost>(
       isEnabled ? draftPostBySlugQuery : postBySlugQuery,
       { slug },
-      isEnabled ? { cache: "no-store" } : { next: { revalidate: 60, tags: ["post"] } },
+      isEnabled ? { cache: "no-store" } : { next: { revalidate: false, tags: ["post"] } },
     );
     return post ? mapSanityPost(post) : null;
   } catch {
@@ -195,7 +195,7 @@ export const getAllPostSlugs = cache(async (): Promise<string[]> => {
     const slugs = await client.fetch<{ slug: string }[]>(
       allSlugsQuery,
       {},
-      { next: { revalidate: 60, tags: ["post"] } },
+      { next: { revalidate: false, tags: ["post"] } },
     );
     return slugs.map((item) => item.slug).filter(Boolean);
   } catch {

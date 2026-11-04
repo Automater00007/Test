@@ -5,16 +5,14 @@ import PageHeader from "@/components/PageHeader";
 import { getAllPosts } from "@/lib/posts";
 import { JsonLd, breadcrumb } from "@/lib/schema";
 
-export const revalidate = 60;
-
 export const metadata: Metadata = {
-  title: "Journal",
+  title: "Blog",
   description:
     "Notes from Jade River Resort: the sound of the Lidder at dawn, a slow guide to Aru Valley, and why thirteen rooms is the point.",
   alternates: { canonical: "/jade-river-resort/post" },
 };
 
-export default async function JournalPage() {
+export default async function BlogPage() {
   const posts = await getAllPosts();
   const [lead, ...rest] = posts;
 
@@ -23,11 +21,11 @@ export default async function JournalPage() {
       <JsonLd
         data={breadcrumb([
           { name: "Home", path: "/jade-river-resort" },
-          { name: "Journal", path: "/jade-river-resort/post" },
+          { name: "Blog", path: "/jade-river-resort/post" },
         ])}
       />
       <PageHeader
-        eyebrow="Journal · Notes"
+        eyebrow="Blog · Notes"
         title={
           <>
             Notes from the <em className="text-clay">slow side.</em>
@@ -37,7 +35,7 @@ export default async function JournalPage() {
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
-              Journal entries
+              Blog entries
               <br />
               Pahalgam · Kashmir
             </p>
@@ -52,7 +50,7 @@ export default async function JournalPage() {
         {!lead ? (
           <div className="border-t border-line pt-10" data-reveal>
             <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] italic leading-snug text-ink/70">
-              The journal is being written.
+              The blog is being written.
             </p>
             <p className="body-copy mt-4 max-w-md">
               New notes from the property will appear here. In the meantime, write to us
