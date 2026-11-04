@@ -71,7 +71,7 @@ export default async function JournalPage() {
               href={`/post/${lead.slug}`}
               className="group grid gap-8 border-t border-line pt-8 md:grid-cols-12 md:gap-10"
             >
-              <div className="md:col-span-7" data-reveal="mask">
+              <div className="md:col-span-7" data-reveal="zoom">
                 <div className="relative aspect-[16/11] overflow-hidden bg-paper-2">
                   <Image
                     src={lead.image}
@@ -87,7 +87,7 @@ export default async function JournalPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between md:col-span-4 md:col-start-9" data-reveal>
+              <div className="flex flex-col justify-between md:col-span-4 md:col-start-9" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "90ms" }}>
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                     {lead.category} · {lead.date}
@@ -113,7 +113,7 @@ export default async function JournalPage() {
                     key={post.slug}
                     href={`/post/${post.slug}`}
                     className="group border-t border-line pt-6"
-                    data-reveal
+                    data-reveal="zoom"
                     style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
                   >
                     <div

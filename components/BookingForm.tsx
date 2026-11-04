@@ -159,7 +159,7 @@ export default function BookingForm({ initialRoom }: { initialRoom?: string }) {
       <div className="flex flex-wrap items-center gap-5">
         <button type="submit" className="btn btn-clay">
           Send on WhatsApp
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
             <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
           </svg>
         </button>

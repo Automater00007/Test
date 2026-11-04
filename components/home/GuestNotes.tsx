@@ -39,7 +39,7 @@ export default function GuestNotes() {
             <div
               key={s.label}
               className="md:border-l md:border-line-light md:pl-6 md:first:border-l-0 md:first:pl-0"
-              data-reveal
+              data-reveal="zoom"
               style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
             >
               <p className="font-display text-[clamp(2.6rem,4.6vw,4.6rem)] leading-none tracking-[-0.04em]">
@@ -52,7 +52,7 @@ export default function GuestNotes() {
           ))}
         </div>
 
-        <div className="mt-12 flex items-end justify-between gap-6">
+        <div className="mt-12 flex items-end justify-between gap-6" data-reveal="fade">
           <span className="eyebrow text-paper/65">Notes from guests</span>
           <div className="flex items-center gap-2">
             <button
@@ -109,10 +109,9 @@ export default function GuestNotes() {
         ))}
       </div>
 
-      <div className="shell mt-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="shell mt-8 flex flex-wrap items-center justify-between gap-4" data-reveal="fade">
         <p
           className="max-w-md font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-paper/65"
-          data-reveal="fade"
         >
           Reviews are moderated. Only 3, 4 and 5 star submissions are accepted, so
           what you read comes from real guests.
@@ -138,7 +137,7 @@ function Arrow({ dir }: { dir: "left" | "right" }) {
       viewBox="0 0 14 14"
       fill="none"
       aria-hidden="true"
-      className={dir === "left" ? "rotate-180" : ""}
+      className={`arrow-static ${dir === "left" ? "rotate-180" : ""}`}
     >
       <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.1" />
     </svg>

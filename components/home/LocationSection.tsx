@@ -46,28 +46,28 @@ export default function LocationSection() {
               different world by the time you arrive.
             </p>
 
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8" data-reveal>
-              <div>
+            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8">
+              <div data-reveal="zoom">
                 <dt className="eyebrow text-ink/65">Airport</dt>
                 <dd className="mt-2 text-[0.95rem]">Srinagar · 96 km</dd>
               </div>
-              <div>
+              <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "60ms" }}>
                 <dt className="eyebrow text-ink/65">Drive</dt>
                 <dd className="mt-2 text-[0.95rem]">2.5 – 3 hours</dd>
               </div>
-              <div>
+              <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "120ms" }}>
                 <dt className="eyebrow text-ink/65">Coordinates</dt>
                 <dd className="mt-2 font-mono text-[0.8rem] tracking-tight">
                   33.883354, 75.269764
                 </dd>
               </div>
-              <div>
+              <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "180ms" }}>
                 <dt className="eyebrow text-ink/65">Address</dt>
                 <dd className="mt-2 text-[0.95rem]">{site.address}</dd>
               </div>
             </dl>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal>
+            <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "140ms" }}>
               <Magnetic>
                 <a
                   href={mapsHref}
@@ -77,7 +77,7 @@ export default function LocationSection() {
 
                 >
                   Get directions
-                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
                     <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                   </svg>
                 </a>
@@ -91,7 +91,7 @@ export default function LocationSection() {
           <div className="md:col-span-6 md:col-start-7" ref={ref}>
             <div
               className="relative overflow-hidden border border-line bg-paper-2 p-4 md:p-6"
-              data-reveal="fade"
+              data-reveal="zoom"
             >
               <div className="flex items-center justify-between pb-4">
                 <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">

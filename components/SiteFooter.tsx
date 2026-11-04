@@ -22,7 +22,7 @@ export default function SiteFooter() {
     <footer className="relative overflow-hidden bg-forest text-paper">
       <div className="shell pt-20 pb-8 md:pt-28">
         <div className="grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-6">
+          <div className="md:col-span-6" data-reveal>
             <span className="eyebrow text-paper/65">Jade River Resort</span>
             <p className="mt-6 max-w-[20ch] font-display text-[clamp(2.2rem,4.6vw,4.4rem)] leading-[0.98] tracking-[-0.04em]">
               Life, slowed by the <em className="text-clay">river.</em>
@@ -34,7 +34,7 @@ export default function SiteFooter() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 md:col-span-4 md:col-start-8">
+          <div className="grid grid-cols-2 gap-10 md:col-span-4 md:col-start-8" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "90ms" }}>
             <nav aria-label="Explore">
               <p className="eyebrow mb-6 text-paper/65">Explore</p>
               <ul className="space-y-3.5">
@@ -67,7 +67,7 @@ export default function SiteFooter() {
             </nav>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-2" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "160ms" }}>
             <div className="eyebrow mb-6 text-paper/65">Direct</div>
             <ul className="space-y-6">
               <li>
@@ -96,7 +96,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-line-light pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-paper/65 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-20 flex flex-col gap-4 border-t border-line-light pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-paper/65 sm:flex-row sm:items-center sm:justify-between" data-reveal="fade">
           <p>© {new Date().getFullYear()} Defoy Hotels &amp; Resorts. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
             <Link href="/policies" className="hover:text-paper/70">

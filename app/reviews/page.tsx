@@ -48,7 +48,7 @@ export default function ReviewsPage() {
               className={`group border-t border-line pt-6 ${
                 i === 0 || i === 3 ? "md:col-span-2 md:grid md:grid-cols-2 md:gap-6" : ""
               }`}
-              data-reveal
+              data-reveal="zoom"
               style={{ ["--reveal-delay" as string]: `${(i % 3) * 80}ms` }}
             >
               <div>

@@ -45,13 +45,13 @@ export default function RoomsPage() {
       />
       <RoomShowcase />
 
-      <section className="bg-forest py-16 text-paper md:py-20">
+      <section className="bg-forest py-16 text-paper md:py-20" data-reveal="zoom">
         <div className="shell grid gap-10 md:grid-cols-12 md:items-center">
-          <p className="font-display text-[clamp(1.8rem,3.4vw,3.2rem)] leading-[1.05] md:col-span-7">
+          <p className="font-display text-[clamp(1.8rem,3.4vw,3.2rem)] leading-[1.05] md:col-span-7" data-reveal>
             Not sure which room? Tell us who is coming and we will{" "}
             <em className="text-clay">place you properly.</em>
           </p>
-          <div className="flex flex-wrap gap-4 md:col-span-5 md:justify-end">
+          <div className="flex flex-wrap gap-4 md:col-span-5 md:justify-end" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "100ms" }}>
             <Link href="/contact" className="btn border-paper/30 text-paper">
               Reserve directly
             </Link>
@@ -67,8 +67,13 @@ export default function RoomsPage() {
 
       <section className="shell py-16">
         <div className="grid gap-8 md:grid-cols-3">
-          {rooms.map((room) => (
-            <div key={room.slug} className="border-t border-line pt-4">
+          {rooms.map((room, i) => (
+            <div
+              key={room.slug}
+              className="border-t border-line pt-4"
+              data-reveal="zoom"
+              style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+            >
               <p className="eyebrow text-ink/65">{room.count}</p>
               <p className="mt-2 text-[0.95rem]">{room.name}</p>
             </div>

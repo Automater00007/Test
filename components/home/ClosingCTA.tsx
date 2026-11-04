@@ -30,7 +30,7 @@ export default function ClosingCTA() {
               run the place — no booking engines in between.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6" data-reveal>
+            <div className="mt-8 flex flex-wrap items-center gap-6" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "100ms" }}>
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-4 bg-paper px-6 py-4 font-mono text-[10px] uppercase tracking-[0.18em] text-charcoal transition-colors duration-300 hover:bg-walnut-brown hover:text-paper"
@@ -42,6 +42,7 @@ export default function ClosingCTA() {
                   viewBox="0 0 14 14"
                   fill="none"
                   aria-hidden="true"
+                  className="arrow-static"
                 >
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
@@ -55,7 +56,7 @@ export default function ClosingCTA() {
               </a>
             </div>
 
-            <div className="mt-10 border-t border-line pt-5" data-reveal>
+            <div className="mt-10 border-t border-line pt-5" data-reveal="fade" style={{ ["--reveal-delay" as string]: "160ms" }}>
               <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/70">
                 Check-in 2:00 PM · Check-out 12:00 noon
                 <br />
@@ -66,7 +67,7 @@ export default function ClosingCTA() {
         </div>
       </div>
 
-      <div className="shell flex flex-col gap-4 border-t border-line py-5 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/70 sm:flex-row sm:items-center sm:justify-between">
+      <div className="shell flex flex-col gap-4 border-t border-line py-5 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/70 sm:flex-row sm:items-center sm:justify-between" data-reveal="fade">
         <span>{site.address}</span>
         <span>Direct bookings only — no OTAs</span>
         <a href={`https://wa.me/${site.whatsapp}`} className="link-line hover:text-ink">

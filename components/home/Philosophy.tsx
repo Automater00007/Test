@@ -18,7 +18,7 @@ export default function Philosophy() {
               <div className="mt-5 h-px w-24 bg-line" data-reveal="fade" />
               <dl
                 className="mt-6 space-y-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65"
-                data-reveal
+                data-reveal="zoom"
                 style={{ ["--reveal-delay" as string]: "90ms" }}
               >
                 <div className="flex justify-between gap-6 border-b border-line pb-2">
@@ -49,7 +49,7 @@ export default function Philosophy() {
             <div className="mt-8 md:mt-12">
               <p
                 className="max-w-[34ch] font-display text-[clamp(1.5rem,2.7vw,2.5rem)] leading-[1.24] tracking-[-0.025em] text-warm-grey"
-                data-reveal
+                data-reveal="zoom"
                 style={{ ["--reveal-delay" as string]: "80ms" }}
               >
                 {copy}

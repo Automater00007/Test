@@ -64,7 +64,8 @@ export default function FilmSection() {
           onClick={() => setOpen(true)}
           className="group absolute left-1/2 top-1/2 flex h-[clamp(100px,12vw,150px)] w-[clamp(100px,12vw,150px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-paper/25 bg-walnut text-paper transition-colors duration-300 hover:bg-walnut-brown"
           aria-label="Play film"
-
+          data-reveal="zoom-lg"
+          style={{ ["--reveal-delay" as string]: "120ms" }}
         >
           <span className="absolute inset-0 rounded-full border border-paper/40 transition-transform duration-[1200ms] ease-out group-hover:scale-125" />
           <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true" className="ml-1">

@@ -124,10 +124,10 @@ export default function GalleryMarquee() {
       </div>
 
       <div className="mt-12 space-y-[clamp(0.8rem,1.6vw,1.6rem)] md:mt-16">
-        <div data-reveal="fade">
+        <div data-reveal="zoom">
           <Row items={rowA} speed={38} direction={-1} />
         </div>
-        <div data-reveal="fade" style={{ ["--reveal-delay" as string]: "90ms" }}>
+        <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "90ms" }}>
           <Row items={rowB} speed={30} direction={1} />
         </div>
       </div>

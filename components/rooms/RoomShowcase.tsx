@@ -19,7 +19,7 @@ export default function RoomShowcase() {
             >
               <div
                 className={`md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}
-                data-reveal="mask"
+                data-reveal="zoom"
               >
                 <TiltCard max={4}>
                   <Link
@@ -39,7 +39,7 @@ export default function RoomShowcase() {
                         {room.count}
                       </span>
                       <span className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/50 text-paper transition-all duration-500 group-hover:border-clay group-hover:bg-walnut-brown">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
                           <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                         </svg>
                       </span>
@@ -52,7 +52,8 @@ export default function RoomShowcase() {
                 className={`flex flex-col justify-between md:col-span-4 ${
                   flip ? "md:order-1 md:col-start-1 md:row-start-1" : "md:col-start-9"
                 }`}
-                data-reveal
+                data-reveal="zoom"
+                style={{ ["--reveal-delay" as string]: "80ms" }}
               >
                 <div>
                   <div className="flex items-baseline justify-between">

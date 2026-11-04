@@ -187,7 +187,7 @@ export default async function RoomPage({
             <div
               key={src + i}
               className={`relative overflow-hidden bg-paper-2 ${i === 0 ? "aspect-[4/5]" : "aspect-[4/5]"}`}
-              data-reveal="mask"
+              data-reveal="zoom"
               style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
             >
               <Image
@@ -213,7 +213,7 @@ export default async function RoomPage({
                 key={other.slug}
                 href={`/rooms/${other.slug}`}
                 className="group flex items-center gap-6 border-t border-line pt-6"
-                data-reveal
+                data-reveal="zoom"
                 style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               >
                 <div className="relative h-28 w-24 shrink-0 overflow-hidden bg-paper-2">

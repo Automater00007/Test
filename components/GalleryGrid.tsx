@@ -43,8 +43,8 @@ export default function GalleryGrid() {
             type="button"
             onClick={() => setIndex(i)}
             className="group relative block w-full break-inside-avoid overflow-hidden bg-paper-2 text-left"
-
-            data-reveal="mask"
+            data-reveal="zoom"
+            style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
             aria-label={`Open image: ${item.alt}`}
           >
             <div

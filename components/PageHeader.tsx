@@ -16,7 +16,7 @@ export default function PageHeader({
   return (
     <header className="pt-[68px] md:pt-[80px]">
       <div className="shell">
-        <div className="flex items-center justify-between border-b border-line py-5">
+        <div className="flex items-center justify-between border-b border-line py-5" data-reveal="fade">
           <span className="eyebrow text-ink/65">{eyebrow}</span>
           <span className="eyebrow text-ink/65">Jade River Resort</span>
         </div>
@@ -37,7 +37,7 @@ export default function PageHeader({
               </p>
             ) : null}
             {aside ? (
-              <div data-reveal="fade" style={{ ["--reveal-delay" as string]: "180ms" }}>
+              <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "180ms" }}>
                 {aside}
               </div>
             ) : null}

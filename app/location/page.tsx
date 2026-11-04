@@ -56,7 +56,7 @@ export default function LocationPage() {
       />
 
       <section className="shell pb-14">
-        <div className="relative overflow-hidden border border-line bg-paper-2" data-reveal="fade">
+        <div className="relative overflow-hidden border border-line bg-paper-2" data-reveal="zoom">
           <iframe
             title="Map showing Jade River Resort in Pahalgam"
             src="https://www.google.com/maps?q=33.883354,75.269764&z=14&output=embed"
@@ -124,7 +124,7 @@ export default function LocationPage() {
                 <div
                   key={n.name}
                   className="group flex items-baseline justify-between gap-6 border-t border-line py-5 last:border-b"
-                  data-reveal
+                  data-reveal="zoom"
                   style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
                 >
                   <div className="flex items-baseline gap-5">

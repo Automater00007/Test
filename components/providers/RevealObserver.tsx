@@ -8,7 +8,10 @@ const SELECTOR = "[data-reveal]";
 /**
  * Adds `.is-in` to every `[data-reveal]` element the first time it enters the
  * viewport. CSS handles the actual animation (opacity + transform only), so the
- * observer itself is cheap enough to run on mobile.
+ * observer itself is cheap enough to run on mobile without lag.
+ *
+ * It also marks `.is-settled` after the transition completes to release GPU
+ * will-change memory, keeping 60/120fps scrolling buttery smooth.
  *
  * It also re-scans when new nodes mount (client navigation, lazy sections) and
  * skips all motion when the user prefers reduced motion.
@@ -27,7 +30,7 @@ export default function RevealObserver() {
 
     const showAll = () => {
       document.querySelectorAll(SELECTOR).forEach((el) => {
-        el.classList.add("is-in");
+        el.classList.add("is-in", "is-settled");
       });
     };
 
@@ -35,13 +38,21 @@ export default function RevealObserver() {
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          entry.target.classList.add("is-in");
-          io?.unobserve(entry.target);
+          const target = entry.target as HTMLElement;
+          target.classList.add("is-in");
+          io?.unobserve(target);
+
+          // Clean up will-change after transition completes to preserve mobile frame rates
+          const onDone = () => {
+            target.classList.add("is-settled");
+            target.removeEventListener("transitionend", onDone);
+          };
+          target.addEventListener("transitionend", onDone, { once: true });
+          timers.push(window.setTimeout(onDone, 1400));
         }
       },
-      // Start slightly before the element is fully on screen and stop
-      // observing immediately after the reveal, so there is no idle work.
-      { rootMargin: "0px 0px -6% 0px", threshold: 0.06 },
+      // Low threshold and small margin so animations trigger cleanly and early on mobile scroll
+      { rootMargin: "0px 0px -3% 0px", threshold: 0.02 },
     );
 
     const scan = () => {

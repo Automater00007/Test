@@ -56,7 +56,7 @@ export default function ExperiencesPage() {
             >
               <div
                 className={`md:col-span-7 ${flip ? "md:order-2 md:col-start-6" : ""}`}
-                data-reveal="mask"
+                data-reveal="zoom"
               >
                 <div className="group relative aspect-[16/11] overflow-hidden bg-paper-2">
                   <Image
@@ -76,7 +76,8 @@ export default function ExperiencesPage() {
                 className={`flex flex-col justify-center md:col-span-4 ${
                   flip ? "md:order-1 md:col-start-1 md:row-start-1" : "md:col-start-9"
                 }`}
-                data-reveal
+                data-reveal="zoom"
+                style={{ ["--reveal-delay" as string]: "90ms" }}
               >
                 <span className="num text-ink/65">0{i + 1}</span>
                 <h2 className="mt-4 text-[clamp(2rem,3.6vw,3.5rem)] leading-[0.96]">
@@ -98,7 +99,7 @@ export default function ExperiencesPage() {
         })}
       </section>
 
-      <section className="relative overflow-hidden bg-forest py-20 text-paper">
+      <section className="relative overflow-hidden bg-forest py-20 text-paper" data-reveal="zoom">
         <div className="shell flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <div>
             <span className="eyebrow text-paper/65" data-reveal>
@@ -112,7 +113,7 @@ export default function ExperiencesPage() {
               <em className="text-clay">can’t schedule.</em>
             </p>
           </div>
-          <div className="flex flex-wrap gap-4" data-reveal>
+          <div className="flex flex-wrap gap-4" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "100ms" }}>
             <Link href="/contact" className="btn border-paper/30 text-paper">
               Plan your stay
             </Link>

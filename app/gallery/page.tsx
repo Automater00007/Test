@@ -46,13 +46,13 @@ export default function GalleryPage() {
         <GalleryGrid />
       </section>
 
-      <section className="border-t border-line py-14">
+      <section className="border-t border-line py-14" data-reveal="zoom">
         <div className="shell flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <p className="max-w-[26ch] font-display text-[clamp(1.7rem,3vw,2.8rem)] leading-[1.05]">
+          <p className="max-w-[26ch] font-display text-[clamp(1.7rem,3vw,2.8rem)] leading-[1.05]" data-reveal>
             The photographs only get you halfway. The{" "}
             <em className="text-clay">sound</em> does the rest.
           </p>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "100ms" }}>
             <Link href="/contact" className="btn">
               Reserve directly
             </Link>

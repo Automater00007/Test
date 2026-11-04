@@ -34,8 +34,8 @@ export default function Experiences() {
               key={exp.title}
               href={`/experiences#${slugify(exp.title)}`}
               className="group relative block border-t border-line py-[clamp(1.2rem,2.4vw,2rem)] last:border-b"
-              data-reveal
-              style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
+              data-reveal="zoom"
+              style={{ ["--reveal-delay" as string]: `${Math.min(i * 65, 260)}ms` }}
             >
               <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 md:grid-cols-[4rem_1fr_auto_auto] md:gap-8">
                 <span className="num transition-colors duration-300 group-hover:text-copper">
@@ -58,7 +58,7 @@ export default function Experiences() {
                     alt={exp.title}
                     fill
                     sizes="80px"
-                    className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-110"
+                    className="reveal-media object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function Experiences() {
           ))}
         </div>
 
-        <div className="mt-10 flex justify-end">
+        <div className="mt-10 flex justify-end" data-reveal="fade">
           <Link
             href="/experiences"
             className="link-line font-mono text-[10px] uppercase tracking-[0.2em]"

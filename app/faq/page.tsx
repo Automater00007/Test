@@ -58,7 +58,7 @@ export default function FaqPage() {
       <section className="shell pb-24 md:pb-32">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-3">
-            <div className="md:sticky md:top-28">
+            <div className="md:sticky md:top-28" data-reveal="zoom">
               <p className="eyebrow text-ink/65">12 questions</p>
               <p className="mt-5 max-w-[22ch] text-[0.95rem] leading-[1.7] text-ink/70">
                 The same answers we give on the phone. If yours isn’t here, ask us
@@ -69,7 +69,7 @@ export default function FaqPage() {
               </Link>
             </div>
           </div>
-          <div className="md:col-span-8 md:col-start-5">
+          <div className="md:col-span-8 md:col-start-5" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "90ms" }}>
             <FaqAccordion />
             <div className="mt-12 flex flex-wrap gap-6">
               <Link href="/policies" className="link-line font-mono text-[10px] uppercase tracking-[0.2em]">

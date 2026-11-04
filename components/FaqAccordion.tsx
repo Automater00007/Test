@@ -12,7 +12,12 @@ export default function FaqAccordion() {
       {faqs.map((faq, i) => {
         const isOpen = open === i;
         return (
-          <div key={faq.q} className="border-b border-line">
+          <div
+            key={faq.q}
+            className="border-b border-line"
+            data-reveal
+            style={{ ["--reveal-delay" as string]: `${(i % 4) * 60}ms` }}
+          >
             <h2>
               <button
                 type="button"

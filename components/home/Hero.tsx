@@ -163,6 +163,7 @@ export default function Hero() {
                     viewBox="0 0 14 14"
                     fill="none"
                     aria-hidden="true"
+                    className="arrow-static"
                   >
                     <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                   </svg>
@@ -199,6 +200,8 @@ export default function Hero() {
         <a
           href="https://wa.me/917780868926"
           className="link-line justify-self-start font-mono text-[10px] uppercase tracking-[0.2em] md:col-span-2 md:col-start-11 md:justify-self-end"
+          data-reveal="fade"
+          style={{ ["--reveal-delay" as string]: "160ms" }}
         >
           WhatsApp →
         </a>

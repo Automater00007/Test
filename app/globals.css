@@ -251,65 +251,85 @@
 }
 
 /* ---------- reveal system (IntersectionObserver driven) ----------
-   Only opacity + transform are animated so every reveal stays on the
-   compositor. Variants:
-     data-reveal            fade + rise (default)
-     data-reveal="fade"     fade only
-     data-reveal="zoom"     fade + subtle zoom (cards)
-     data-reveal="zoom-lg"  fade + stronger zoom (media)
-     data-reveal="left"     fade + slide from left
-     data-reveal="right"    fade + slide from right
+   Compositor-only (opacity + transform) for 60/120fps silky smooth scrolling.
+   Variants:
+     data-reveal            fade + rise with subtle bloom scale (default)
+     data-reveal="zoom"     smooth zoom-in reveal (cards, quotes, callouts)
+     data-reveal="zoom-lg"  pronounced zoom (play button, hero badges)
+     data-reveal="card"     elevated card bloom + subtle travel
+     data-reveal="fade"     clean soft fade with micro-scale
+     data-reveal="left"     slide from left
+     data-reveal="right"    slide from right
      data-reveal="mask"     clip-path curtain on .reveal-media
    Per-element delay: style={{ "--reveal-delay": "120ms" }} */
 [data-reveal] {
   --reveal-delay: 0ms;
-  --reveal-distance: 1.5rem;
-  --reveal-scale: 1;
+  --reveal-duration: 0.85s;
+  --reveal-distance: 1.4rem;
+  --reveal-scale: 0.97;
   opacity: 0;
   transform: translate3d(0, var(--reveal-distance), 0) scale(var(--reveal-scale));
+  transform-origin: center center;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transition:
-    opacity 0.85s var(--ease-out-expo) var(--reveal-delay),
-    transform 0.95s var(--ease-out-expo) var(--reveal-delay);
+    opacity var(--reveal-duration) var(--ease-out-expo) var(--reveal-delay),
+    transform calc(var(--reveal-duration) * 1.08) var(--ease-out-expo) var(--reveal-delay);
 }
 
 [data-reveal="fade"] {
   --reveal-distance: 0rem;
+  --reveal-scale: 0.99;
 }
 
 [data-reveal="zoom"] {
-  --reveal-distance: 0.75rem;
-  --reveal-scale: 0.94;
+  --reveal-distance: 1.2rem;
+  --reveal-scale: 0.92;
 }
 
 [data-reveal="zoom-lg"] {
   --reveal-distance: 0rem;
-  --reveal-scale: 0.88;
+  --reveal-scale: 0.84;
+}
+
+[data-reveal="card"] {
+  --reveal-distance: 1.5rem;
+  --reveal-scale: 0.93;
 }
 
 [data-reveal="left"] {
-  transform: translate3d(-2.2rem, 0, 0);
+  --reveal-scale: 0.98;
+  transform: translate3d(-2rem, 0, 0) scale(var(--reveal-scale));
 }
 
 [data-reveal="right"] {
-  transform: translate3d(2.2rem, 0, 0);
+  --reveal-scale: 0.98;
+  transform: translate3d(2rem, 0, 0) scale(var(--reveal-scale));
 }
 
 [data-reveal="mask"] {
   opacity: 1;
   transform: none;
   transition: none;
+  will-change: auto;
 }
 
 [data-reveal="mask"] .reveal-media {
   clip-path: inset(0 0 102% 0);
   transition:
-    clip-path 1s cubic-bezier(0.76, 0, 0.24, 1) var(--reveal-delay),
-    transform 1.2s var(--ease-out-expo) var(--reveal-delay);
+    clip-path 1.05s cubic-bezier(0.76, 0, 0.24, 1) var(--reveal-delay),
+    transform 1.25s var(--ease-out-expo) var(--reveal-delay);
 }
 
 [data-reveal].is-in {
   opacity: 1;
-  transform: none;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Once settled, release will-change to avoid GPU memory overhead on mobile */
+[data-reveal].is-settled {
+  will-change: auto;
 }
 
 [data-reveal="mask"].is-in .reveal-media {
@@ -321,19 +341,71 @@
 }
 
 .reveal-media {
-  transform: scale(1.08);
-  transition: transform 1.2s var(--ease-out-expo);
+  transform: scale(1.10);
+  transform-origin: center center;
+  transition: transform 1.25s var(--ease-out-expo);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* Slightly more travel on small screens, where sections are stacked. */
+[data-reveal].is-settled .reveal-media {
+  will-change: auto;
+}
+
+/* Enhanced mobile reveal & zoom tuning:
+   Snappier duration to keep up with mobile momentum scrolling,
+   luxurious zoom scale for cards and stacked sections. */
 @media (max-width: 767px) {
   [data-reveal] {
-    --reveal-distance: 1.75rem;
+    --reveal-duration: 0.72s;
+    --reveal-distance: 1.2rem;
+    --reveal-scale: 0.95;
   }
 
   [data-reveal="zoom"] {
-    --reveal-scale: 0.95;
+    --reveal-duration: 0.76s;
+    --reveal-distance: 1.15rem;
+    --reveal-scale: 0.91;
   }
+
+  [data-reveal="zoom-lg"] {
+    --reveal-duration: 0.78s;
+    --reveal-scale: 0.82;
+  }
+
+  [data-reveal="card"] {
+    --reveal-duration: 0.76s;
+    --reveal-distance: 1.25rem;
+    --reveal-scale: 0.92;
+  }
+
+  .reveal-media {
+    transform: scale(1.12);
+  }
+}
+
+/* ---------- arrows: strictly non-animated ---------- */
+.arrow,
+.arrow-static,
+[data-arrow],
+svg:has(path[d*="M2 12L12 2"]),
+svg:has(path[d*="M1 7h12"]),
+span:has(> svg):has(path[d*="M2 12L12 2"]) svg,
+a:hover svg:has(path[d*="M2 12L12 2"]),
+button:hover svg:has(path[d*="M2 12L12 2"]),
+.group:hover svg:has(path[d*="M2 12L12 2"]),
+a:hover .arrow,
+button:hover .arrow,
+.group:hover .arrow,
+a:hover .arrow-static,
+button:hover .arrow-static,
+.group:hover .arrow-static,
+[data-reveal] svg:has(path[d*="M2 12L12 2"]),
+[data-reveal] svg:has(path[d*="M1 7h12"]) {
+  transform: none !important;
+  animation: none !important;
+  transition: color 0.3s ease, stroke 0.3s ease, fill 0.3s ease !important;
 }
 
 /* If scripting is unavailable, never leave content hidden. */

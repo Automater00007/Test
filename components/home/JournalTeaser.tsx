@@ -25,6 +25,7 @@ export default async function JournalTeaser() {
           <Link
             href="/post"
             className="link-line self-start font-mono text-[10px] uppercase tracking-[0.2em] md:self-end"
+            data-reveal="fade"
           >
             All journal entries →
           </Link>
@@ -47,13 +48,13 @@ export default async function JournalTeaser() {
                 <Link
                   href={`/post/${post.slug}`}
                   className="group block"
-                  data-reveal
-                  style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
+                  data-reveal="zoom"
+                  style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
                 >
                   <div
                     className="relative aspect-[4/3] overflow-hidden bg-paper-2"
                     data-reveal="mask"
-                    style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
+                    style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
                   >
                     <Image
                       src={post.image}
@@ -84,7 +85,7 @@ export default async function JournalTeaser() {
                       </p>
                     </div>
                     <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line transition-all duration-500 group-hover:border-walnut group-hover:bg-walnut group-hover:text-paper">
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
                         <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                       </svg>
                     </span>

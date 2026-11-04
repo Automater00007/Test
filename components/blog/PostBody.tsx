@@ -97,7 +97,7 @@ const components: PortableTextComponents = {
       const src = value?.asset ? urlFor(value)?.width(1600).fit("max").url() : null;
       if (!src) return null;
       return (
-        <figure className="my-10 overflow-hidden" data-reveal>
+        <figure className="my-10 overflow-hidden" data-reveal="zoom">
           <Image
             src={src}
             alt={value?.alt || ""}

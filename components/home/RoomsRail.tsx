@@ -28,7 +28,7 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
               alt={`${room.name} at Jade River Resort`}
               fill
               sizes="(min-width: 768px) 42vw, 100vw"
-              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+              className="reveal-media object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-forest/10 transition-opacity duration-700 group-hover:opacity-0" />
           </div>
@@ -40,7 +40,7 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
               {room.bestFor}
             </span>
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/40 transition-all duration-500 group-hover:border-clay group-hover:bg-walnut-brown">
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
                 <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
               </svg>
             </span>
@@ -208,6 +208,7 @@ export default function RoomsRail() {
           id="stay-heading-mobile"
           className="mt-3 text-[clamp(2.2rem,8vw,3rem)] leading-[0.98] text-paper"
           data-reveal
+          style={{ ["--reveal-delay" as string]: "60ms" }}
         >
           Three shapes of <em className="text-clay">quiet.</em>
         </h2>
@@ -216,7 +217,7 @@ export default function RoomsRail() {
             <div
               key={room.slug}
               data-reveal="zoom"
-              style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
+              style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
             >
               <RoomCard room={room} index={i} />
             </div>
@@ -225,7 +226,8 @@ export default function RoomsRail() {
         <Link
           href="/rooms"
           className="btn mt-12 w-full justify-center border-paper/30 text-paper"
-          data-reveal="fade"
+          data-reveal="zoom"
+          style={{ ["--reveal-delay" as string]: "140ms" }}
         >
           All rooms
         </Link>

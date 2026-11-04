@@ -54,12 +54,12 @@ export default async function ContactPage({
 
       <section className="shell pb-24 md:pb-32">
         <div className="grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-7">
+          <div className="md:col-span-7" data-reveal="zoom">
             <BookingForm initialRoom={room} />
           </div>
 
           <aside className="md:col-span-4 md:col-start-9">
-            <div className="md:sticky md:top-28 space-y-8">
+            <div className="md:sticky md:top-28 space-y-8" data-reveal="zoom" style={{ ["--reveal-delay" as string]: "100ms" }}>
               <div className="border-t border-line pt-5">
                 <p className="eyebrow text-ink/65">The resort</p>
                 <p className="mt-4 font-display text-[1.5rem] leading-tight">
@@ -106,7 +106,7 @@ export default async function ContactPage({
                 </Link>
               </div>
 
-              <div className="bg-forest p-6 text-paper">
+              <div className="bg-forest p-6 text-paper" data-reveal="zoom">
                 <p className="eyebrow text-paper/65">Prefer to talk?</p>
                 <p className="mt-3 font-display text-[1.5rem] leading-tight">
                   A direct line to the people who run the place.

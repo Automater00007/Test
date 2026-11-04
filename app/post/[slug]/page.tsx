@@ -176,7 +176,7 @@ export default async function PostPage({
         </div>
 
         {next && next.slug !== post.slug ? (
-          <section className="border-t border-line py-14">
+          <section className="border-t border-line py-14" data-reveal="zoom">
             <div className="shell">
               <p className="eyebrow text-ink/65">Next note</p>
               <Link

@@ -81,7 +81,8 @@ export default function PoliciesPage() {
                   key={section.title}
                   id={id}
                   className="scroll-mt-28 border-t border-line py-10 first:border-t-0 first:pt-0 md:py-14"
-                  data-reveal
+                  data-reveal="zoom"
+                  style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
                 >
                   <div className="flex items-baseline justify-between gap-6">
                     <h2 className="text-[clamp(1.9rem,3.4vw,3.2rem)] leading-none">
@@ -120,7 +121,7 @@ export default function PoliciesPage() {
               </p>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-4" data-reveal>
+            <div className="mt-12 flex flex-wrap gap-4" data-reveal="zoom">
               <Link href="/faq" className="btn">
                 Read the FAQ
               </Link>
