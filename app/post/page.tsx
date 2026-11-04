@@ -101,9 +101,7 @@ export default async function JournalPage() {
                   <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
                     {lead.read} read
                   </span>
-                  <span className="transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <span>→</span>
                 </div>
               </div>
             </Link>
@@ -118,13 +116,16 @@ export default async function JournalPage() {
                     data-reveal
                     style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-paper-2">
+                    <div
+                      className="relative aspect-[16/10] overflow-hidden bg-paper-2"
+                      data-reveal="mask"
+                    >
                       <Image
                         src={post.image}
                         alt={post.imageAlt}
                         fill
                         sizes="(min-width: 768px) 48vw, 100vw"
-                        className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
+                        className="reveal-media object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
                       />
                     </div>
                     <div className="mt-5 flex items-start justify-between gap-4">

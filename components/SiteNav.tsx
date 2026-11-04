@@ -205,7 +205,6 @@ function Arrow() {
       viewBox="0 0 14 14"
       fill="none"
       aria-hidden="true"
-      className="transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1"
     >
       <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
     </svg>

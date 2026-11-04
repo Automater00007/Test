@@ -107,7 +107,11 @@ export default async function PostPage({
                 {post.title}
               </h1>
             </div>
-            <p className="self-end font-display text-[1.1rem] italic leading-snug text-ink/65 md:col-span-3">
+            <p
+              className="self-end font-display text-[1.1rem] italic leading-snug text-ink/65 md:col-span-3"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "120ms" }}
+            >
               {post.excerpt}
             </p>
           </div>
@@ -182,7 +186,7 @@ export default async function PostPage({
                 <h2 className="max-w-[18ch] text-[clamp(1.8rem,4vw,4rem)] leading-[0.98] transition-colors duration-500 group-hover:text-clay">
                   {next.title}
                 </h2>
-                <span className="mb-2 text-3xl transition-transform duration-500 group-hover:translate-x-2">
+                <span className="mb-2 text-3xl">
                   →
                 </span>
               </Link>

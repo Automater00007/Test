@@ -36,7 +36,11 @@ export default function PageHeader({
                 {intro}
               </p>
             ) : null}
-            {aside}
+            {aside ? (
+              <div data-reveal="fade" style={{ ["--reveal-delay" as string]: "180ms" }}>
+                {aside}
+              </div>
+            ) : null}
           </div>
         </div>
 

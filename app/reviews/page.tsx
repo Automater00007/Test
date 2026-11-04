@@ -27,12 +27,11 @@ export default function ReviewsPage() {
             Notes left by <em className="text-clay">guests.</em>
           </>
         }
-        intro="Unedited, apart from a read-through before publishing. Only 3, 4 and 5 star submissions are accepted, so what you read comes from real guests."
+        intro=""
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
               <p className="eyebrow text-ink/65">Submissions</p>
-              <p className="mt-1 text-[0.95rem]">3–5 stars · reviewed</p>
             </div>
             <a href="#write" className="link-line mb-1 font-mono text-[10px] uppercase tracking-[0.18em]">
               Leave a note →
@@ -88,24 +87,25 @@ export default function ReviewsPage() {
       <section className="border-t border-line py-16 md:py-24">
         <div className="shell grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <span className="eyebrow text-ink/65">Leave a note</span>
-            <h2 className="mt-4 text-[clamp(2rem,3.6vw,3.4rem)] leading-[0.98]">
+            <span className="eyebrow text-ink/65" data-reveal>
+              Leave a note
+            </span>
+            <h2 className="mt-4 text-[clamp(2rem,3.6vw,3.4rem)] leading-[0.98]" data-reveal>
               Stayed with us? <em className="text-clay">Tell it plainly.</em>
             </h2>
-            <p className="body-copy mt-6">
+            <p className="body-copy mt-6" data-reveal style={{ ["--reveal-delay" as string]: "80ms" }}>
               A sentence about the room, the river, or the morning tea is more useful
-              than a paragraph of adjectives. Reviews are read before they are
-              published.
+              than a paragraph of adjectives.
             </p>
-            <div className="mt-8 border-t border-line pt-5">
-              <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
-                Only 3–5 star ratings are accepted.
-                <br />
-                1 and 2 star submissions are not shown.
-              </p>
+            <div
+              className="mt-8 border-t border-line pt-5"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "140ms" }}
+            >
+
             </div>
           </div>
-          <div className="md:col-span-7 md:col-start-6">
+          <div className="md:col-span-7 md:col-start-6" data-reveal="zoom">
             <ReviewForm />
           </div>
         </div>

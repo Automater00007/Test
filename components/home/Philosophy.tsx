@@ -1,40 +1,9 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import RiverDivider from "@/components/ui/RiverDivider";
 
 const copy =
   "Pahalgam is not a place you rush. The Lidder has run this valley longer than any of us. Thirteen rooms beside it — wooden walls, amber light, pine behind, water in front.";
 
-function Word({
-  children,
-  progress,
-  start,
-  end,
-}: {
-  children: string;
-  progress: MotionValue<number>;
-  start: number;
-  end: number;
-}) {
-  const opacity = useTransform(progress, [start, end], [1, 1]);
-  return (
-    <motion.span style={{ opacity }} className="inline-block">
-      {children}&nbsp;
-    </motion.span>
-  );
-}
-
 export default function Philosophy() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 84%", "end 60%"],
-  });
-
-  const words = copy.split(" ");
-
   return (
     <section className="relative pt-6 md:pt-10">
       <RiverDivider className="text-ink/65" height={84} />
@@ -46,8 +15,12 @@ export default function Philosophy() {
               <span className="eyebrow text-ink/65" data-reveal>
                 02 — Philosophy
               </span>
-              <div className="mt-5 h-px w-24 bg-line" />
-              <dl className="mt-6 space-y-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65">
+              <div className="mt-5 h-px w-24 bg-line" data-reveal="fade" />
+              <dl
+                className="mt-6 space-y-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65"
+                data-reveal
+                style={{ ["--reveal-delay" as string]: "90ms" }}
+              >
                 <div className="flex justify-between gap-6 border-b border-line pb-2">
                   <dt>Latitude</dt>
                   <dd>33.8834° N</dd>
@@ -73,22 +46,13 @@ export default function Philosophy() {
               <em className="text-clay">not a lobby.</em>
             </h2>
 
-            <div ref={ref} className="mt-8 md:mt-12">
-              <p className="max-w-[34ch] font-display text-[clamp(1.45rem,2.7vw,2.5rem)] leading-[1.24] tracking-[-0.025em] text-warm-grey">
-                {words.map((word, i) => {
-                  const start = (i / words.length) * 0.8;
-                  const end = start + 1.6 / words.length;
-                  return (
-                    <Word
-                      key={`${word}-${i}`}
-                      progress={scrollYProgress}
-                      start={start}
-                      end={end}
-                    >
-                      {word}
-                    </Word>
-                  );
-                })}
+            <div className="mt-8 md:mt-12">
+              <p
+                className="max-w-[34ch] font-display text-[clamp(1.5rem,2.7vw,2.5rem)] leading-[1.24] tracking-[-0.025em] text-warm-grey"
+                data-reveal
+                style={{ ["--reveal-delay" as string]: "80ms" }}
+              >
+                {copy}
               </p>
             </div>
           </div>

@@ -29,11 +29,6 @@ export default function ReviewForm() {
               Your note is with the team for{" "}
               <em className="text-clay">moderation.</em>
             </p>
-            <p className="mt-4 max-w-md text-[0.95rem] leading-[1.7] text-ink/70">
-              Reviews are read before they are published. If everything is in order,
-              your note will appear on this page shortly. We appreciate you taking
-              the time.
-            </p>
             <button
               type="button"
               onClick={() => {
@@ -138,9 +133,6 @@ export default function ReviewForm() {
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
-              <p className="max-w-xs font-mono text-[9px] uppercase leading-[1.8] tracking-[0.14em] text-ink/65">
-                Moderated before publishing. Only genuine guests, please.
-              </p>
             </div>
           </motion.form>
         )}

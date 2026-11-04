@@ -124,11 +124,18 @@ export default function GalleryMarquee() {
       </div>
 
       <div className="mt-12 space-y-[clamp(0.8rem,1.6vw,1.6rem)] md:mt-16">
-        <Row items={rowA} speed={38} direction={-1} />
-        <Row items={rowB} speed={30} direction={1} />
+        <div data-reveal="fade">
+          <Row items={rowA} speed={38} direction={-1} />
+        </div>
+        <div data-reveal="fade" style={{ ["--reveal-delay" as string]: "90ms" }}>
+          <Row items={rowB} speed={30} direction={1} />
+        </div>
       </div>
 
-      <p className="shell mt-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
+      <p
+        className="shell mt-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65"
+        data-reveal="fade"
+      >
         Scroll velocity changes the current — try it.
       </p>
     </section>

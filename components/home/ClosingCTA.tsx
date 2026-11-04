@@ -42,7 +42,6 @@ export default function ClosingCTA() {
                   viewBox="0 0 14 14"
                   fill="none"
                   aria-hidden="true"
-                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 >
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>

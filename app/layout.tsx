@@ -137,7 +137,7 @@ export default function RootLayout({
         </a>
 
         <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}.intro-stage{display:none!important}`}</style>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}[data-reveal] .reveal-media{clip-path:none!important;transform:none!important}.intro-stage{display:none!important}`}</style>
         </noscript>
 
         <SiteChrome>{children}</SiteChrome>

@@ -56,7 +56,7 @@ export default function LocationPage() {
       />
 
       <section className="shell pb-14">
-        <div className="relative overflow-hidden border border-line bg-paper-2">
+        <div className="relative overflow-hidden border border-line bg-paper-2" data-reveal="fade">
           <iframe
             title="Map showing Jade River Resort in Pahalgam"
             src="https://www.google.com/maps?q=33.883354,75.269764&z=14&output=embed"
@@ -76,10 +76,10 @@ export default function LocationPage() {
       <section className="shell pb-20 md:pb-28">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <h2 className="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.02]">
+            <h2 className="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.02]" data-reveal>
               Getting here is part of the <em className="text-clay">slowing.</em>
             </h2>
-            <p className="body-copy mt-6">
+            <p className="body-copy mt-6" data-reveal style={{ ["--reveal-delay" as string]: "80ms" }}>
               Fly into Srinagar, then drive south through the Lidder valley. The
               road climbs gradually, the air changes, and by the time you turn off
               toward the property, the city feels much further than three hours
@@ -87,7 +87,11 @@ export default function LocationPage() {
               you book.
             </p>
 
-            <div className="mt-10 grid grid-cols-2 gap-6 border-t border-line pt-6">
+            <div
+              className="mt-10 grid grid-cols-2 gap-6 border-t border-line pt-6"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "140ms" }}
+            >
               {[
                 ["Airport", "Srinagar · 96 km"],
                 ["Drive", "2.5 – 3 hours"],
@@ -101,7 +105,7 @@ export default function LocationPage() {
               ))}
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-wrap gap-4" data-reveal style={{ ["--reveal-delay" as string]: "200ms" }}>
               <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="btn">
                 Get directions
               </a>
@@ -112,7 +116,9 @@ export default function LocationPage() {
           </div>
 
           <div className="md:col-span-6 md:col-start-7">
-            <span className="eyebrow text-ink/65">Nearby, all a short drive</span>
+            <span className="eyebrow text-ink/65" data-reveal="fade">
+              Nearby, all a short drive
+            </span>
             <div className="mt-6">
               {nearby.map((n, i) => (
                 <div
@@ -132,14 +138,14 @@ export default function LocationPage() {
                       </p>
                     </div>
                   </div>
-                  <span className="text-ink/65 transition-transform duration-500 group-hover:translate-x-1">
+                  <span className="text-ink/65">
                     →
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 border border-line bg-paper-2 p-6">
+            <div className="mt-10 border border-line bg-paper-2 p-6" data-reveal="zoom">
               <p className="eyebrow text-ink/65">Resort contact</p>
               <div className="mt-4 space-y-3 text-[0.95rem]">
                 <p>{site.address}</p>

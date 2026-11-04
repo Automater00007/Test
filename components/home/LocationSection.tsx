@@ -89,7 +89,10 @@ export default function LocationSection() {
           </div>
 
           <div className="md:col-span-6 md:col-start-7" ref={ref}>
-            <div className="relative overflow-hidden border border-line bg-paper-2 p-4 md:p-6">
+            <div
+              className="relative overflow-hidden border border-line bg-paper-2 p-4 md:p-6"
+              data-reveal="fade"
+            >
               <div className="flex items-center justify-between pb-4">
                 <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
                   Route sketch

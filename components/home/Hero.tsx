@@ -163,7 +163,6 @@ export default function Hero() {
                     viewBox="0 0 14 14"
                     fill="none"
                     aria-hidden="true"
-                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   >
                     <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                   </svg>
@@ -186,8 +185,14 @@ export default function Hero() {
       </div>
 
       <div className="shell grid gap-6 border-b border-line py-8 md:grid-cols-12 md:items-end md:py-10">
-        <p className="eyebrow text-ink/65 md:col-span-4">Defoy Hotels &amp; Resorts</p>
-        <p className="body-copy max-w-xl md:col-span-5 md:col-start-6">
+        <p className="eyebrow text-ink/65 md:col-span-4" data-reveal>
+          Defoy Hotels &amp; Resorts
+        </p>
+        <p
+          className="body-copy max-w-xl md:col-span-5 md:col-start-6"
+          data-reveal
+          style={{ ["--reveal-delay" as string]: "90ms" }}
+        >
           A boutique property of thirteen rooms on the banks of the Lidder River.
           Not a hotel to tick off. A place to stay longer than you planned.
         </p>

@@ -48,6 +48,9 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Reduce reveal/transition durations.
 - [x] Respect `prefers-reduced-motion`.
 - [x] Re-check bundle/runtime after Sanity is added. **(Studio is lazy-loaded; public routes unchanged at ~112–174 kB; Lighthouse 100/100/100.)**
+- [x] Add scroll-triggered reveal/zoom variants across every homepage section and all inner pages. **(`data-reveal` + `data-reveal="zoom|fade|mask"`, staggered delays, mobile-first.)**
+- [x] Keep every arrow static — no arrow hover-slide or scroll animation. **(`→` glyphs, nav arrow, CTA arrow icons.)**
+- [x] Keep reveals compositor-only (opacity/transform) and re-scan on client navigation. **(Lighthouse 100/100/100 on `/` and `/post/[slug]` after the pass.)**
 
 ## 7. Sanity CMS + blog (SEO priority)
 - [x] Confirm Sanity project ID, dataset, and API token. **Connected: project `tcbet7sh`, dataset `production`.**

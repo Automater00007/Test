@@ -34,6 +34,8 @@ export default function Experiences() {
               key={exp.title}
               href={`/experiences#${slugify(exp.title)}`}
               className="group relative block border-t border-line py-[clamp(1.2rem,2.4vw,2rem)] last:border-b"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
             >
               <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 md:grid-cols-[4rem_1fr_auto_auto] md:gap-8">
                 <span className="num transition-colors duration-300 group-hover:text-copper">

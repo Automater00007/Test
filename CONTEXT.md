@@ -60,6 +60,9 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - Experiences hover preview and `StoryParallax` ("The valley") were removed permanently. The left-hand scroll-progress indicator (RiverProgress) was removed. All dark sections use Forest Green; CTA sections use ivory/soft sand (no walnut backgrounds). Footer is Forest Green. Reviews/testimonials section is Forest Green with ivory cards. Body copy stays charcoal for accessibility; large editorial copy (Philosophy) uses Warm Grey.
 - Closing CTA is static and calm: no marquee, no spinning badge, no magnetic drift.
 - The pinned Rooms rail runway was shortened from 340vh to 260vh so it feels faster.
+- **Scroll motion:** every section uses the shared `[data-reveal]` system. Variants are `up` (default), `fade`, `zoom`, `zoom-lg`, `left`, `right`, and `mask` (clip-path curtain on `.reveal-media`). Delays are set per element with `--reveal-delay` for a soft stagger. `RevealObserver` uses one IntersectionObserver, re-scans on client navigation/late mounts, and never re-animates an element. Only `opacity` and `transform` are animated, so reveals stay on the compositor and mobile stays smooth.
+- **Arrows are intentionally static.** The `→` glyphs, nav arrow and CTA arrow icons no longer translate on hover; all other hover/reveal motion remains.
+- `prefers-reduced-motion` short-circuits both the observer and CSS transitions; a `<noscript>` fallback keeps content visible without JS.
 
 ## Palette implementation notes
 - `--color-paper` = Warm Ivory; `--color-paper-2` = Soft Sand.
@@ -105,7 +108,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `sanity/env.ts` — env access and `sanityConfigured` flag.
 - `scripts/seed-sanity.mjs` — seeds the author, categories, images, and posts (`npm run seed`).
 - `components/home/Hero.tsx` — pinned hero video/poster, headline mask, booking card.
-- `components/home/Philosophy.tsx` — compact word-reveal statement.
+- `components/home/Philosophy.tsx` — compact editorial statement with a CSS reveal (server component).
 - `components/home/ClosingCTA.tsx` — simplified Deep Walnut CTA.
 - `components/BookingForm.tsx` — WhatsApp direct-booking form.
 - `components/providers/SmoothScroll.tsx` — Lenis setup.
@@ -150,5 +153,5 @@ Drop the real film at `public/video/hero.mp4` and/or `public/video/hero.webm`. U
 
 ## Known gaps
 - No real resort photography or hero video yet; Unsplash placeholders remain.
-- Sanity credentials have not been added, so the journal still uses the static fallback and `/studio` shows setup instructions.
+- Sanity credentials live in `.env.local`; they still need to be added to Vercel before the deployed Studio and live journal work.
 - Reviews shown are sample copy, not verified guest submissions.

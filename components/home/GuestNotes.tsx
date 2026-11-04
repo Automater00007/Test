@@ -79,10 +79,12 @@ export default function GuestNotes() {
         ref={rail}
         className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[clamp(1.15rem,4.2vw,5rem)] pb-4"
       >
-        {reviews.map((review) => (
+        {reviews.map((review, i) => (
           <article
             key={review.name}
             className="group w-[min(84vw,360px)] shrink-0 snap-start border border-line bg-paper p-6 transition-colors duration-500 hover:border-ink/40"
+            data-reveal="zoom"
+            style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
           >
             <div className="flex items-center justify-between">
               <span className="text-[13px] tracking-[0.18em] text-clay" aria-label={`${review.rating} out of 5 stars`}>
@@ -108,7 +110,10 @@ export default function GuestNotes() {
       </div>
 
       <div className="shell mt-8 flex flex-wrap items-center justify-between gap-4">
-        <p className="max-w-md font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-paper/65">
+        <p
+          className="max-w-md font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-paper/65"
+          data-reveal="fade"
+        >
           Reviews are moderated. Only 3, 4 and 5 star submissions are accepted, so
           what you read comes from real guests.
         </p>

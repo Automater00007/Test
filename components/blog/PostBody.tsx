@@ -16,32 +16,49 @@ function sanitizeHtml(html?: string) {
 const components: PortableTextComponents = {
   block: {
     normal: ({ children }) => (
-      <p className="mt-6 text-[1.05rem] leading-[1.85] text-ink/75">{children}</p>
+      <p className="mt-6 text-[1.05rem] leading-[1.85] text-ink/75" data-reveal>
+        {children}
+      </p>
     ),
     h2: ({ children }) => (
-      <h2 className="mt-14 font-display text-[clamp(1.8rem,3.2vw,2.8rem)] leading-[1.05] tracking-[-0.03em]">
+      <h2
+        className="mt-14 font-display text-[clamp(1.8rem,3.2vw,2.8rem)] leading-[1.05] tracking-[-0.03em]"
+        data-reveal
+      >
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-10 font-display text-[clamp(1.4rem,2.2vw,2rem)] leading-[1.1] tracking-[-0.02em]">
+      <h3
+        className="mt-10 font-display text-[clamp(1.4rem,2.2vw,2rem)] leading-[1.1] tracking-[-0.02em]"
+        data-reveal
+      >
         {children}
       </h3>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-12 border-l border-copper pl-6 font-display text-[clamp(1.5rem,2.6vw,2.4rem)] leading-[1.2] tracking-[-0.03em] md:pl-8">
+      <blockquote
+        className="my-12 border-l border-copper pl-6 font-display text-[clamp(1.5rem,2.6vw,2.4rem)] leading-[1.2] tracking-[-0.03em] md:pl-8"
+        data-reveal
+      >
         {children}
       </blockquote>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="mt-6 list-disc space-y-3 pl-6 text-[1.05rem] leading-[1.8] text-ink/75 marker:text-copper">
+      <ul
+        className="mt-6 list-disc space-y-3 pl-6 text-[1.05rem] leading-[1.8] text-ink/75 marker:text-copper"
+        data-reveal
+      >
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="mt-6 list-decimal space-y-3 pl-6 text-[1.05rem] leading-[1.8] text-ink/75 marker:text-copper">
+      <ol
+        className="mt-6 list-decimal space-y-3 pl-6 text-[1.05rem] leading-[1.8] text-ink/75 marker:text-copper"
+        data-reveal
+      >
         {children}
       </ol>
     ),
@@ -80,14 +97,14 @@ const components: PortableTextComponents = {
       const src = value?.asset ? urlFor(value)?.width(1600).fit("max").url() : null;
       if (!src) return null;
       return (
-        <figure className="my-10">
+        <figure className="my-10 overflow-hidden" data-reveal>
           <Image
             src={src}
             alt={value?.alt || ""}
             width={1600}
             height={1000}
             sizes="(min-width: 768px) 68ch, 100vw"
-            className="h-auto w-full object-cover"
+            className="reveal-media h-auto w-full object-cover"
           />
           {value?.caption ? (
             <figcaption className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
@@ -102,7 +119,7 @@ const components: PortableTextComponents = {
       const rows: { cells?: string[] }[] = value?.rows ?? [];
       if (!headers.length && !rows.length) return null;
       return (
-        <div className="my-10 overflow-x-auto">
+        <div className="my-10 overflow-x-auto" data-reveal>
           <table className="w-full border-collapse text-left text-[0.95rem]">
             {headers.length > 0 && (
               <thead>
@@ -172,7 +189,7 @@ const components: PortableTextComponents = {
       const className = `inline-flex items-center gap-3 px-6 py-4 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors duration-300 ${style}`;
 
       return (
-        <div className={`my-8 flex ${alignment}`}>
+        <div className={`my-8 flex ${alignment}`} data-reveal>
           {external ? (
             <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
               {value?.text}
@@ -194,7 +211,7 @@ const components: PortableTextComponents = {
             ? "border-copper"
             : "border-forest";
       return (
-        <aside className={`my-10 border-l-2 bg-paper-2 px-6 py-5 ${accent}`}>
+        <aside className={`my-10 border-l-2 bg-paper-2 px-6 py-5 ${accent}`} data-reveal>
           {value?.title ? (
             <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65">
               {value.title}
@@ -211,6 +228,7 @@ const components: PortableTextComponents = {
         <div
           className="my-10 overflow-x-auto text-[0.98rem] leading-[1.8] text-ink/75"
           dangerouslySetInnerHTML={{ __html: html }}
+          data-reveal
         />
       );
     },

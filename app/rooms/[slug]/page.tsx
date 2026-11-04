@@ -88,12 +88,22 @@ export default async function RoomPage({
       <section className="shell py-14 md:py-24">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
-            <span className="eyebrow text-ink/65">The room</span>
-            <p className="mt-6 font-display text-[clamp(1.6rem,2.9vw,2.8rem)] leading-[1.18] tracking-[-0.03em]">
+            <span className="eyebrow text-ink/65" data-reveal>
+              The room
+            </span>
+            <p
+              className="mt-6 font-display text-[clamp(1.6rem,2.9vw,2.8rem)] leading-[1.18] tracking-[-0.03em]"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "70ms" }}
+            >
               {room.long}
             </p>
 
-            <div className="mt-12 grid gap-10 border-t border-line pt-8 sm:grid-cols-2">
+            <div
+              className="mt-12 grid gap-10 border-t border-line pt-8 sm:grid-cols-2"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "140ms" }}
+            >
               <div>
                 <h2 className="font-display text-[1.5rem]">In the room</h2>
                 <ul className="mt-5 space-y-3">
@@ -128,7 +138,11 @@ export default async function RoomPage({
           </div>
 
           <aside className="md:col-span-4 md:col-start-9">
-            <div className="md:sticky md:top-28 border border-line bg-paper-2 p-6">
+            <div
+              className="md:sticky md:top-28 border border-line bg-paper-2 p-6"
+              data-reveal="zoom"
+              style={{ ["--reveal-delay" as string]: "120ms" }}
+            >
               <p className="eyebrow text-ink/65">Reserve directly</p>
               <p className="mt-4 font-display text-[2.4rem] leading-none">{formatPrice(room.price)}</p>
               <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
@@ -165,7 +179,9 @@ export default async function RoomPage({
       </section>
 
       <section className="shell pb-20">
-        <span className="eyebrow text-ink/65">The room, in frames</span>
+        <span className="eyebrow text-ink/65" data-reveal="fade">
+          The room, in frames
+        </span>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {room.gallery.map((src, i) => (
             <div
@@ -188,14 +204,17 @@ export default async function RoomPage({
 
       <section className="border-t border-line py-16">
         <div className="shell">
-          <span className="eyebrow text-ink/65">Other rooms</span>
+          <span className="eyebrow text-ink/65" data-reveal="fade">
+            Other rooms
+          </span>
           <div className="mt-8 grid gap-8 md:grid-cols-2">
-            {others.map((other) => (
+            {others.map((other, i) => (
               <Link
                 key={other.slug}
                 href={`/rooms/${other.slug}`}
                 className="group flex items-center gap-6 border-t border-line pt-6"
-
+                data-reveal
+                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
               >
                 <div className="relative h-28 w-24 shrink-0 overflow-hidden bg-paper-2">
                   <Image
@@ -215,7 +234,7 @@ export default async function RoomPage({
                     From {formatPrice(other.price)} / night
                   </p>
                 </div>
-                <span className="text-2xl transition-transform duration-500 group-hover:translate-x-1">→</span>
+                <span className="text-2xl">→</span>
               </Link>
             ))}
           </div>

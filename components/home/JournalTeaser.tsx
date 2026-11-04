@@ -50,7 +50,11 @@ export default async function JournalTeaser() {
                   data-reveal
                   style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-paper-2">
+                  <div
+                    className="relative aspect-[4/3] overflow-hidden bg-paper-2"
+                    data-reveal="mask"
+                    style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
+                  >
                     <Image
                       src={post.image}
                       alt={post.imageAlt}
@@ -60,7 +64,7 @@ export default async function JournalTeaser() {
                           ? "(min-width: 768px) 48vw, 100vw"
                           : "(min-width: 768px) 24vw, 100vw"
                       }
-                      className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
+                      className="reveal-media object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
                     />
                     <span className="absolute left-4 top-4 bg-paper px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.16em]">
                       {post.category}

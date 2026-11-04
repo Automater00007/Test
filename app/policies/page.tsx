@@ -48,7 +48,7 @@ export default function PoliciesPage() {
       <section className="shell pb-24 md:pb-32">
         <div className="grid gap-12 md:grid-cols-12">
           <aside className="md:col-span-3">
-            <div className="md:sticky md:top-28">
+            <div className="md:sticky md:top-28" data-reveal="fade">
               <p className="eyebrow text-ink/65">On this page</p>
               <ul className="mt-5 space-y-3">
                 {policies.map((p, i) => (

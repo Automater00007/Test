@@ -116,10 +116,14 @@ export default function RoomsRail() {
         <div className="flex h-full flex-col">
           <div className="shell flex items-end justify-between gap-8 pt-24 pb-8 lg:pt-28">
             <div>
-              <span className="eyebrow text-paper/65">03 — Stay</span>
+              <span className="eyebrow text-paper/65" data-reveal>
+                03 — Stay
+              </span>
               <h2
                 id="stay-heading"
                 className="mt-3 text-[clamp(2rem,3.4vw,3.4rem)] leading-[0.95] text-paper"
+                data-reveal
+                style={{ ["--reveal-delay" as string]: "70ms" }}
               >
                 Three shapes of <em className="text-clay">quiet.</em>
               </h2>
@@ -209,7 +213,11 @@ export default function RoomsRail() {
         </h2>
         <div className="mt-10 flex flex-col gap-14">
           {rooms.map((room, i) => (
-            <div key={room.slug} data-reveal>
+            <div
+              key={room.slug}
+              data-reveal="zoom"
+              style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
+            >
               <RoomCard room={room} index={i} />
             </div>
           ))}
@@ -217,6 +225,7 @@ export default function RoomsRail() {
         <Link
           href="/rooms"
           className="btn mt-12 w-full justify-center border-paper/30 text-paper"
+          data-reveal="fade"
         >
           All rooms
         </Link>

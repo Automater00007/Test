@@ -51,7 +51,10 @@ export default function FilmSection() {
         </motion.div>
         <div className="absolute inset-0 bg-forest/45" aria-hidden="true" />
 
-        <div className="absolute inset-x-0 top-0 flex items-center justify-between p-[clamp(1.15rem,4.2vw,5rem)] pt-8">
+        <div
+          className="absolute inset-x-0 top-0 flex items-center justify-between p-[clamp(1.15rem,4.2vw,5rem)] pt-8"
+          data-reveal="fade"
+        >
           <span className="eyebrow text-paper/70">06 — Film</span>
           <span className="eyebrow text-paper/65">Pahalgam · 2026</span>
         </div>
