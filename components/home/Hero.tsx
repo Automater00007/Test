@@ -68,13 +68,13 @@ export default function Hero() {
                   priority
                   fetchPriority="high"
                   sizes="100vw"
-                  className="object-cover object-[50%_58%]"
+                  className="object-cover object-center md:object-[50%_58%]"
                 />
 
                 {/* Video fades in only when it can actually play */}
                 {ready && !reduce && (
                   <video
-                    className={`absolute inset-0 h-full w-full object-cover object-[50%_58%] transition-opacity duration-700 ${
+                    className={`absolute inset-0 h-full w-full object-cover object-center md:object-[50%_58%] transition-opacity duration-700 ${
                       videoReady ? "opacity-100" : "opacity-0"
                     }`}
                     autoPlay
@@ -136,8 +136,8 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="w-full max-w-[330px] bg-paper p-6 text-ink">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/65">
+            <div className="w-full max-w-[330px] p-6 text-paper drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] md:bg-paper md:text-ink md:drop-shadow-none">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-paper/75 md:text-ink/65">
                 The whole idea
               </p>
               <p className="mt-3 font-display text-[1.35rem] leading-[1.18] tracking-[-0.02em]">
@@ -147,7 +147,7 @@ export default function Hero() {
               <div className="mt-6 flex items-center justify-between gap-4">
                 <Link
                   href="/rooms"
-                  className="link-line font-mono text-[10px] uppercase tracking-[0.2em]"
+                  className="link-line font-mono text-[10px] uppercase tracking-[0.2em] text-paper md:text-ink"
                 >
                   Explore rooms
                 </Link>
