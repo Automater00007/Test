@@ -23,26 +23,25 @@ export const nav = [
   { label: "Location", href: "/location" },
 ];
 
-const u = (id: string, w = 1600) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+const jade = (name: string) => `/images/jade/${name}.webp`;
 
 export const img = {
-  hero: u("photo-1501785888041-af3ef285b470", 2200),
-  cabin: u("photo-1470770841072-f978cf4d019e", 1800),
-  valley: u("photo-1464822759023-fed622ff2c3b", 1800),
-  forest: u("photo-1441974231531-c6227db76b6e", 1600),
-  aerial: u("photo-1476231682828-37e571bc172f", 1600),
-  mist: u("photo-1470071459604-3b5ec3a7fe05", 1800),
-  green: u("photo-1469474968028-56623f02e42e", 1700),
-  dark: u("photo-1448375240586-882707db888b", 1500),
-  tree: u("photo-1502082553048-f009c37129b9", 1500),
-  pines: u("photo-1511497584788-876760111969", 1500),
-  dock: u("photo-1439066615861-d1af74d74000", 1500),
-  stars: u("photo-1519681393784-d120267933ba", 1600),
-  roomWarm: u("photo-1611892440504-42a792e24d32", 1600),
-  roomBed: u("photo-1582719478250-c89cae4dc85b", 1600),
-  roomSuite: u("photo-1560448204-e02f11c3d0e2", 1600),
-  roomLight: u("photo-1445019980597-93fa8acb246c", 1600),
+  hero: jade("snow-resort-dusk"),
+  cabin: jade("bonfire-night-exterior"),
+  valley: jade("mountain-sunset"),
+  forest: jade("snow-mountain-resort"),
+  aerial: jade("river-lawn-resort"),
+  mist: jade("mountain-sunset"),
+  green: jade("river-lawn-view"),
+  dark: jade("lounge-fireplace-rug"),
+  tree: jade("lawn-river-exterior"),
+  pines: jade("snow-mountain-resort"),
+  dock: jade("river-lawn-resort"),
+  stars: jade("bonfire-gazebo-sunset"),
+  roomWarm: jade("bedroom-snow-view"),
+  roomBed: jade("bedroom-rug"),
+  roomSuite: jade("suite-lounge-rug"),
+  roomLight: jade("bedroom-large-window"),
 };
 
 export type Room = {
@@ -70,8 +69,13 @@ export const rooms: Room[] = [
       "A private balcony, a low chair, and the sound of water finding its way through stone.",
     long:
       "Our most-loved room. Wake to pine light on the ceiling, step onto a private balcony, and watch the Lidder carry the morning past. Luxury bedding, quiet Wi-Fi, and room service that arrives without ceremony.",
-    image: img.roomWarm,
-    gallery: [img.roomWarm, img.roomBed, img.cabin],
+    image: jade("bedroom-snow-view"),
+    gallery: [
+      jade("bedroom-snow-view"),
+      jade("balcony-mountain-seating"),
+      jade("balcony-pair-view"),
+      jade("bedroom-tv-wood"),
+    ],
     amenities: [
       "Private balcony",
       "Mountain and resort views",
@@ -92,8 +96,13 @@ export const rooms: Room[] = [
       "More room to do nothing. A wide living space, a king bed, and a bathroom built for long baths.",
     long:
       "Two suites, each with a generous living room and a deep, quiet bedroom. Built for anniversaries, honeymoons, and the kind of trip where the plan is no plan at all. Premium interiors, a king bed, and a luxury bathroom.",
-    image: img.roomSuite,
-    gallery: [img.roomSuite, img.roomLight, img.valley],
+    image: jade("suite-lounge-rug"),
+    gallery: [
+      jade("suite-lounge-rug"),
+      jade("suite-living-bedroom"),
+      jade("bedroom-large-window"),
+      jade("bathroom-black-marble"),
+    ],
     amenities: [
       "Separate living space",
       "King bed",
@@ -114,8 +123,13 @@ export const rooms: Room[] = [
       "Two levels. The children take the upper floor, and you take the quiet one.",
     long:
       "A two-level duplex designed for families who want to be together and also, occasionally, not. Children get their own floor, the lawn is a short walk away, and the river is the soundtrack to both.",
-    image: img.roomBed,
-    gallery: [img.roomBed, img.roomLight, img.forest],
+    image: jade("duplex-family-room"),
+    gallery: [
+      jade("duplex-family-room"),
+      jade("duplex-twin-beds"),
+      jade("duplex-stairs-room"),
+      jade("bedroom-fruit"),
+    ],
     amenities: [
       "Two-level duplex layout",
       "Private floor for children",
@@ -143,7 +157,7 @@ export const experiences: Experience[] = [
     body:
       "Beside the Lidder, after dark, we light a fire. Kashmiri nights are cold in the best way. Sit close. Stay as long as you like.",
     meta: "Every clear evening · Riverside",
-    image: img.stars,
+    image: jade("bonfire-gazebo-sunset"),
   },
   {
     title: "River Walks",
@@ -151,7 +165,7 @@ export const experiences: Experience[] = [
     body:
       "Follow the water at your own pace. The path goes as far as you want it to. Some guests walk for twenty minutes; some disappear for three hours.",
     meta: "Dawn to dusk · Self-guided",
-    image: img.forest,
+    image: jade("river-lawn-resort"),
   },
   {
     title: "Pahalgam Sightseeing",
@@ -159,7 +173,7 @@ export const experiences: Experience[] = [
     body:
       "The valley keeps its famous places close. Mini Switzerland, the Aru meadows, the Betaab river bend, and the road to Chandanwari all sit within a short drive.",
     meta: "Half and full day · By road",
-    image: img.valley,
+    image: jade("mountain-sunset"),
   },
   {
     title: "Photography",
@@ -167,7 +181,7 @@ export const experiences: Experience[] = [
     body:
       "Wooden facades, a stream in front, pine forest behind. The light changes every hour and never repeats itself. Bring the camera you keep meaning to use.",
     meta: "Golden hour · Across the property",
-    image: img.cabin,
+    image: jade("round-window-view"),
   },
   {
     title: "Family Moments",
@@ -175,7 +189,7 @@ export const experiences: Experience[] = [
     body:
       "Spacious lawns and a safe, enclosed property. Children run; parents sit. The duplex rooms mean everyone has somewhere to retreat to when the day is done.",
     meta: "All day · Lawns and duplex",
-    image: img.tree,
+    image: jade("lawn-river-exterior"),
   },
   {
     title: "Pure Luxury",
@@ -183,23 +197,51 @@ export const experiences: Experience[] = [
     body:
       "Warm bedding at night, hot tea before you ask, a fire already lit. Luxury here is quiet, attentive, and almost invisible.",
     meta: "Included · Throughout your stay",
-    image: img.roomWarm,
+    image: jade("lounge-fireplace-rug"),
   },
 ];
 
 export const gallery = [
-  { src: img.hero, alt: "Boat resting on still jade water beneath the mountains", span: "wide" },
-  { src: img.cabin, alt: "Wooden cabin at the edge of a mountain lake", span: "tall" },
-  { src: img.forest, alt: "Sunlight falling through tall pine trunks", span: "std" },
-  { src: img.valley, alt: "Snow-capped valley and pine slopes", span: "wide" },
-  { src: img.aerial, alt: "Aerial view of forest and a river winding through it", span: "std" },
-  { src: img.mist, alt: "Mist drifting over green hilltops at sunrise", span: "tall" },
-  { src: img.dark, alt: "Deep shade inside a Kashmiri pine forest", span: "std" },
-  { src: img.tree, alt: "A lone tree on a green meadow", span: "wide" },
-  { src: img.dock, alt: "Wooden jetty reaching into a calm lake", span: "std" },
-  { src: img.pines, alt: "Pine silhouettes against a warm evening sky", span: "tall" },
-  { src: img.stars, alt: "Star field over snow-covered mountain peaks", span: "wide" },
-  { src: img.green, alt: "Green ridgelines fading into the distance", span: "std" },
+  { src: jade("balcony-lounge-view"), alt: "Balcony lounge looking out to the Lidder valley", span: "wide" },
+  { src: jade("balcony-mountain-lounge"), alt: "Private balcony with armchairs facing the mountains", span: "std" },
+  { src: jade("balcony-mountain-seating"), alt: "Balcony seating framed by pine and mountain light", span: "std" },
+  { src: jade("balcony-pair-view"), alt: "Two chairs on a timber balcony above the river", span: "wide" },
+  { src: jade("balcony-rail-view"), alt: "View from a balcony railing across the Pahalgam valley", span: "wide" },
+  { src: jade("bathroom-black-marble"), alt: "Black marble bathroom with a glass shower", span: "tall" },
+  { src: jade("bathroom-dark-marble"), alt: "Dark marble bathroom with warm lighting", span: "tall" },
+  { src: jade("bathroom-marble-shower"), alt: "Marble shower and vanity at Jade River Resort", span: "tall" },
+  { src: jade("bathroom-shower-stone"), alt: "Stone-tiled bathroom with a walk-in shower", span: "tall" },
+  { src: jade("bathroom-vanity-chair"), alt: "Bathroom vanity with a chair and marble walls", span: "tall" },
+  { src: jade("bathroom-vanity"), alt: "Bathroom vanity with towels and warm stone", span: "tall" },
+  { src: jade("bed-petals-detail"), alt: "Bed dressed with flower petals", span: "std" },
+  { src: jade("bedroom-fruit"), alt: "Bedroom with fresh fruit and valley light", span: "std" },
+  { src: jade("bedroom-large-window"), alt: "Bedroom with a large window and timber ceiling", span: "std" },
+  { src: jade("bedroom-red-runner"), alt: "Bedroom with a red runner and dark wood door", span: "std" },
+  { src: jade("bedroom-rug"), alt: "Bedroom with a patterned rug and mountain view", span: "std" },
+  { src: jade("bedroom-sitting-petals"), alt: "Bedroom sitting area with flower petals", span: "std" },
+  { src: jade("bedroom-snow-view"), alt: "Bedroom opening to a snowy mountain view", span: "wide" },
+  { src: jade("bedroom-tv-wood"), alt: "Bedroom with wood panelling and a wall-mounted TV", span: "std" },
+  { src: jade("bonfire-gazebo-sunset"), alt: "Bonfire gazebo lit at sunset", span: "wide" },
+  { src: jade("bonfire-night-exterior"), alt: "Fire pit and lit resort exterior at night", span: "wide" },
+  { src: jade("cocktail-lounge"), alt: "Cocktail on a table in the resort lounge", span: "std" },
+  { src: jade("duplex-family-room"), alt: "Duplex family room with two beds and a staircase", span: "std" },
+  { src: jade("duplex-mural-room"), alt: "Duplex room with twin beds and a painted mural", span: "std" },
+  { src: jade("duplex-stairs-room"), alt: "Timber staircase in the duplex family room", span: "std" },
+  { src: jade("duplex-twin-beds"), alt: "Twin beds in the duplex family room", span: "std" },
+  { src: jade("lawn-river-exterior"), alt: "Lawn and river beside the resort", span: "wide" },
+  { src: jade("lobby-lounge"), alt: "Lobby lounge with sofas and warm lighting", span: "wide" },
+  { src: jade("lounge-fireplace-rug"), alt: "Lounge with a fireplace and Persian rug", span: "wide" },
+  { src: jade("mountain-sunset"), alt: "Sunset over the Pahalgam mountains", span: "wide" },
+  { src: jade("restaurant-dining"), alt: "Resort restaurant set for dinner", span: "wide" },
+  { src: jade("river-lawn-resort"), alt: "Jade River Resort from across the Lidder", span: "wide" },
+  { src: jade("river-lawn-view"), alt: "River, lawn, and timber facades at Jade River Resort", span: "wide" },
+  { src: jade("round-window-view"), alt: "Round window framing the valley", span: "std" },
+  { src: jade("snow-balcony"), alt: "Snow-covered balcony and mountain view", span: "wide" },
+  { src: jade("snow-mountain-resort"), alt: "Snow-covered resort below the mountains", span: "wide" },
+  { src: jade("snow-resort-dusk"), alt: "Jade River Resort at dusk in snow", span: "wide" },
+  { src: jade("snow-resort-exterior"), alt: "Snowy resort exterior and walkway", span: "wide" },
+  { src: jade("suite-living-bedroom"), alt: "Suite living area opening into the bedroom", span: "std" },
+  { src: jade("suite-lounge-rug"), alt: "Suite lounge with a Persian rug and sofa", span: "std" },
 ];
 
 export const posts = [

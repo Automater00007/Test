@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import GalleryGrid from "@/components/GalleryGrid";
+import { gallery } from "@/lib/content";
 import { JsonLd, breadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ export default function GalleryPage() {
               Pahalgam · Kashmir
             </p>
             <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65">
-              12 frames
+              {gallery.length} frames
             </span>
           </div>
         }

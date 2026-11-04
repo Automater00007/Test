@@ -67,6 +67,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - **Blog naming:** all visible “Journal” copy is now “Blog”; the route remains `/post` and `/post/[slug]`.
 - **Review contrast:** review cards on the Forest Green section explicitly set `text-ink`, so card text is charcoal on ivory rather than inheriting `text-paper`.
 - **Dead code:** the fixed `.grain` SVG overlay and unused `.vertical-text` rule were removed.
+- **Real photography:** Unsplash placeholders were replaced with 40 optimized WebP images in `public/images/jade/`; hero, rooms, experiences, gallery, and posts now use them.
 - **Blog caching is publish-only:** there is no timed ISR. Sanity fetches use `revalidate: false` with the `post` tag; the Sanity webhook calls `revalidateTag("post")` plus `revalidatePath("/")`, `/post`, and the changed slug.
 - `prefers-reduced-motion` short-circuits both the observer and CSS transitions; a `<noscript>` fallback keeps content visible without JS.
 
@@ -130,6 +131,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `components/BookingForm.tsx` — WhatsApp direct-booking form.
 - `components/providers/SmoothScroll.tsx` — Lenis setup.
 - `components/providers/RevealObserver.tsx` — IntersectionObserver reveals.
+- `public/images/jade/` — 40 optimized WebP resort photographs used across the site (hero, rooms, experiences, gallery, and posts).
 - `public/video/` — drop `hero.mp4` / `hero.webm` here (see README).
 
 ## Sanity setup (connected)

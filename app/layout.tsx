@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
-        width: 1600,
-        height: 900,
-        alt: "Jade water and mountains near Pahalgam",
+        url: "/images/jade/snow-resort-dusk.webp",
+        width: 1672,
+        height: 941,
+        alt: "Jade River Resort at dusk in snow",
       },
     ],
   },

@@ -95,7 +95,7 @@ function Row({
 
 export default function GalleryMarquee() {
   const rowA = gallery.slice(0, 6);
-  const rowB = gallery.slice(6);
+  const rowB = gallery.slice(6, 12);
 
   return (
     <section className="relative overflow-hidden py-20 md:py-28" aria-labelledby="gallery-heading">
