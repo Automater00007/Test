@@ -52,7 +52,7 @@ export default function Hero() {
         </p>
       </div>
 
-      <div className="shell">
+      <div className="w-full">
         <div
           className={`relative overflow-hidden bg-forest ${ready ? "is-ready" : ""}`}
           style={{ height: "calc(100svh - 172px)", minHeight: "540px" }}
