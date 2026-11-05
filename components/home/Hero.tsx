@@ -42,7 +42,7 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative pt-[68px] md:pt-[80px]">
-      <div className="shell flex items-center justify-between gap-4 py-4 md:py-5">
+      {/* <div className="shell flex items-center justify-between gap-4 py-4 md:py-5">
         <p className="eyebrow text-ink/70">Pahalgam · Jammu &amp; Kashmir</p>
         <p className="eyebrow hidden italic text-ink/65 md:block">
           Life, slowed by the river
@@ -50,12 +50,11 @@ export default function Hero() {
         <p className="eyebrow text-ink/70">
           <span className="text-walnut">13</span> rooms
         </p>
-      </div>
+      </div> */}
 
       <div className="w-full">
         <div
-          className={`relative overflow-hidden bg-forest ${ready ? "is-ready" : ""}`}
-          style={{ height: "calc(100svh - 172px)", minHeight: "540px" }}
+          className={`relative h-[calc(100svh-68px)] min-h-[540px] overflow-hidden bg-forest md:h-[calc(100svh-80px)] ${ready ? "is-ready" : ""}`}
         >
           <motion.div className="absolute inset-0" style={{ y }}>
             <motion.div className="absolute inset-[-3%]" style={{ scale }}>
@@ -68,15 +67,16 @@ export default function Hero() {
                   priority
                   fetchPriority="high"
                   sizes="100vw"
-                  className="object-cover object-center md:object-[50%_58%]"
+                  className="object-cover object-center"
                 />
 
                 {/* Video fades in only when it can actually play */}
                 {ready && !reduce && (
                   <video
-                    className={`absolute inset-0 h-full w-full object-cover object-center md:object-[50%_58%] transition-opacity duration-700 ${
+                    className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
                       videoReady ? "opacity-100" : "opacity-0"
                     }`}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
                     autoPlay
                     muted
                     loop
