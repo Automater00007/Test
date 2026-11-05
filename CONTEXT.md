@@ -123,7 +123,8 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `app/api/draft/route.ts` — enables Next.js draft mode.
 - `app/api/disable-draft/route.ts` — disables draft mode.
 - `app/api/revalidate/route.ts` — Sanity webhook → `revalidateTag("post")`.
-- `sanity.config.ts` — Studio config (`basePath: /studio`) with the Presentation preview tool.
+- `sanity.config.ts` — Studio config (`basePath: /studio`) with the Presentation preview tool and the post-only `Preview draft` document action.
+- `components/studio/PreviewDraftAction.tsx` — document action that opens the current post in the Presentation preview (drafts included).
 - `sanity/schemaTypes/` — post, author, category, blockContent, custom blocks.
 - `sanity/lib/` — client factory, GROQ queries, image builder, types.
 - `sanity/env.ts` — env access and `sanityConfigured` flag.
@@ -156,7 +157,9 @@ SANITY_PREVIEW_SECRET=
 SANITY_REVALIDATE_SECRET=
 ```
 
-Preview flow: open **Preview** in the Studio → Presentation resolves the post to `/post/<slug>` → `/api/draft` validates Sanity’s preview secret and enables draft mode. Manual fallback: `/api/draft?slug=<slug>&secret=<SANITY_PREVIEW_SECRET>` → `/post/<slug>`; `/api/disable-draft` exits.
+Preview flow: open **Preview** in the Studio → Presentation resolves the post to `/post/<slug>` → `/api/draft` validates Sanity’s preview secret and enables draft mode. The post editor also has a **Preview draft** action that jumps straight to the current post in Presentation. Manual fallback: `/api/draft?slug=<slug>&secret=<SANITY_PREVIEW_SECRET>` → `/post/<slug>`; `/api/disable-draft` exits.
+
+Editing model: Sanity auto-saves changes as a private draft; it has no manual **Save** button and the autosave cannot be disabled without switching off drafts entirely. **Publish** copies the draft to the live document (and triggers the webhook), **Discard changes** deletes the draft, and `Ctrl/⌘+S` shows the “Your work is automatically saved!” notice.
 
 ## YouTube requirements (deferred)
 Skipped for now at the owner's request. When revisited:

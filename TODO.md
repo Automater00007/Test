@@ -71,7 +71,8 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Add a unified blog data layer with a static fallback when credentials are absent.
 - [x] Replace the static blog listing/detail reads with the data layer.
 - [x] Render Portable Text (including custom blocks) on `/post/[slug]`.
-- [x] Add draft preview (`/api/draft`, `/api/disable-draft`) and revalidation webhook (`/api/revalidate`). **(`presentationTool` adds a Preview tab in the Studio; `PreviewBridge` connects visual editing; manual draft links still work.)**
+- [x] Add draft preview (`/api/draft`, `/api/disable-draft`) and revalidation webhook (`/api/revalidate`). **(`presentationTool` adds a Preview tab in the Studio; `PreviewBridge` connects visual editing; the `Preview draft` document action opens the current post; manual draft links still work.)**
+- [x] Add a post-only `Preview draft` action so editors can jump from the document to the Presentation preview without hunting for the post URL.
 - [x] Add the latest 3 posts to the homepage.
 - [x] Add `cdn.sanity.io` to `next.config.ts`.
 - [x] Build and verify the static fallback still renders without credentials.

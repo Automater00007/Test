@@ -2,6 +2,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
+import { PreviewDraftAction } from "./components/studio/PreviewDraftAction";
 import { dataset, projectId } from "./sanity/env";
 import { schemaTypes } from "./sanity/schemaTypes";
 
@@ -50,4 +51,8 @@ export default defineConfig({
     visionTool(),
   ],
   schema: { types: schemaTypes },
+  document: {
+    actions: (prev, { schemaType }) =>
+      schemaType === "post" ? [PreviewDraftAction, ...prev] : prev,
+  },
 });
