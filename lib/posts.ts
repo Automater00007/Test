@@ -167,12 +167,11 @@ export const getLatestPosts = cache(async (limit = 3): Promise<BlogPost[]> => {
 
 /** A single post, including drafts when Next.js draft mode is enabled. */
 export const getPostBySlug = cache(async (slug: string): Promise<BlogPost | null> => {
-  const client = getSanityClient();
+  const { isEnabled } = await draftMode();
+  const client = getSanityClient({ draft: isEnabled });
   if (!client) {
     return staticBlogPosts().find((post) => post.slug === slug) ?? null;
   }
-
-  const { isEnabled } = await draftMode();
 
   try {
     const post = await client.fetch<SanityPost>(
