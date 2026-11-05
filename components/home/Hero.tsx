@@ -136,10 +136,10 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="w-fit self-end mr-[clamp(1.5rem,4vw,3rem)]">
+            <div className="w-fit self-end mr-[clamp(2.5rem,7vw,5rem)] mb-6">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-walnut px-5 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown"
+                className="group inline-flex items-center gap-3 bg-walnut px-6 py-5 font-mono text-[11px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown"
                 style={{ width: "fit-content" }}
               >
                 Reserve
