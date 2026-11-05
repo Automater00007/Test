@@ -41,7 +41,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={ref} className="relative pt-[68px] md:pt-[80px]">
+    <section ref={ref} className="relative mb-[3px] pt-[68px] md:pt-[80px]">
       {/* <div className="shell flex items-center justify-between gap-4 py-4 md:py-5">
         <p className="eyebrow text-ink/70">Pahalgam · Jammu &amp; Kashmir</p>
         <p className="eyebrow hidden italic text-ink/65 md:block">
@@ -136,10 +136,11 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="w-full max-w-[330px]">
+            <div className="w-fit">
               <Link
                 href="/contact"
-                className="group flex w-full items-center justify-between gap-4 bg-walnut px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown sm:w-auto sm:justify-start"
+                className="group inline-flex items-center gap-2 bg-walnut px-5 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown"
+                style={{ width: "fit-content" }}
               >
                 Reserve
                 <svg
