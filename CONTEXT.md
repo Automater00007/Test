@@ -49,7 +49,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - **Blog route confirmed:** keep `/post` and `/post/[slug]`. The guide's `/blog/[slug]` structure will not be used.
 - **Sanity is connected.** Project `tcbet7sh`, dataset `production`; credentials in `.env.local` (never committed). The blog reads from Sanity with a static fallback when unconfigured. Three posts, one author, and three categories are seeded; `npm run seed` re-runs the seed. CORS origins include `localhost:3000` and both production domains. The publish webhook is configured against the current Vercel deployment; update its URL when the final production domain is live.
 - **Studio lives at `/studio`.** It is lazy-loaded and hidden from search engines; the marketing chrome is suppressed on that route.
-- **Draft preview** is at `/api/draft?slug=…` (optional `&secret=`), and the publish webhook is `/api/revalidate` with `SANITY_REVALIDATE_SECRET`.
+- **Preview:** the Studio has a **Preview** tool (`presentationTool`) that opens the site beside the document editor and resolves posts to `/post/<slug>`. It enables draft mode through `/api/draft`; the manual `/api/draft?slug=…` link still works. The publish webhook is `/api/revalidate` with `SANITY_REVALIDATE_SECRET`.
 - **YouTube:** deferred for now; the blog is the priority. The fetch/lightbox code is not being added yet.
 - **Hero video:** use the instant poster until the real property film is supplied. The video layer is already wired and will activate automatically when files appear.
 - The custom cursor was removed; use the normal system cursor. `components/Cursor.tsx` and all `data-cursor` attributes were deleted.
@@ -62,12 +62,14 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - The pinned Rooms rail runway was shortened from 340vh to 260vh so it feels faster.
 - **Scroll motion:** every section uses the shared `[data-reveal]` system. Variants are `up` (default), `fade`, `zoom`, `zoom-lg`, `left`, `right`, and `mask` (clip-path curtain on `.reveal-media`). Delays are set per element with `--reveal-delay` for a soft stagger. `RevealObserver` uses one IntersectionObserver, re-scans on client navigation/late mounts, and never re-animates an element. Only `opacity` and `transform` are animated, so reveals stay on the compositor and mobile stays smooth.
 - **Arrows are intentionally static.** The `→` glyphs, nav arrow and CTA arrow icons no longer translate on hover; all other hover/reveal motion remains.
-- **Back to home:** every inner page shows a `Back to home` control. `PageHeader` renders it on listing/static pages; the room and post detail headers render it directly. The homepage has no back control.
+- **Back to home:** every inner page shows one fixed `Back to home` control from `SiteChrome` (bottom-left), so it stays visible while scrolling. The inline back links in `PageHeader`, `RoomHero`, and the post header were removed. The homepage has no back control.
 - **Mobile Stay carousel:** below `md`, the Stay section is a horizontal snap carousel with `data-reveal="zoom"` cards, a progress rule, a live counter, and static prev/next buttons. The desktop pinned horizontal rail is unchanged.
 - **Blog naming:** all visible “Journal” copy is now “Blog”; the route remains `/post` and `/post/[slug]`.
 - **Review contrast:** review cards on the Forest Green section explicitly set `text-ink`, so card text is charcoal on ivory rather than inheriting `text-paper`.
 - **Dead code:** the fixed `.grain` SVG overlay and unused `.vertical-text` rule were removed.
 - **Real photography:** Unsplash placeholders were replaced with 40 optimized WebP images in `public/images/jade/`; hero, rooms, experiences, gallery, and posts now use them.
+- **Hero is CTA-only:** the white card, “The whole idea” copy, room description, and “Explore rooms” link were removed. Only the Reserve button remains.
+- **Homepage film disabled:** `FilmSection` is commented out in `app/page.tsx`; the section after the gallery is now `LocationSection`.
 - **Blog caching is publish-only:** there is no timed ISR. Sanity fetches use `revalidate: false` with the `post` tag; the Sanity webhook calls `revalidateTag("post")` plus `revalidatePath("/")`, `/post`, and the changed slug.
 - `prefers-reduced-motion` short-circuits both the observer and CSS transitions; a `<noscript>` fallback keeps content visible without JS.
 
@@ -106,9 +108,9 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 ## File map
 - `app/globals.css` — palette tokens, reveal system, intro, lightbox, Lenis, reduced motion.
 - `app/layout.tsx` — fonts, metadata, JSON-LD, intro script, skip link; renders `SiteChrome`.
-- `components/SiteChrome.tsx` — hides nav/footer/motion on `/studio`; no grain overlay.
-- `components/BackToHome.tsx` — shared static-arrow back link used by inner pages.
-- `app/page.tsx` — homepage order: Hero, Philosophy, RoomsRail, Experiences, GalleryMarquee, FilmSection, LocationSection, GuestNotes, BlogTeaser, ClosingCTA.
+- `components/SiteChrome.tsx` — hides nav/footer/motion on `/studio`; renders the fixed `BackToHome` on every non-home page.
+- `components/BackToHome.tsx` — shared static-arrow back link used by `SiteChrome`.
+- `app/page.tsx` — homepage order: Hero, Philosophy, RoomsRail, Experiences, GalleryMarquee, LocationSection, GuestNotes, BlogTeaser, ClosingCTA (`FilmSection` is commented out).
 - `lib/content.ts` — resort facts, rooms, experiences, gallery, static fallback posts, reviews, FAQs, policies.
 - `lib/posts.ts` — unified blog data layer (Sanity + static fallback, draft aware, publish-only cache).
 - `components/blog/PostBody.tsx` — Portable Text renderer and custom blocks.
@@ -120,12 +122,12 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `app/api/draft/route.ts` — enables Next.js draft mode.
 - `app/api/disable-draft/route.ts` — disables draft mode.
 - `app/api/revalidate/route.ts` — Sanity webhook → `revalidateTag("post")`.
-- `sanity.config.ts` — Studio config (`basePath: /studio`).
+- `sanity.config.ts` — Studio config (`basePath: /studio`) with the Presentation preview tool.
 - `sanity/schemaTypes/` — post, author, category, blockContent, custom blocks.
 - `sanity/lib/` — client factory, GROQ queries, image builder, types.
 - `sanity/env.ts` — env access and `sanityConfigured` flag.
 - `scripts/seed-sanity.mjs` — seeds the author, categories, images, and posts (`npm run seed`).
-- `components/home/Hero.tsx` — pinned hero video/poster, headline mask, booking card.
+- `components/home/Hero.tsx` — pinned hero video/poster, headline mask, Reserve CTA.
 - `components/home/Philosophy.tsx` — compact editorial statement with a CSS reveal (server component).
 - `components/home/ClosingCTA.tsx` — simplified Deep Walnut CTA.
 - `components/BookingForm.tsx` — WhatsApp direct-booking form.
@@ -153,7 +155,7 @@ SANITY_PREVIEW_SECRET=
 SANITY_REVALIDATE_SECRET=
 ```
 
-Preview flow: `/api/draft?slug=<slug>&secret=<SANITY_PREVIEW_SECRET>` → draft mode → `/post/<slug>`; `/api/disable-draft` exits.
+Preview flow: open **Preview** in the Studio → Presentation resolves the post to `/post/<slug>` → `/api/draft` validates Sanity’s preview secret and enables draft mode. Manual fallback: `/api/draft?slug=<slug>&secret=<SANITY_PREVIEW_SECRET>` → `/post/<slug>`; `/api/disable-draft` exits.
 
 ## YouTube requirements (deferred)
 Skipped for now at the owner's request. When revisited:
@@ -173,6 +175,6 @@ Drop the real film at `public/video/hero.mp4` and/or `public/video/hero.webm`. U
 - Do not add gradients.
 
 ## Known gaps
-- No real resort photography or hero video yet; Unsplash placeholders remain.
+- The hero video is still the placeholder film; the real property film is pending.
 - Sanity credentials live in `.env.local`; the deployed `/api/revalidate` endpoint already has the matching secret. Confirm the public project ID/dataset and read token are also set in Vercel for the deployed Studio.
 - Reviews shown are sample copy, not verified guest submissions.

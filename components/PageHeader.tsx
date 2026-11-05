@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import BackToHome from "@/components/BackToHome";
 
 export default function PageHeader({
   eyebrow,
@@ -19,9 +18,7 @@ export default function PageHeader({
       <div className="shell">
         <div className="flex items-center justify-between gap-4 border-b border-line py-5" data-reveal="fade">
           <div className="flex min-w-0 items-center gap-4">
-            <BackToHome />
-            <span className="hidden h-3 w-px shrink-0 bg-line sm:block" aria-hidden="true" />
-            <span className="eyebrow hidden truncate text-ink/65 sm:inline">{eyebrow}</span>
+            <span className="eyebrow truncate text-ink/65">{eyebrow}</span>
           </div>
           <span className="eyebrow shrink-0 text-ink/65">Jade River Resort</span>
         </div>

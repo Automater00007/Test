@@ -136,38 +136,23 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="w-full max-w-[330px] p-6 text-paper drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] md:bg-paper md:text-ink md:drop-shadow-none">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-paper/75 md:text-ink/65">
-                The whole idea
-              </p>
-              <p className="mt-3 font-display text-[1.35rem] leading-[1.18] tracking-[-0.02em]">
-                Thirteen rooms on the Lidder. Wood, stone, pine, and the sound of
-                water.
-              </p>
-              <div className="mt-6 flex items-center justify-between gap-4">
-                <Link
-                  href="/rooms"
-                  className="link-line font-mono text-[10px] uppercase tracking-[0.2em] text-paper md:text-ink"
+            <div className="w-full max-w-[330px]">
+              <Link
+                href="/contact"
+                className="group flex w-full items-center justify-between gap-4 bg-walnut px-6 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown sm:w-auto sm:justify-start"
+              >
+                Reserve
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                  className="arrow-static"
                 >
-                  Explore rooms
-                </Link>
-                <Link
-                  href="/contact"
-                  className="group flex items-center gap-2 bg-walnut px-4 py-3 font-mono text-[9px] uppercase tracking-[0.18em] text-paper transition-colors duration-300 hover:bg-walnut-brown"
-                >
-                  Reserve
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    aria-hidden="true"
-                    className="arrow-static"
-                  >
-                    <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
-                  </svg>
-                </Link>
-              </div>
+                  <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
+                </svg>
+              </Link>
             </div>
           </motion.div>
 

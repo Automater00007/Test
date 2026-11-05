@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import BackToHome from "@/components/BackToHome";
 import PostBody from "@/components/blog/PostBody";
 import { site } from "@/lib/content";
 import { getAllPostSlugs, getAllPosts, getPostBySlug } from "@/lib/posts";
@@ -88,7 +87,6 @@ export default async function PostPage({
         <header className="shell">
           <div className="flex items-center justify-between gap-4 border-b border-line py-5">
             <div className="flex items-center gap-5">
-              <BackToHome />
               <Link href="/post" className="eyebrow text-ink/65 hover:text-ink">
                 Blog
               </Link>

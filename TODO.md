@@ -39,6 +39,8 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Defer video loading until the poster is painted.
 - [x] Support `hero.mp4` / `hero.webm` in `public/video/`.
 - [x] Gracefully keep the poster if no video file exists.
+- [x] Remove the hero white card and copy; keep only the Reserve button.
+- [x] Comment out the homepage `FilmSection` after the gallery.
 - [ ] Drop the real property video into `public/video/`.
 
 ## 6. Performance & motion
@@ -51,7 +53,7 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Add scroll-triggered reveal/zoom variants across every homepage section and all inner pages. **(`data-reveal` + `data-reveal="zoom|fade|mask"`, staggered delays, mobile-first.)**
 - [x] Keep every arrow static — no arrow hover-slide or scroll animation. **(`→` glyphs, nav arrow, CTA arrow icons.)**
 - [x] Keep reveals compositor-only (opacity/transform) and re-scan on client navigation. **(Lighthouse 100/100/100 on `/` and `/post/[slug]` after the pass.)**
-- [x] Add a `Back to home` control to every inner page. **(Shared `BackToHome` in `PageHeader`, plus room and post detail headers.)**
+- [x] Add a `Back to home` control to every inner page. **(Single fixed `BackToHome` in `SiteChrome`; inline back links removed so only one stays visible while scrolling.)**
 - [x] Convert the mobile Stay section to a horizontal snap carousel with zoom reveals and static controls. **(Desktop pinned rail unchanged.)**
 - [x] Rename all visible Journal naming to Blog while keeping `/post`. **(Nav, footer, homepage teaser, listing/detail copy and metadata, Studio schema title.)**
 - [x] Fix review card text contrast on the Forest Green section. **(Ivory cards now set `text-ink`; verified computed colour `rgb(32, 27, 23)`.)**
@@ -69,7 +71,7 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] Add a unified blog data layer with a static fallback when credentials are absent.
 - [x] Replace the static blog listing/detail reads with the data layer.
 - [x] Render Portable Text (including custom blocks) on `/post/[slug]`.
-- [x] Add draft preview (`/api/draft`, `/api/disable-draft`) and revalidation webhook (`/api/revalidate`).
+- [x] Add draft preview (`/api/draft`, `/api/disable-draft`) and revalidation webhook (`/api/revalidate`). **(`presentationTool` adds a Preview tab in the Studio; manual draft links still work.)**
 - [x] Add the latest 3 posts to the homepage.
 - [x] Add `cdn.sanity.io` to `next.config.ts`.
 - [x] Build and verify the static fallback still renders without credentials.

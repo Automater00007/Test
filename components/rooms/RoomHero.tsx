@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import BackToHome from "@/components/BackToHome";
 import type { Room } from "@/lib/content";
 import { formatPrice } from "@/lib/utils";
 
@@ -33,9 +32,7 @@ export default function RoomHero({ room }: { room: Room }) {
 
         <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-4 p-[clamp(1.15rem,4.2vw,3rem)]">
           <div className="flex items-center gap-4">
-            <BackToHome tone="light" />
-            <span className="hidden h-3 w-px bg-paper/25 sm:block" aria-hidden="true" />
-            <span className="eyebrow hidden text-paper/65 sm:inline">Room · {room.count}</span>
+            <span className="eyebrow text-paper/65">Room · {room.count}</span>
           </div>
           <span className="eyebrow hidden text-paper/65 sm:inline">{room.bestFor}</span>
         </div>
