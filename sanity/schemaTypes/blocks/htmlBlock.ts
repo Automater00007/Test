@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import HtmlInput from "../../../components/studio/HtmlInput";
 
 export const htmlBlock = defineType({
   name: "htmlBlock",
@@ -18,6 +19,7 @@ export const htmlBlock = defineType({
       rows: 10,
       description: "No <style> or <script> tags. Inline styles only.",
       validation: (rule) => rule.required(),
+      components: { input: HtmlInput },
     }),
   ],
   preview: {

@@ -125,6 +125,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `app/api/revalidate/route.ts` — Sanity webhook → `revalidateTag("post")`.
 - `sanity.config.ts` — Studio config (`basePath: /studio`) with the Presentation preview tool and the post-only `Preview draft` document action.
 - `components/studio/PreviewDraftAction.tsx` — document action that opens the current post in the Presentation preview (drafts included).
+- `components/studio/HtmlInput.tsx` — custom debounced input for the Custom HTML block's `html` field; prevents the Portable Text edit dialog from closing after a single keystroke.
 - `sanity/schemaTypes/` — post, author, category, blockContent, custom blocks.
 - `sanity/lib/` — client factory, GROQ queries, image builder, types.
 - `sanity/env.ts` — env access and `sanityConfigured` flag.
