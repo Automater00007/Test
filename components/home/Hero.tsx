@@ -105,7 +105,7 @@ export default function Hero() {
           </div>
 
           <motion.div
-            className="absolute inset-x-0 bottom-0 flex flex-col items-start justify-between gap-8 p-[clamp(1rem,2.6vw,2.4rem)] pb-[clamp(1.4rem,3vw,2.6rem)] lg:flex-row lg:items-end"
+            className="absolute inset-x-0 bottom-0 flex flex-col items-start justify-start gap-6 p-[clamp(1rem,2.6vw,2.4rem)] pb-[clamp(1.4rem,3vw,2.6rem)] lg:flex-row lg:items-end lg:justify-between lg:gap-8"
             style={{ y: textY, opacity: fade }}
           >
             <div>
@@ -136,7 +136,7 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="w-fit self-end mr-[clamp(2.5rem,7vw,5rem)] mb-6">
+            <div className="w-fit self-start mr-[clamp(2.5rem,7vw,5rem)] lg:self-end">
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-3 bg-walnut px-6 py-5 font-mono text-[11px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown"
