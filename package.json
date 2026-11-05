@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node --env-file=.env.local scripts/seed-sanity.mjs"
+    "seed": "node --env-file=.env.local scripts/seed-sanity.mjs",
+    "postinstall": "node scripts/patch-sanity.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^8.0.1",
