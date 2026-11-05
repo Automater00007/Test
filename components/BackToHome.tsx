@@ -1,9 +1,12 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 /**
- * Small, persistent way back to the homepage from any inner page.
- * Arrows stay static; only colour transitions on hover.
+ * Small, persistent way back. Goes to the previous page when there is
+ * history, otherwise falls back to the homepage. Arrows stay static; only
+ * colour transitions on hover.
  */
 export default function BackToHome({
   className,
@@ -12,10 +15,21 @@ export default function BackToHome({
   className?: string;
   tone?: "dark" | "light";
 }) {
+  const router = useRouter();
+
+  const handleBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
-    <Link
-      href="/"
-      aria-label="Back to home"
+    <button
+      type="button"
+      onClick={handleBack}
+      aria-label="Go back"
       className={cn(
         "group inline-flex shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors",
         tone === "light"
@@ -38,7 +52,7 @@ export default function BackToHome({
           strokeWidth="1.1"
         />
       </svg>
-      <span className="link-line">Back to home</span>
-    </Link>
+      <span className="link-line">Back</span>
+    </button>
   );
 }
