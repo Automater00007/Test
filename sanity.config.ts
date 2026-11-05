@@ -16,7 +16,14 @@ export default defineConfig({
     presentationTool({
       title: "Preview",
       previewUrl: {
-        initial: "/",
+        // Open the most recently edited post (draft or published) so the
+        // Preview tool starts on a real document instead of the homepage.
+        initial: async ({ client }) => {
+          const slug = await client.fetch<string | null>(
+            `*[_type == "post" && defined(slug.current)] | order(_updatedAt desc)[0].slug.current`,
+          );
+          return slug ? `/post/${slug}` : "/post";
+        },
         previewMode: { enable: "/api/draft" },
       },
       resolve: {
