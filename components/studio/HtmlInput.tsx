@@ -37,8 +37,9 @@ export default function HtmlInput(props: StringInputProps<StringSchemaType>) {
     const next = event.target.value;
     setLocal(next);
     pendingRef.current = next;
-    const ep = elementProps as { onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void } | undefined;
-    ep?.onChange?.(event);
+    // Do NOT call elementProps.onChange here: that re-triggers Sanity's
+    // per-keystroke autosave/focus re-announcement, which collapses the
+    // Portable Text edit dialog after a single word.
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
