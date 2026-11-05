@@ -136,7 +136,7 @@ export default function Hero() {
               </h1>
             </div>
 
-            <div className="w-fit">
+            <div className="w-fit self-end mr-[clamp(1.5rem,4vw,3rem)]">
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 bg-walnut px-5 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-walnut-brown"
