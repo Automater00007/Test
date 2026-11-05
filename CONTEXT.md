@@ -49,7 +49,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - **Blog route confirmed:** keep `/post` and `/post/[slug]`. The guide's `/blog/[slug]` structure will not be used.
 - **Sanity is connected.** Project `tcbet7sh`, dataset `production`; credentials in `.env.local` (never committed). The blog reads from Sanity with a static fallback when unconfigured. Three posts, one author, and three categories are seeded; `npm run seed` re-runs the seed. CORS origins include `localhost:3000` and both production domains. The publish webhook is configured against the current Vercel deployment; update its URL when the final production domain is live.
 - **Studio lives at `/studio`.** It is lazy-loaded and hidden from search engines; the marketing chrome is suppressed on that route.
-- **Preview:** the Studio has a **Preview** tool (`presentationTool`) that opens the site beside the document editor and resolves posts to `/post/<slug>`. It enables draft mode through `/api/draft`; the manual `/api/draft?slug=…` link still works. The publish webhook is `/api/revalidate` with `SANITY_REVALIDATE_SECRET`.
+- **Preview:** the Studio has a **Preview** tool (`presentationTool`) that opens the site beside the document editor and resolves posts to `/post/<slug>`. It enables draft mode through `/api/draft`; the manual `/api/draft?slug=…` link still works. `PreviewBridge` loads Sanity's `VisualEditing` bridge only inside the Presentation iframe, and draft queries enable `stega` so fields are editable. The publish webhook is `/api/revalidate` with `SANITY_REVALIDATE_SECRET`.
 - **YouTube:** deferred for now; the blog is the priority. The fetch/lightbox code is not being added yet.
 - **Hero video:** use the instant poster until the real property film is supplied. The video layer is already wired and will activate automatically when files appear.
 - The custom cursor was removed; use the normal system cursor. `components/Cursor.tsx` and all `data-cursor` attributes were deleted.
@@ -110,6 +110,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `app/layout.tsx` — fonts, metadata, JSON-LD, intro script, skip link; renders `SiteChrome`.
 - `components/SiteChrome.tsx` — hides nav/footer/motion on `/studio`; renders the fixed `BackToHome` on every non-home page.
 - `components/BackToHome.tsx` — shared static-arrow back link used by `SiteChrome`.
+- `components/PreviewBridge.tsx` — lazy-loads Sanity visual editing only inside the Studio Presentation iframe.
 - `app/page.tsx` — homepage order: Hero, Philosophy, RoomsRail, Experiences, GalleryMarquee, LocationSection, GuestNotes, BlogTeaser, ClosingCTA (`FilmSection` is commented out).
 - `lib/content.ts` — resort facts, rooms, experiences, gallery, static fallback posts, reviews, FAQs, policies.
 - `lib/posts.ts` — unified blog data layer (Sanity + static fallback, draft aware, publish-only cache).

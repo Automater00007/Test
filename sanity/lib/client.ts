@@ -16,6 +16,8 @@ export function getSanityClient({ draft = false } = {}): SanityClient | null {
     useCdn: draft ? false : !readToken,
     token: draft ? readToken : undefined,
     perspective: draft ? "previewDrafts" : "published",
-    stega: false,
+    stega: draft
+      ? { enabled: true, studioUrl: "/studio" }
+      : false,
   });
 }

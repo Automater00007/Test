@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope, DM_Mono } from "next/font/google";
 import "./globals.css";
+import PreviewBridge from "@/components/PreviewBridge";
 import SiteChrome from "@/components/SiteChrome";
 import { site } from "@/lib/content";
 
@@ -141,6 +142,7 @@ export default function RootLayout({
         </noscript>
 
         <SiteChrome>{children}</SiteChrome>
+        <PreviewBridge />
       </body>
     </html>
   );
