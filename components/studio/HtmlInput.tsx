@@ -16,7 +16,6 @@ import { useEffect, useRef, useState } from "react";
 export default function HtmlInput(props: StringInputProps<StringSchemaType>) {
   const { value: propValue, onChange, elementProps, readOnly } = props;
   const [local, setLocal] = useState(propValue ?? "");
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingRef = useRef<string | null>(null);
   const onChangeRef = useRef(onChange);
   useEffect(() => {
@@ -38,22 +37,11 @@ export default function HtmlInput(props: StringInputProps<StringSchemaType>) {
     const next = event.target.value;
     setLocal(next);
     pendingRef.current = next;
-    if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => {
-      if (pendingRef.current !== null) {
-        commit(pendingRef.current);
-        pendingRef.current = null;
-      }
-    }, 1500);
     const ep = elementProps as { onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void } | undefined;
     ep?.onChange?.(event);
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
     if (pendingRef.current !== null) {
       commit(pendingRef.current);
       pendingRef.current = null;
@@ -67,7 +55,6 @@ export default function HtmlInput(props: StringInputProps<StringSchemaType>) {
   // Flush any pending edit when the component unmounts (e.g. dialog closes).
   useEffect(() => {
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
       if (pendingRef.current !== null) {
         onChangeRef.current(PatchEvent.from(set(pendingRef.current)));
         pendingRef.current = null;
