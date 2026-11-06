@@ -96,10 +96,6 @@ export default function ReviewForm({ source = "website" }: Props) {
               Your note is with the team for{" "}
               <em className="text-clay">moderation.</em>
             </p>
-            <p className="mt-5 max-w-sm text-[0.95rem] leading-[1.7] text-ink/70">
-              Every review is read by hand. Once approved, it will appear in the
-              guest notes on this website.
-            </p>
             <button
               type="button"
               onClick={() => setSent(false)}
@@ -169,7 +165,7 @@ export default function ReviewForm({ source = "website" }: Props) {
                 />
               </label>
             </div>
-
+{/* 
             <label className="block border-b border-line pb-1 focus-within:border-clay">
               <span className="eyebrow text-ink/65">Title (optional)</span>
               <input
@@ -179,7 +175,7 @@ export default function ReviewForm({ source = "website" }: Props) {
                 className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
                 placeholder="A few words"
               />
-            </label>
+            </label> */}
 
             <label className="block border-b border-line pb-1 focus-within:border-clay">
               <span className="eyebrow text-ink/65">Your note</span>
@@ -195,7 +191,7 @@ export default function ReviewForm({ source = "website" }: Props) {
               />
             </label>
 
-            <label className="block border-b border-line pb-1 focus-within:border-clay">
+            {/* <label className="block border-b border-line pb-1 focus-within:border-clay">
               <span className="eyebrow text-ink/65">
                 Email or phone (optional, private)
               </span>
@@ -207,7 +203,7 @@ export default function ReviewForm({ source = "website" }: Props) {
                 className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
                 placeholder="Only if the team may contact you"
               />
-            </label>
+            </label> */}
 
             {/* Honeypot: invisible to people, tempting to bots. */}
             <div
@@ -241,9 +237,9 @@ export default function ReviewForm({ source = "website" }: Props) {
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
-              <span className="font-mono text-[9px] uppercase leading-[1.8] tracking-[0.14em] text-ink/65">
+              {/* <span className="font-mono text-[9px] uppercase leading-[1.8] tracking-[0.14em] text-ink/65">
                 Reviewed by the team before publishing
-              </span>
+              </span> */}
             </div>
           </motion.form>
         )}

@@ -54,10 +54,10 @@ export default function ReviewPage() {
             </div>
           </dl>
 
-          <p className="mt-8 font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
+          {/* <p className="mt-8 font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
             Reviews are moderated. Only approved submissions appear on the
             site.
-          </p>
+          </p> */}
 
           <Link
             href="/reviews"
