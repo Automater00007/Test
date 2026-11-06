@@ -41,7 +41,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={ref} className="relative mb-[3px] pt-[68px] md:pt-[80px]">
+    <section ref={ref} className="relative mb-[3px]">
       {/* <div className="shell flex items-center justify-between gap-4 py-4 md:py-5">
         <p className="eyebrow text-ink/70">Pahalgam · Jammu &amp; Kashmir</p>
         <p className="eyebrow hidden italic text-ink/65 md:block">
@@ -54,7 +54,7 @@ export default function Hero() {
 
       <div className="w-full">
         <div
-          className={`relative h-[calc(100svh-68px)] min-h-[540px] overflow-hidden bg-forest md:h-[calc(100svh-80px)] ${ready ? "is-ready" : ""}`}
+          className={`relative h-[100svh] min-h-[540px] overflow-hidden bg-forest ${ready ? "is-ready" : ""}`}
         >
           <motion.div className="absolute inset-0" style={{ y }}>
             <motion.div className="absolute inset-[-3%]" style={{ scale }}>
@@ -62,7 +62,7 @@ export default function Hero() {
                 {/* Instant poster — never delayed, keeps LCP fast */}
                 <Image
                   src={img.hero}
-                  alt="A wooden boat on still jade water beneath the mountains of the Kashmir valley"
+                  alt="Jade River Resort in the Lidder valley, Pahalgam"
                   fill
                   priority
                   fetchPriority="high"
@@ -95,7 +95,7 @@ export default function Hero() {
 
           <div className="absolute inset-0 bg-forest/25" aria-hidden="true" />
 
-          <div className="absolute inset-x-0 top-0 flex items-start justify-between p-[clamp(1rem,2.4vw,2rem)]">
+          <div className="absolute inset-x-0 top-[68px] flex items-start justify-between p-[clamp(1rem,2.4vw,2rem)] md:top-[80px]">
             <span className="eyebrow text-paper/80">01 — The property</span>
             <span className="eyebrow hidden text-right leading-[1.9] text-paper/70 sm:block">
               {site.latDisplay}

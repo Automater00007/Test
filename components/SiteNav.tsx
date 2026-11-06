@@ -17,10 +17,12 @@ const EASE = [0.76, 0, 0.24, 1] as const;
 export default function SiteNav() {
   const pathname = usePathname();
   const [hidden, setHidden] = useState(false);
+  const [atTop, setAtTop] = useState(true);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => {
+    setAtTop(y < 24);
     if (open) return;
     const prev = scrollY.getPrevious() ?? 0;
     if (y > prev && y > 180) setHidden(true);
@@ -29,6 +31,7 @@ export default function SiteNav() {
 
   useEffect(() => {
     setOpen(false);
+    setAtTop(window.scrollY < 24);
   }, [pathname]);
 
   useEffect(() => {
@@ -45,10 +48,22 @@ export default function SiteNav() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const isHome = pathname === "/";
+  const transparent = atTop;
+  const overHero = isHome && transparent;
+
   return (
     <>
       <motion.header
-        className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper"
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color,backdrop-filter] duration-500",
+          transparent
+            ? "border-transparent bg-transparent"
+            : "border-line bg-paper/95 backdrop-blur-md",
+          overHero
+            ? "text-paper [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]"
+            : "text-ink",
+        )}
         initial={false}
         animate={{ y: hidden ? "-101%" : "0%" }}
         transition={{ duration: 0.65, ease: EASE }}
@@ -61,7 +76,7 @@ export default function SiteNav() {
             <span className="font-display text-[1.4rem] leading-none tracking-[-0.045em] md:text-[1.6rem]">
               Jade<span className="text-clay">.</span>River
             </span>
-            <span className="eyebrow hidden pb-[2px] text-[9px] text-ink/65 lg:block">
+            <span className={cn("eyebrow hidden pb-[2px] text-[9px] lg:block", overHero ? "text-paper/65" : "text-ink/65")}>
               Resort
             </span>
           </Link>
@@ -75,7 +90,13 @@ export default function SiteNav() {
                   href={item.href}
                   className={cn(
                     "link-line font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
-                    active ? "text-walnut" : "text-ink/65 hover:text-ink",
+                    active
+                      ? overHero
+                        ? "text-clay"
+                        : "text-walnut"
+                      : overHero
+                        ? "text-paper/75 hover:text-paper"
+                        : "text-ink/65 hover:text-ink",
                   )}
                 >
                   {item.label}
@@ -101,8 +122,8 @@ export default function SiteNav() {
               aria-label="Open menu"
               aria-expanded={open}
             >
-              <span className="block h-px w-7 bg-charcoal transition-all duration-500 group-hover:w-5" />
-              <span className="block h-px w-5 bg-charcoal transition-all duration-500 group-hover:w-7" />
+              <span className={cn("block h-px w-7 transition-all duration-500 group-hover:w-5", overHero ? "bg-paper" : "bg-charcoal")} />
+              <span className={cn("block h-px w-5 transition-all duration-500 group-hover:w-7", overHero ? "bg-paper" : "bg-charcoal")} />
             </button>
           </div>
         </div>
