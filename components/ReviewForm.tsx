@@ -5,13 +5,80 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const allowed = [5, 4, 3];
 
-export default function ReviewForm() {
+type Props = {
+  /** "qr" marks submissions that came from the printed QR code. */
+  source?: "website" | "qr";
+};
+
+export default function ReviewForm({ source = "website" }: Props) {
   const [rating, setRating] = useState(5);
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
+  const [contact, setContact] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [company, setCompany] = useState("");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+
+  const reset = () => {
+    setRating(5);
+    setName("");
+    setFrom("");
+    setContact("");
+    setTitle("");
+    setBody("");
+    setCompany("");
+    setError(null);
+  };
+
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (sending) return;
+
+    setError(null);
+    setSending(true);
+
+    try {
+      const response = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          rating,
+          name,
+          from,
+          contact,
+          title,
+          body,
+          source,
+          company,
+        }),
+      });
+
+      const payload = (await response.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+
+      if (!response.ok || !payload.ok) {
+        throw new Error(
+          payload.error || "We could not save your review. Please try again.",
+        );
+      }
+
+      setSent(true);
+      reset();
+    } catch (submitError) {
+      setError(
+        submitError instanceof Error
+          ? submitError.message
+          : "We could not save your review. Please try again.",
+      );
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div id="write" className="scroll-mt-28">
@@ -29,15 +96,13 @@ export default function ReviewForm() {
               Your note is with the team for{" "}
               <em className="text-clay">moderation.</em>
             </p>
+            <p className="mt-5 max-w-sm text-[0.95rem] leading-[1.7] text-ink/70">
+              Every review is read by hand. Once approved, it will appear in the
+              guest notes on this website.
+            </p>
             <button
               type="button"
-              onClick={() => {
-                setSent(false);
-                setName("");
-                setFrom("");
-                setTitle("");
-                setBody("");
-              }}
+              onClick={() => setSent(false)}
               className="link-line mt-6 font-mono text-[10px] uppercase tracking-[0.18em]"
             >
               Leave another →
@@ -49,11 +114,9 @@ export default function ReviewForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
+            onSubmit={submit}
             className="grid gap-8"
+            noValidate
           >
             <div>
               <p className="eyebrow text-ink/65">Your rating</p>
@@ -88,6 +151,8 @@ export default function ReviewForm() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  autoComplete="name"
+                  maxLength={80}
                   className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
                   placeholder="First name and initial"
                 />
@@ -97,6 +162,8 @@ export default function ReviewForm() {
                 <input
                   value={from}
                   onChange={(e) => setFrom(e.target.value)}
+                  autoComplete="address-level2"
+                  maxLength={80}
                   className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
                   placeholder="City"
                 />
@@ -104,11 +171,11 @@ export default function ReviewForm() {
             </div>
 
             <label className="block border-b border-line pb-1 focus-within:border-clay">
-              <span className="eyebrow text-ink/65">Title</span>
+              <span className="eyebrow text-ink/65">Title (optional)</span>
               <input
-                required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                maxLength={120}
                 className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
                 placeholder="A few words"
               />
@@ -121,18 +188,62 @@ export default function ReviewForm() {
                 rows={4}
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
+                maxLength={1500}
+                minLength={10}
                 className="w-full resize-none bg-transparent py-3 outline-none placeholder:text-ink/65"
                 placeholder="What stayed with you?"
               />
             </label>
 
+            <label className="block border-b border-line pb-1 focus-within:border-clay">
+              <span className="eyebrow text-ink/65">
+                Email or phone (optional, private)
+              </span>
+              <input
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+                autoComplete="email"
+                maxLength={160}
+                className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
+                placeholder="Only if the team may contact you"
+              />
+            </label>
+
+            {/* Honeypot: invisible to people, tempting to bots. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden"
+            >
+              <label>
+                Company
+                <input
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </label>
+            </div>
+
+            {error ? (
+              <p
+                role="alert"
+                className="border border-clay/40 bg-clay/5 px-4 py-3 font-mono text-[10px] uppercase leading-[1.8] tracking-[0.14em] text-walnut"
+              >
+                {error}
+              </p>
+            ) : null}
+
             <div className="flex flex-wrap items-center gap-5">
-              <button type="submit" className="btn">
-                Submit for review
+              <button type="submit" className="btn" disabled={sending}>
+                {sending ? "Sending…" : "Submit for review"}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
+              <span className="font-mono text-[9px] uppercase leading-[1.8] tracking-[0.14em] text-ink/65">
+                Reviewed by the team before publishing
+              </span>
             </div>
           </motion.form>
         )}

@@ -14,6 +14,16 @@ export const metadata: Metadata = {
 export default async function ReviewsPage() {
   const { reviews, rating, total, mapsUrl } = await getDisplayReviews();
   const googleAttribution = Boolean(mapsUrl);
+  const averageRating =
+    rating ??
+    (reviews.length > 0
+      ? Number(
+          (
+            reviews.reduce((sum, review) => sum + review.rating, 0) /
+            reviews.length
+          ).toFixed(1),
+        )
+      : null);
 
   return (
     <>
@@ -23,17 +33,19 @@ export default async function ReviewsPage() {
           { name: "Reviews", path: "/jade-river-resort/reviews" },
         ])}
       />
-      {rating ? (
+      {averageRating && reviews.length > 0 ? (
         <JsonLd
           data={reviewListSchema({
-            rating,
+            rating: averageRating,
             count: total ?? reviews.length,
             reviews,
           })}
         />
       ) : null}
       <PageHeader
-        eyebrow={googleAttribution ? "Guest notes · Google" : "Guest notes · Moderated"}
+        eyebrow={
+          googleAttribution ? "Guest notes · Google & guests" : "Guest notes · Moderated"
+        }
         title={
           <>
             Notes left by <em className="text-clay">guests.</em>
@@ -138,7 +150,10 @@ export default async function ReviewsPage() {
               data-reveal
               style={{ ["--reveal-delay" as string]: "140ms" }}
             >
-
+              <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
+                Every submission is read by the team. Approved notes appear
+                above.
+              </p>
             </div>
           </div>
           <div className="md:col-span-7 md:col-start-6" data-reveal="zoom">

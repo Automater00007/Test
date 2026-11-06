@@ -39,3 +39,15 @@ export type SanityPost = SanityPostListItem & {
   articleType?: string;
   relatedPosts?: SanityPostListItem[] | null;
 };
+
+export type SanityReview = {
+  _id: string;
+  name?: string;
+  location?: string;
+  rating?: number;
+  title?: string;
+  body?: string;
+  dateLabel?: string;
+  submittedAt?: string;
+  publishedAt?: string;
+};

@@ -3,6 +3,7 @@ import { defineConfig } from "sanity";
 import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { PreviewDraftAction } from "./components/studio/PreviewDraftAction";
+import { ApproveReviewAction } from "./components/studio/ApproveReviewAction";
 import { dataset, projectId } from "./sanity/env";
 import { schemaTypes } from "./sanity/schemaTypes";
 
@@ -13,7 +14,37 @@ export default defineConfig({
   projectId: projectId || "unconfigured",
   dataset,
   plugins: [
-    structureTool(),
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title("Content")
+          .items([
+            S.listItem()
+              .title("Reviews — pending")
+              .child(
+                S.documentList()
+                  .title("Pending reviews")
+                  .filter('_type == "review" && status == "pending"')
+                  .defaultOrdering([
+                    { field: "submittedAt", direction: "desc" },
+                  ]),
+              ),
+            S.listItem()
+              .title("Reviews — approved")
+              .child(
+                S.documentList()
+                  .title("Approved reviews")
+                  .filter('_type == "review" && status == "approved"')
+                  .defaultOrdering([
+                    { field: "publishedAt", direction: "desc" },
+                  ]),
+              ),
+            S.divider(),
+            ...S.documentTypeListItems().filter(
+              (item) => item.getId?.() !== "review",
+            ),
+          ]),
+    }),
     presentationTool({
       title: "Preview",
       previewUrl: {
@@ -53,6 +84,10 @@ export default defineConfig({
   schema: { types: schemaTypes },
   document: {
     actions: (prev, { schemaType }) =>
-      schemaType === "post" ? [PreviewDraftAction, ...prev] : prev,
+      schemaType === "post"
+        ? [PreviewDraftAction, ...prev]
+        : schemaType === "review"
+          ? [ApproveReviewAction, ...prev]
+          : prev,
   },
 });

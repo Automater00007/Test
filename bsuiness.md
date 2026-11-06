@@ -56,8 +56,8 @@ The resort uses wooden architecture with warm amber lighting and stone pathways.
 | Elevation | 2,130 metres |
 | Total rooms | 13 (boutique property) |
 | Booking policy | Direct only — no OTAs. Booking via website contact form or WhatsApp. |
-| Phone / WhatsApp | +91 7780868926 |
-| Email | info@xogul.com |
+| Phone / WhatsApp | +91 9541898820 |
+| Email | jaderiverresort@defoy.in |
 | Address | Pahalgam, Jammu & Kashmir — 192125 |
 
 ## 3. Rooms & Suites
@@ -109,7 +109,7 @@ Every page and section should reflect these key points correctly:
 - **ID requirement:** A valid government photo ID is required at check-in. Foreign nationals need a passport and visa. PAN cards are not accepted as address or ID proof.
 - **Policy queries:** `info@defoy.in` for reservations and `accounts@defoy.in` for GST/invoices.
 
-The resort-specific contact, `info@xogul.com`, is used for direct guest and booking enquiries. The `defoy.in` addresses are group-level policy and accounts contacts. Keep these contacts distinct and use each in the correct context.
+The resort-specific contact, `jaderiverresort@defoy.in`, is used for direct guest and booking enquiries. The `defoy.in` addresses are group-level policy and accounts contacts. Keep these contacts distinct and use each in the correct context.
 
 ## 8. Brand Voice & Design Direction
 

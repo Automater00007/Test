@@ -183,7 +183,7 @@ export default function Hero() {
           Not a hotel to tick off. A place to stay longer than you planned.
         </p>
         <a
-          href="https://wa.me/917780868926"
+          href="https://wa.me/919541898820"
           className="link-line justify-self-start font-mono text-[10px] uppercase tracking-[0.2em] md:col-span-2 md:col-start-11 md:justify-self-end"
           data-reveal="fade"
           style={{ ["--reveal-delay" as string]: "160ms" }}

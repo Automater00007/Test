@@ -1,8 +1,12 @@
 import { reviews as siteReviews } from "@/lib/content";
+import { getSanityClient } from "@/sanity/lib/client";
+import { approvedReviewsQuery } from "@/sanity/lib/queries";
+import type { SanityReview } from "@/sanity/lib/types";
 
 /**
- * A single review, normalised so the same card markup can render both Google
- * reviews and the hand-written notes kept in `lib/content.ts`.
+ * A single review, normalised so the same card markup can render approved
+ * website submissions, Google reviews, and the hand-written notes kept in
+ * `lib/content.ts`.
  */
 export type Review = {
   name: string;
@@ -11,7 +15,7 @@ export type Review = {
   title?: string;
   body: string;
   date: string;
-  source: "google" | "site";
+  source: "google" | "site" | "website";
   url?: string;
   photo?: string;
 };
@@ -31,6 +35,16 @@ export type ReviewFeed = {
  * window long also keeps us far inside the free Places API quota.
  */
 const REVALIDATE_SECONDS = 60 * 60 * 24;
+
+/**
+ * Approved reviews live in Sanity. A short window means an approval shows up
+ * quickly even when the Sanity webhook is not configured; the webhook also
+ * revalidates the `reviews` tag immediately when it is.
+ */
+const SITE_REVIEWS_REVALIDATE_SECONDS = 60 * 5;
+
+/** Keep the homepage rail and reviews page to a readable number of cards. */
+const MAX_REVIEWS = 12;
 
 const EMPTY: ReviewFeed = {
   reviews: [],
@@ -134,12 +148,85 @@ export async function getGoogleReviews(): Promise<ReviewFeed> {
 }
 
 /**
- * The list the site should render: live Google reviews when we have them,
- * otherwise the curated notes shipped with the code.
+ * Formats an ISO date as the month and year shown under a review card.
+ */
+function formatMonth(value: string | undefined): string {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+
+  return new Intl.DateTimeFormat("en-GB", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+}
+
+/**
+ * Reads guest reviews that the team has approved in the Sanity Studio.
+ * Pending and rejected submissions are never returned.
+ */
+export async function getApprovedReviews(): Promise<Review[]> {
+  const client = getSanityClient();
+  if (!client) return [];
+
+  try {
+    const docs = await client.fetch<SanityReview[]>(
+      approvedReviewsQuery,
+      {},
+      {
+        next: {
+          revalidate: SITE_REVIEWS_REVALIDATE_SECONDS,
+          tags: ["reviews"],
+        },
+      },
+    );
+
+    return docs
+      .map((doc): Review | null => {
+        const body = doc.body?.trim();
+        if (!body) return null;
+
+        return {
+          name: doc.name?.trim() || "Guest",
+          from: doc.location?.trim() || "Guest",
+          rating: clampRating(doc.rating),
+          title: doc.title?.trim() || undefined,
+          body,
+          date:
+            doc.dateLabel?.trim() ||
+            formatMonth(doc.publishedAt ?? doc.submittedAt),
+          source: "website",
+        };
+      })
+      .filter((review): review is Review => review !== null);
+  } catch (error) {
+    console.warn("[reviews] Could not read approved reviews from Sanity.", error);
+    return [];
+  }
+}
+
+/**
+ * The list the site should render: approved guest submissions first, then live
+ * Google reviews. When neither exists, the curated notes shipped with the code
+ * keep the section populated.
  */
 export async function getDisplayReviews(): Promise<ReviewFeed> {
-  const google = await getGoogleReviews();
-  if (google.reviews.length > 0) return google;
+  const [google, approved] = await Promise.all([
+    getGoogleReviews(),
+    getApprovedReviews(),
+  ]);
+
+  const combined = [...approved, ...google.reviews];
+
+  if (combined.length > 0) {
+    return {
+      reviews: combined.slice(0, MAX_REVIEWS),
+      rating: google.rating,
+      total: google.total,
+      mapsUrl: google.mapsUrl,
+    };
+  }
 
   return {
     reviews: siteReviews.map((review) => ({

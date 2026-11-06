@@ -73,3 +73,26 @@ export const allSlugsQuery = groq`
   *[_type == "post" && !(_id in path("drafts.**")) && defined(slug.current)]
   { "slug": slug.current }
 `;
+
+/**
+ * Approved guest reviews only. Pending and rejected submissions stay in the
+ * Studio and never reach the public website.
+ */
+export const approvedReviewsQuery = groq`
+  *[
+    _type == "review" &&
+    status == "approved" &&
+    !(_id in path("drafts.**"))
+  ]
+  | order(coalesce(publishedAt, submittedAt, _createdAt) desc) {
+    _id,
+    name,
+    location,
+    rating,
+    title,
+    body,
+    dateLabel,
+    submittedAt,
+    publishedAt
+  }
+`;

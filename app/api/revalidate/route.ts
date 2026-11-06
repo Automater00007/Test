@@ -32,6 +32,15 @@ export async function POST(request: NextRequest) {
       revalidatePath(`/post/${body.slug.current}`);
     }
 
+    // Guest reviews: approving a review in the Studio should update the site
+    // immediately instead of waiting for the short fetch window.
+    if (body?._type === "review") {
+      revalidateTag("reviews");
+      revalidatePath("/reviews");
+      revalidatePath("/review");
+      revalidatePath("/");
+    }
+
     return Response.json({ revalidated: true, now: Date.now() });
   } catch (error) {
     return new Response(

@@ -18,6 +18,9 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const isStudio = pathname?.startsWith("/studio") ?? false;
   const isHome = pathname === "/" || pathname === null;
+  // The QR review page is opened from a phone at the table. Skip the cinematic
+  // intro so the form is usable immediately.
+  const isQuickReview = pathname === "/review";
 
   if (isStudio) {
     return (
@@ -31,7 +34,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
     <>
       <SmoothScroll />
       <RevealObserver />
-      <SignatureIntro />
+      {!isQuickReview && <SignatureIntro />}
 
       <SiteNav />
       <main id="main">{children}</main>

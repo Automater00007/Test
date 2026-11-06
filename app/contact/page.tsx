@@ -8,7 +8,7 @@ import { JsonLd, breadcrumb } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Contact & Direct Booking",
   description:
-    "Reserve directly with Jade River Resort, Pahalgam. Choose a room, add dates and guests, and send a pre-filled WhatsApp message to +91 7780868926. No OTAs.",
+    "Reserve directly with Jade River Resort, Pahalgam. Choose a room, add dates and guests, and send a pre-filled WhatsApp message to +91 9541898820. No OTAs.",
   alternates: { canonical: "/jade-river-resort/contact" },
 };
 

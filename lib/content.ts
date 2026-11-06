@@ -4,10 +4,10 @@ export const site = {
   tagline: "Life, Slowed by the River.",
   description:
     "A thirteen-room luxury boutique resort on the banks of the Lidder River in Pahalgam, Kashmir. Wooden architecture, pine forest, and water at 2,130 metres.",
-  phone: "+91 7780868926",
-  phoneHref: "tel:+917780868926",
-  whatsapp: "917780868926",
-  email: "hello@jaderiverresort.example",
+  phone: "+91 9541898820",
+  phoneHref: "tel:+919541898820",
+  whatsapp: "919541898820",
+  email: "jaderiverresort@defoy.in",
   address: "Pahalgam, Jammu & Kashmir — 192125",
   coords: "33.882774, 75.271524",
   lat: 33.882774,
@@ -350,7 +350,7 @@ export const faqs = [
   },
   {
     q: "How do I book a stay?",
-    a: "Bookings are direct only — Jade River Resort does not use MakeMyTrip, Booking.com, or any other OTA. Use the contact page to build a WhatsApp message with your room, dates, and guest count, or message +91 7780868926 directly.",
+    a: "Bookings are direct only — Jade River Resort does not use MakeMyTrip, Booking.com, or any other OTA. Use the contact page to build a WhatsApp message with your room, dates, and guest count, or message +91 9541898820 directly.",
   },
   {
     q: "What is the cancellation policy?",
@@ -378,11 +378,11 @@ export const faqs = [
   },
   {
     q: "Are pets allowed?",
-    a: "Please contact the resort directly about pets before booking so the team can confirm what is possible for your dates. Call or message +91 7780868926.",
+    a: "Please contact the resort directly about pets before booking so the team can confirm what is possible for your dates. Call or message +91 9541898820.",
   },
   {
     q: "Who do I contact for invoices or policy queries?",
-    a: "For group reservations, policy questions, GST, and invoices, email hello@jaderiverresort.example or message +91 7780868926. The address is a placeholder until the resort's live email is confirmed.",
+    a: "For group reservations, policy questions, GST, and invoices, email jaderiverresort@defoy.in or message +91 9541898820. The address is a placeholder until the resort's live email is confirmed.",
   },
 ];
 

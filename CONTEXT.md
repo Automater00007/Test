@@ -34,7 +34,7 @@ Rules: **no gradients**; every dark surface must be Forest Green (a deeper fores
 - 13 rooms: 9 Premium Balcony Rooms, 2 Executive Suites, 2 Executive Duplex Family Rooms.
 - Rates: ₹6,000 / ₹8,000 / ₹13,000 per night.
 - Direct bookings only; no MakeMyTrip, Booking.com, or other OTAs.
-- Phone / WhatsApp: +91 7780868926.
+- Phone / WhatsApp: +91 9541898820.
 - Coordinates: 33.882774, 75.271524.
 - Elevation: 2,130 m.
 - Address: Pahalgam, Jammu & Kashmir — 192125.
@@ -122,12 +122,19 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `app/studio/[[...tool]]/` — lazy-loaded Sanity Studio with an unconfigured-state notice.
 - `app/api/draft/route.ts` — enables Next.js draft mode.
 - `app/api/disable-draft/route.ts` — disables draft mode.
-- `app/api/revalidate/route.ts` — Sanity webhook → `revalidateTag("post")`.
-- `sanity.config.ts` — Studio config (`basePath: /studio`) with the Presentation preview tool and the post-only `Preview draft` document action.
+- `app/api/revalidate/route.ts` — Sanity webhook → `revalidateTag("post")`; also clears the `reviews` tag for review documents.
+- `app/api/reviews/route.ts` — validates a guest review, rate-limits by IP, and creates a Sanity `review` with `status: "pending"` using a server-only write token.
+- `app/review/page.tsx` — focused QR landing page (no intro overlay) with the review form.
+- `components/ReviewForm.tsx` — shared client form on `/review` and `/reviews#write`; posts to `/api/reviews`, shows validation errors and the pending-moderation state.
+- `sanity/schemaTypes/review.ts` — guest review document with rating, body, guest details, private contact, source, status, and moderation fields.
+- `components/studio/ApproveReviewAction.tsx` — one-click **Approve for website** / **Remove from website** document action.
+- `scripts/generate-review-qr.mjs` — writes the print-ready review QR to `public/qr/`.
+- `public/qr/` — generated `review.png` (1200 px) and `review.svg`.
+- `sanity.config.ts` — Studio config (`basePath: /studio`) with the Presentation preview tool, pending/approved review lists, and the post/review document actions.
 - `components/studio/PreviewDraftAction.tsx` — document action that opens the current post in the Presentation preview (drafts included).
 - `components/studio/HtmlInput.tsx` — custom input for the Custom HTML block's `html` field; saves on blur only, preventing per-keystroke autosave.
 - `scripts/patch-sanity.mjs` — postinstall patch for sanity's `useDocumentForm` (PR #13924 guard) so Portable Text block edit dialogs don't collapse while typing.
-- `sanity/schemaTypes/` — post, author, category, blockContent, custom blocks.
+- `sanity/schemaTypes/` — post, review, author, category, blockContent, custom blocks.
 - `sanity/lib/` — client factory, GROQ queries, image builder, types.
 - `sanity/env.ts` — env access and `sanityConfigured` flag.
 - `scripts/seed-sanity.mjs` — seeds the author, categories, images, and posts (`npm run seed`).
@@ -137,7 +144,7 @@ All previous addresses were removed. The site currently uses **`hello@jaderiverr
 - `components/BookingForm.tsx` — WhatsApp direct-booking form.
 - `components/providers/SmoothScroll.tsx` — Lenis setup.
 - `components/providers/RevealObserver.tsx` — IntersectionObserver reveals.
-- `public/images/jade/` — 40 optimized WebP resort photographs used across the site (hero, rooms, experiences, gallery, and posts).
+- `public/images/jade/` — 24 optimized WebP resort photographs used across the site (12 gallery, 7 room, 5 experience).
 - `public/video/` — drop `hero.mp4` / `hero.webm` here (see README).
 
 ## Sanity setup (connected)
@@ -155,8 +162,10 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2025-02-19
 SANITY_API_TOKEN=
+SANITY_WRITE_TOKEN=
 SANITY_PREVIEW_SECRET=
 SANITY_REVALIDATE_SECRET=
+NEXT_PUBLIC_SITE_URL=
 ```
 
 Preview flow: open **Preview** in the Studio → Presentation resolves the post to `/post/<slug>` → `/api/draft` validates Sanity’s preview secret and enables draft mode. The post editor also has a **Preview draft** action that jumps straight to the current post in Presentation. Manual fallback: `/api/draft?slug=<slug>&secret=<SANITY_PREVIEW_SECRET>` → `/post/<slug>`; `/api/disable-draft` exits.
@@ -174,6 +183,24 @@ GOOGLE_PLACES_API_KEY=
 GOOGLE_PLACE_ID=
 ```
 Add both to `.env.local` and to Vercel (they are build-time for the static/ISR pages).
+
+## Guest review flow (QR → moderation → website)
+1. A guest scans the QR code (`public/qr/review.png`) and lands on `/review`.
+2. The form (`components/ReviewForm.tsx`) POSTs to `/api/reviews`.
+3. The API validates the submission, rate-limits by IP, and creates a Sanity `review` document with `status: "pending"` using a server-only write token. The private contact field is stored but never rendered.
+4. In the Studio, open **Content → Reviews — pending** (or the document itself) and use **Approve for website**. The action sets `status: "approved"` and `publishedAt`; **Remove from website** sends it back to pending.
+5. Only published documents with `status == "approved"` are queried. Pending and rejected reviews never reach the public site.
+6. `/reviews` and the homepage carousel merge approved website reviews with Google reviews, newest first. The curated notes in `lib/content.ts` are used only when neither source returns anything.
+
+Caching: the approved-review query uses `revalidate: 300` with the `reviews` tag, so an approval appears within five minutes even without a webhook. The existing `/api/revalidate` route also clears the `reviews` tag and `/reviews`, `/review`, and `/` when a review document is sent to it; extend the Sanity webhook filter to include `_type == "review"` for instant updates.
+
+QR: `npm run review-qr` writes `public/qr/review.png` and `public/qr/review.svg`. It uses `NEXT_PUBLIC_SITE_URL` by default and accepts an explicit base URL:
+```
+npm run review-qr -- https://your-final-domain.com
+```
+Regenerate the QR whenever the production domain changes. The default currently points at `https://test-kappa-lovat-59.vercel.app/review`.
+
+Write access: `SANITY_WRITE_TOKEN` is preferred; it falls back to `SANITY_API_TOKEN`, which must have Editor/Developer permission. Never expose either token with `NEXT_PUBLIC_`.
 
 ## YouTube requirements (deferred)
 Skipped for now at the owner's request. When revisited:
@@ -200,4 +227,4 @@ Drop the real film at `public/video/hero.mp4` and/or `public/video/hero.webm`. U
 ## Known gaps
 - The hero video is still the placeholder film; the real property film is pending.
 - Sanity credentials live in `.env.local`; the deployed `/api/revalidate` endpoint already has the matching secret. Confirm the public project ID/dataset and read token are also set in Vercel for the deployed Studio.
-- Reviews shown are sample copy until `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` are set; then live Google reviews replace them automatically.
+- Approved website reviews appear after moderation; Google reviews stay on the curated fallback until `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` are set. The QR code currently targets the test deployment; regenerate it for the final domain.

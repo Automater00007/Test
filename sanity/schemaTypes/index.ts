@@ -6,9 +6,11 @@ import { htmlBlock } from "./blocks/htmlBlock";
 import { tableBlock } from "./blocks/tableBlock";
 import { category } from "./category";
 import { post } from "./post";
+import { review } from "./review";
 
 export const schemaTypes = [
   post,
+  review,
   author,
   category,
   blockContent,

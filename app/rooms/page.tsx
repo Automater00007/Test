@@ -56,7 +56,7 @@ export default function RoomsPage() {
               Reserve directly
             </Link>
             <a
-              href="https://wa.me/917780868926"
+              href="https://wa.me/919541898820"
               className="link-line self-center font-mono text-[10px] uppercase tracking-[0.2em] text-paper/70"
             >
               WhatsApp us →
