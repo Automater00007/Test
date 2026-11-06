@@ -89,6 +89,7 @@ Status legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 - [ ] Revisit when the owner is ready. The blog is the current priority.
 
 ## 9. Content & assets
+- [x] Add Google Places reviews (24h cache, static fallback, Google attribution, review JSON-LD). **(`lib/googleReviews.ts`, `npm run place-id`; needs `GOOGLE_PLACES_API_KEY` + `GOOGLE_PLACE_ID`.)**
 - [x] Replace Unsplash placeholders with real resort photography. **(40 optimized WebP images added under `public/images/jade/`; hero, rooms, experiences, gallery, and posts now use them.)**
 - [ ] Replace placeholder hero video with the real property film.
 - [ ] Confirm final room descriptions, policies, and reviews.

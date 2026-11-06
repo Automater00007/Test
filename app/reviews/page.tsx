@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import ReviewForm from "@/components/ReviewForm";
-import { reviews } from "@/lib/content";
-import { JsonLd, breadcrumb } from "@/lib/schema";
+import { getDisplayReviews } from "@/lib/googleReviews";
+import { JsonLd, breadcrumb, reviewListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Guest Reviews",
@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/jade-river-resort/reviews" },
 };
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
+  const { reviews, rating, total, mapsUrl } = await getDisplayReviews();
+  const googleAttribution = Boolean(mapsUrl);
+
   return (
     <>
       <JsonLd
@@ -20,8 +23,17 @@ export default function ReviewsPage() {
           { name: "Reviews", path: "/jade-river-resort/reviews" },
         ])}
       />
+      {rating ? (
+        <JsonLd
+          data={reviewListSchema({
+            rating,
+            count: total ?? reviews.length,
+            reviews,
+          })}
+        />
+      ) : null}
       <PageHeader
-        eyebrow="Guest notes · Moderated"
+        eyebrow={googleAttribution ? "Guest notes · Google" : "Guest notes · Moderated"}
         title={
           <>
             Notes left by <em className="text-clay">guests.</em>
@@ -41,10 +53,28 @@ export default function ReviewsPage() {
       />
 
       <section className="shell pb-20">
+        {googleAttribution ? (
+          <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65">
+              {rating
+                ? `${rating.toFixed(1)} ★ from ${total ?? reviews.length} Google reviews`
+                : "Reviews from Google"}
+            </p>
+            <a
+              href={mapsUrl ?? undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-line font-mono text-[10px] uppercase tracking-[0.18em]"
+            >
+              Read on Google ↗
+            </a>
+          </div>
+        ) : null}
+
         <div className="grid gap-x-6 gap-y-10 md:grid-cols-3">
           {reviews.map((review, i) => (
             <article
-              key={review.name}
+              key={`${review.name}-${i}`}
               className={`group border-t border-line pt-6 ${
                 i === 0 || i === 3 ? "md:col-span-2 md:grid md:grid-cols-2 md:gap-6" : ""
               }`}
@@ -64,12 +94,18 @@ export default function ReviewsPage() {
                     {review.date}
                   </span>
                 </div>
-                <h2 className="mt-5 font-display text-[clamp(1.5rem,2.2vw,2.1rem)] leading-[1.05] tracking-[-0.03em] transition-colors duration-500 group-hover:text-clay">
-                  {review.title}
-                </h2>
+                {review.title ? (
+                  <h2 className="mt-5 font-display text-[clamp(1.5rem,2.2vw,2.1rem)] leading-[1.05] tracking-[-0.03em] transition-colors duration-500 group-hover:text-clay">
+                    {review.title}
+                  </h2>
+                ) : null}
               </div>
               <div>
-                <p className="mt-4 text-[0.96rem] leading-[1.75] text-ink/70">
+                <p
+                  className={`${
+                    review.title ? "mt-4" : "mt-0"
+                  } text-[0.96rem] leading-[1.75] text-ink/70`}
+                >
                   {review.body}
                 </p>
                 <div className="mt-6 flex items-center justify-between border-t border-line pt-4">

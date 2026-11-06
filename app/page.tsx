@@ -8,8 +8,11 @@ import LocationSection from "@/components/home/LocationSection";
 import GuestNotes from "@/components/home/GuestNotes";
 import BlogTeaser from "@/components/home/BlogTeaser";
 import ClosingCTA from "@/components/home/ClosingCTA";
+import { getDisplayReviews } from "@/lib/googleReviews";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { reviews, mapsUrl } = await getDisplayReviews();
+
   return (
     <>
       <Hero />
@@ -19,7 +22,7 @@ export default function HomePage() {
       <GalleryMarquee />
       {/* <FilmSection /> */}
       <LocationSection />
-      <GuestNotes />
+      <GuestNotes reviews={reviews} googleMapsUrl={mapsUrl} />
       <BlogTeaser />
       <ClosingCTA />
     </>

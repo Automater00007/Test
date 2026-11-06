@@ -2,10 +2,17 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { reviews, stats } from "@/lib/content";
+import { stats } from "@/lib/content";
+import type { Review } from "@/lib/googleReviews";
 import CountUp from "@/components/ui/CountUp";
 
-export default function GuestNotes() {
+export default function GuestNotes({
+  reviews,
+  googleMapsUrl,
+}: {
+  reviews: Review[];
+  googleMapsUrl?: string | null;
+}) {
   const rail = useRef<HTMLDivElement>(null);
 
   const nudge = (dir: 1 | -1) => {
@@ -95,10 +102,18 @@ export default function GuestNotes() {
                 {review.date}
               </span>
             </div>
-            <h3 className="mt-6 font-display text-[1.45rem] leading-[1.1] tracking-[-0.03em] transition-colors duration-500 group-hover:text-clay">
-              {review.title}
-            </h3>
-            <p className="mt-4 text-[0.93rem] leading-[1.7] text-ink/70">{review.body}</p>
+            {review.title ? (
+              <h3 className="mt-6 font-display text-[1.45rem] leading-[1.1] tracking-[-0.03em] transition-colors duration-500 group-hover:text-clay">
+                {review.title}
+              </h3>
+            ) : null}
+            <p
+              className={`${
+                review.title ? "mt-4" : "mt-6"
+              } text-[0.93rem] leading-[1.7] text-ink/70`}
+            >
+              {review.body}
+            </p>
             <div className="mt-8 flex items-center justify-between border-t border-line pt-4">
               <p className="text-[0.9rem]">{review.name}</p>
               <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
@@ -116,7 +131,17 @@ export default function GuestNotes() {
           Reviews are moderated. Only 3, 4 and 5 star submissions are accepted, so
           what you read comes from real guests.
         </p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap items-center gap-6">
+          {googleMapsUrl ? (
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-line font-mono text-[10px] uppercase tracking-[0.2em]"
+            >
+              Reviews from Google ↗
+            </a>
+          ) : null}
           <Link href="/reviews" className="link-line font-mono text-[10px] uppercase tracking-[0.2em]">
             All reviews
           </Link>

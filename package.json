@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "node --env-file=.env.local scripts/seed-sanity.mjs",
+    "place-id": "node --env-file=.env.local scripts/find-place-id.mjs",
     "postinstall": "node scripts/patch-sanity.mjs"
   },
   "dependencies": {

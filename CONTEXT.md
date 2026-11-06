@@ -163,6 +163,18 @@ Preview flow: open **Preview** in the Studio → Presentation resolves the post 
 
 Editing model: Sanity auto-saves changes as a private draft; it has no manual **Save** button and the autosave cannot be disabled without switching off drafts entirely. **Publish** copies the draft to the live document (and triggers the webhook), **Discard changes** deletes the draft, and `Ctrl/⌘+S` shows the “Your work is automatically saved!” notice.
 
+## Google reviews
+`/reviews` and the homepage carousel read live reviews from the Google Places API (New) through `lib/googleReviews.ts`. The request asks for `reviews,rating,userRatingCount,googleMapsUri` and is cached for **24 hours** (`next.revalidate`, tag `google-reviews`), which keeps usage well inside the free tier. When the two env vars below are missing, or the request fails, the site silently falls back to the curated notes in `lib/content.ts`, so the pages never break.
+
+Attribution is shown on both surfaces (“Reviews from Google ↗” linking to the place on Google Maps). `/reviews` also emits `AggregateRating`/`Review` JSON-LD when Google returns a rating.
+
+Setup: enable **Places API (New)** in a Google Cloud project, link billing (the $200/month credit covers this site), create a server-side API key restricted to that API, find the Place ID with `npm run place-id`, then set:
+```
+GOOGLE_PLACES_API_KEY=
+GOOGLE_PLACE_ID=
+```
+Add both to `.env.local` and to Vercel (they are build-time for the static/ISR pages).
+
 ## YouTube requirements (deferred)
 Skipped for now at the owner's request. When revisited:
 ```
@@ -183,4 +195,4 @@ Drop the real film at `public/video/hero.mp4` and/or `public/video/hero.webm`. U
 ## Known gaps
 - The hero video is still the placeholder film; the real property film is pending.
 - Sanity credentials live in `.env.local`; the deployed `/api/revalidate` endpoint already has the matching secret. Confirm the public project ID/dataset and read token are also set in Vercel for the deployed Studio.
-- Reviews shown are sample copy, not verified guest submissions.
+- Reviews shown are sample copy until `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` are set; then live Google reviews replace them automatically.
