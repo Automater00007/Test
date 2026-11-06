@@ -5,7 +5,7 @@ import ReviewForm from "@/components/ReviewForm";
 export const metadata: Metadata = {
   title: "Leave a review",
   description:
-    "Tell Jade River Resort about your stay. Reviews are read by the team and published after approval.",
+    "Tell Jade River Resort about your stay.",
   alternates: { canonical: "/review" },
   robots: { index: false, follow: false },
 };

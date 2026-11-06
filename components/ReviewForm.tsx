@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { error } from "console";
 
 const allowed = [1, 2, 3, 4, 5];
 

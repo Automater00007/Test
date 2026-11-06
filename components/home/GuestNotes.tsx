@@ -86,42 +86,59 @@ export default function GuestNotes({
         ref={rail}
         className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[clamp(1.15rem,4.2vw,5rem)] pb-4"
       >
-        {reviews.map((review, i) => (
-          <article
-            key={review.name}
-            className="group w-[min(84vw,360px)] shrink-0 snap-start border border-line bg-paper p-6 text-ink transition-colors duration-500 hover:border-ink/40"
-            data-reveal="zoom"
-            style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[13px] tracking-[0.18em] text-clay" aria-label={`${review.rating} out of 5 stars`}>
-                {"★".repeat(review.rating)}
-                <span className="text-ink/15">{"★".repeat(5 - review.rating)}</span>
-              </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
-                {review.date}
-              </span>
-            </div>
-            {review.title ? (
-              <h3 className="mt-6 font-display text-[1.45rem] leading-[1.1] tracking-[-0.03em] transition-colors duration-500 group-hover:text-clay">
-                {review.title}
-              </h3>
-            ) : null}
-            <p
-              className={`${
-                review.title ? "mt-4" : "mt-6"
-              } text-[0.93rem] leading-[1.7] text-ink/70`}
-            >
-              {review.body}
+        {reviews.length === 0 ? (
+          <article className="w-[min(84vw,420px)] shrink-0 border border-line bg-paper p-6 text-ink">
+            <p className="font-display text-[1.6rem] leading-[1.1]">
+              No guest notes yet.
             </p>
-            <div className="mt-8 flex items-center justify-between border-t border-line pt-4">
-              <p className="text-[0.9rem]">{review.name}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
-                {review.from}
-              </p>
-            </div>
+            <p className="mt-4 text-[0.93rem] leading-[1.7] text-ink/70">
+              Be the first to share your stay.
+            </p>
+            <Link
+              href="/reviews#write"
+              className="link-line mt-6 inline-block font-mono text-[10px] uppercase tracking-[0.18em]"
+            >
+              Leave a note →
+            </Link>
           </article>
-        ))}
+        ) : (
+          reviews.map((review, i) => (
+            <article
+              key={review.name}
+              className="group w-[min(84vw,360px)] shrink-0 snap-start border border-line bg-paper p-6 text-ink transition-colors duration-500 hover:border-ink/40"
+              data-reveal="zoom"
+              style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[13px] tracking-[0.18em] text-clay" aria-label={`${review.rating} out of 5 stars`}>
+                  {"★".repeat(review.rating)}
+                  <span className="text-ink/15">{"★".repeat(5 - review.rating)}</span>
+                </span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
+                  {review.date}
+                </span>
+              </div>
+              {review.title ? (
+                <h3 className="mt-6 font-display text-[1.45rem] leading-[1.1] tracking-[-0.03em] transition-colors duration-500 group-hover:text-clay">
+                  {review.title}
+                </h3>
+              ) : null}
+              <p
+                className={`${
+                  review.title ? "mt-4" : "mt-6"
+                } text-[0.93rem] leading-[1.7] text-ink/70`}
+              >
+                {review.body}
+              </p>
+              <div className="mt-8 flex items-center justify-between border-t border-line pt-4">
+                <p className="text-[0.9rem]">{review.name}</p>
+                <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
+                  {review.from}
+                </p>
+              </div>
+            </article>
+          ))
+        )}
       </div>
 
       <div className="shell mt-8 flex flex-wrap items-center justify-between gap-4" data-reveal="fade">

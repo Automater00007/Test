@@ -278,62 +278,15 @@ export const posts = [
   },
 ];
 
-export const reviews = [
-  {
-    name: "Aarav M.",
-    from: "Mumbai",
-    rating: 5,
-    title: "We stayed an extra night",
-    body:
-      "The balcony faced the water and we did almost nothing for three days. Staff remembered how we take our tea by day two. That is the whole review.",
-    date: "August 2025",
-  },
-  {
-    name: "Sana & Rehan",
-    from: "Delhi",
-    rating: 5,
-    title: "Our honeymoon, quietly perfect",
-    body:
-      "The suite was warm and beautifully done. Bonfire by the river on the second night. No fuss, no performance — just a genuinely lovely stay.",
-    date: "July 2025",
-  },
-  {
-    name: "Priya K.",
-    from: "Bangalore",
-    rating: 4,
-    title: "Exactly the reset I needed",
-    body:
-      "Pine forest behind, stream in front. I walked every morning and read every afternoon. Wi-Fi was strong enough to ignore work entirely.",
-    date: "June 2025",
-  },
-  {
-    name: "The Sharma family",
-    from: "Chandigarh",
-    rating: 5,
-    title: "The duplex saved our holiday",
-    body:
-      "Two floors meant the kids had their own space and we had ours. Big lawn, safe property, and the team were wonderful with the children.",
-    date: "May 2025",
-  },
-  {
-    name: "Daniel R.",
-    from: "London",
-    rating: 5,
-    title: "A different kind of Kashmir",
-    body:
-      "I came for the photography and left with a hundred photographs of the same river. The wooden architecture is beautiful in the early light.",
-    date: "April 2025",
-  },
-  {
-    name: "Meher J.",
-    from: "Pune",
-    rating: 5,
-    title: "Thirteen rooms, thirteen reasons",
-    body:
-      "You feel the smallness of it in the best way. Nothing is a queue, nothing is a process. Breakfast arrives when you do.",
-    date: "March 2025",
-  },
-];
+export const reviews: {
+  name: string;
+  from: string;
+  rating: number;
+  title?: string;
+  body: string;
+  date: string;
+}[] = [];
+
 
 export const faqs = [
   {
@@ -382,7 +335,7 @@ export const faqs = [
   },
   {
     q: "Who do I contact for invoices or policy queries?",
-    a: "For group reservations, policy questions, GST, and invoices, email jaderiverresort@defoy.in or message +91 9541898820. The address is a placeholder until the resort's live email is confirmed.",
+    a: "For group reservations, policy questions, GST, and invoices, email jaderiverresort@defoy.in or message +91 9541898820.",
   },
 ];
 
