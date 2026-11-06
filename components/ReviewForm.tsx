@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const allowed = [5, 4, 3];
+const allowed = [5, 4, 3, 2, 1];
 
 type Props = {
   /** "qr" marks submissions that came from the printed QR code. */
@@ -14,8 +14,6 @@ export default function ReviewForm({ source = "website" }: Props) {
   const [rating, setRating] = useState(5);
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
-  const [contact, setContact] = useState("");
-  const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [company, setCompany] = useState("");
   const [sending, setSending] = useState(false);
@@ -26,8 +24,6 @@ export default function ReviewForm({ source = "website" }: Props) {
     setRating(5);
     setName("");
     setFrom("");
-    setContact("");
-    setTitle("");
     setBody("");
     setCompany("");
     setError(null);
@@ -48,8 +44,6 @@ export default function ReviewForm({ source = "website" }: Props) {
           rating,
           name,
           from,
-          contact,
-          title,
           body,
           source,
           company,
@@ -93,8 +87,7 @@ export default function ReviewForm({ source = "website" }: Props) {
           >
             <span className="eyebrow text-ink/65">Thank you</span>
             <p className="mt-4 font-display text-[clamp(1.8rem,3vw,2.8rem)] leading-[1.05]">
-              Your note is with the team for{" "}
-              <em className="text-clay">moderation.</em>
+              Your note has been <em className="text-clay">received.</em>
             </p>
             <button
               type="button"
@@ -134,9 +127,6 @@ export default function ReviewForm({ source = "website" }: Props) {
                     ★
                   </button>
                 ))}
-                <span className="self-center pl-3 font-mono text-[9px] uppercase tracking-[0.14em] text-ink/65">
-                  {rating} / 5 · 3–5 only
-                </span>
               </div>
             </div>
 
@@ -165,17 +155,6 @@ export default function ReviewForm({ source = "website" }: Props) {
                 />
               </label>
             </div>
-{/* 
-            <label className="block border-b border-line pb-1 focus-within:border-clay">
-              <span className="eyebrow text-ink/65">Title (optional)</span>
-              <input
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                maxLength={120}
-                className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
-                placeholder="A few words"
-              />
-            </label> */}
 
             <label className="block border-b border-line pb-1 focus-within:border-clay">
               <span className="eyebrow text-ink/65">Your note</span>
@@ -190,20 +169,6 @@ export default function ReviewForm({ source = "website" }: Props) {
                 placeholder="What stayed with you?"
               />
             </label>
-
-            {/* <label className="block border-b border-line pb-1 focus-within:border-clay">
-              <span className="eyebrow text-ink/65">
-                Email or phone (optional, private)
-              </span>
-              <input
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
-                autoComplete="email"
-                maxLength={160}
-                className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
-                placeholder="Only if the team may contact you"
-              />
-            </label> */}
 
             {/* Honeypot: invisible to people, tempting to bots. */}
             <div
@@ -237,9 +202,6 @@ export default function ReviewForm({ source = "website" }: Props) {
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
-              {/* <span className="font-mono text-[9px] uppercase leading-[1.8] tracking-[0.14em] text-ink/65">
-                Reviewed by the team before publishing
-              </span> */}
             </div>
           </motion.form>
         )}

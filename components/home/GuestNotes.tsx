@@ -128,8 +128,7 @@ export default function GuestNotes({
         <p
           className="max-w-md font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-paper/65"
         >
-          Reviews are moderated. Only 3, 4 and 5 star submissions are accepted, so
-          what you read comes from real guests.
+          Notes left by guests who stayed with us.
         </p>
         <div className="flex flex-wrap items-center gap-6">
           {googleMapsUrl ? (

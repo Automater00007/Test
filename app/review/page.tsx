@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ReviewForm from "@/components/ReviewForm";
-import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Leave a review",
@@ -31,33 +30,8 @@ export default function ReviewPage() {
             style={{ ["--reveal-delay" as string]: "80ms" }}
           >
             A sentence about the room, the river, or the morning tea is more
-            useful than a paragraph of adjectives. Every note is read by the
-            team before it appears on the website.
+            useful than a paragraph of adjectives.
           </p>
-
-          <dl
-            className="mt-10 max-w-sm space-y-2.5 border-t border-line pt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/65"
-            data-reveal
-            style={{ ["--reveal-delay" as string]: "140ms" }}
-          >
-            <div className="flex justify-between gap-6 border-b border-line pb-2">
-              <dt>Place</dt>
-              <dd className="text-ink">Pahalgam, Kashmir</dd>
-            </div>
-            <div className="flex justify-between gap-6 border-b border-line pb-2">
-              <dt>Elevation</dt>
-              <dd className="text-ink">{site.elevation}</dd>
-            </div>
-            <div className="flex justify-between gap-6 border-b border-line pb-2">
-              <dt>Rooms</dt>
-              <dd className="text-ink">{site.roomsTotal}</dd>
-            </div>
-          </dl>
-
-          {/* <p className="mt-8 font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
-            Reviews are moderated. Only approved submissions appear on the
-            site.
-          </p> */}
 
           <Link
             href="/reviews"

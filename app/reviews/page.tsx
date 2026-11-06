@@ -145,16 +145,6 @@ export default async function ReviewsPage() {
               A sentence about the room, the river, or the morning tea is more useful
               than a paragraph of adjectives.
             </p>
-            <div
-              className="mt-8 border-t border-line pt-5"
-              data-reveal
-              style={{ ["--reveal-delay" as string]: "140ms" }}
-            >
-              <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
-                Every submission is read by the team. Approved notes appear
-                above.
-              </p>
-            </div>
           </div>
           <div className="md:col-span-7 md:col-start-6" data-reveal="zoom">
             <ReviewForm />

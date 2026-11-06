@@ -59,8 +59,8 @@ function validate(input: Submission): { data: CleanSubmission } | { error: strin
     return { error: "Please add your name." };
   }
 
-  if (!Number.isInteger(rating) || rating < 3 || rating > 5) {
-    return { error: "Please choose a rating between 3 and 5 stars." };
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    return { error: "Please choose a rating between 1 and 5 stars." };
   }
 
   if (body.length < 10) {
