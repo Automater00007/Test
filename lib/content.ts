@@ -77,9 +77,10 @@ export const rooms: Room[] = [
     image: jade("room-premium-1"),
     gallery: [
       jade("room-premium-1"),
-      jade("gallery-01"),
-      jade("gallery-04"),
+      jade("room-premium-2"),
+      jade("room-premium-3"),
       jade("room-premium-4"),
+      jade("room-premium-5"),
     ],
     amenities: [
       "Private balcony",
@@ -101,12 +102,14 @@ export const rooms: Room[] = [
       "More room to do nothing. A wide living space, a king bed, and a bathroom built for long baths.",
     long:
       "Two suites, each with a generous living room and a deep, quiet bedroom. Built for anniversaries, honeymoons, and the kind of trip where the plan is no plan at all. Premium interiors, a king bed, and a luxury bathroom.",
-    image: jade("gallery-06"),
+    image: jade("room-suite-1"),
     gallery: [
-      jade("gallery-06"),
+      jade("room-suite-1"),
       jade("room-suite-2"),
-      jade("gallery-08"),
+      jade("room-suite-3"),
       jade("room-suite-4"),
+      jade("room-suite-5"),
+      jade("room-suite-6"),
     ],
     amenities: [
       "Separate living space",
@@ -128,12 +131,14 @@ export const rooms: Room[] = [
       "Two levels. The children take the upper floor, and you take the quiet one.",
     long:
       "A two-level duplex designed for families who want to be together and also, occasionally, not. Children get their own floor, the lawn is a short walk away, and the river is the soundtrack to both.",
-    image: jade("gallery-02"),
+    image: jade("room-duplex-1"),
     gallery: [
-      jade("gallery-02"),
+      jade("room-duplex-1"),
       jade("room-duplex-2"),
       jade("room-duplex-3"),
       jade("room-duplex-4"),
+      jade("room-duplex-5"),
+      jade("room-duplex-6"),
     ],
     amenities: [
       "Two-level duplex layout",

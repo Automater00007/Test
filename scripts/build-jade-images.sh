@@ -32,13 +32,25 @@ convert_one "$G/Jade River River by Defoy - Best Riverside Resort in Pahalgam 6.
 convert_one "$G/Refined resort lounge with Persian rug (1).jpg" "gallery-12"
 
 # --- Rooms -----------------------------------------------------------------
-convert_one "$G/Warm resort bedroom with snowy views.jpg" "room-premium-1"
-convert_one "$G/Warmly Inviting Resort Bathroom Vanity.jpg" "room-premium-4"
-convert_one "$G/Warm jade River Resort bedroom in pahalgam with fresh fruit.jpg" "room-suite-2"
-convert_one "$G/Warmly lit black marble resort bathroom.jpg" "room-suite-4"
-convert_one "$G/65EB882E-08E3-47B4-A94D-FAB9824D7078.jpg" "room-duplex-2"
-convert_one "$G/929753C7-46BD-4740-B449-ED9554140413.jpg" "room-duplex-3"
-convert_one "$G/Cream wall restored beside the bed (2).jpg" "room-duplex-4"
+# Convert every photo sorted into the Rooms folders. Names are sequential so
+# the rest can be picked up by content.ts when needed; unused ones stay stored.
+i=1
+while IFS= read -r -d '' f; do
+  convert_one "$f" "room-premium-$i"
+  i=$((i+1))
+done < <(find "$SRC/Rooms/Premium Room" -maxdepth 1 -type f -print0 | sort -z)
+
+i=1
+while IFS= read -r -d '' f; do
+  convert_one "$f" "room-suite-$i"
+  i=$((i+1))
+done < <(find "$SRC/Rooms/Executive Suite" -maxdepth 1 -type f -print0 | sort -z)
+
+i=1
+while IFS= read -r -d '' f; do
+  convert_one "$f" "room-duplex-$i"
+  i=$((i+1))
+done < <(find "$SRC/Rooms/Executive Duplex Family Room" -maxdepth 1 -type f -print0 | sort -z)
 
 # --- Experiences -----------------------------------------------------------
 convert_one "$E/Bonfire/Jade River River by Defoy Riverside Pahalgam 1322.webp" "exp-bonfire"

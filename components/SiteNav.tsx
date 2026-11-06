@@ -16,7 +16,7 @@ const EASE = [0.76, 0, 0.24, 1] as const;
 
 export default function SiteNav() {
   const pathname = usePathname();
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(false); // kept for type compat; never hidden
   const [atTop, setAtTop] = useState(true);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
@@ -24,9 +24,7 @@ export default function SiteNav() {
   useMotionValueEvent(scrollY, "change", (y) => {
     setAtTop(y < 24);
     if (open) return;
-    const prev = scrollY.getPrevious() ?? 0;
-    if (y > prev && y > 180) setHidden(true);
-    else if (y < prev - 2) setHidden(false);
+    // Navbar stays visible at all times; only its background changes.
   });
 
   useEffect(() => {
