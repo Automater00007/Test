@@ -102,8 +102,9 @@ export const rooms: Room[] = [
       "More room to do nothing. A wide living space, a king bed, and a bathroom built for long baths.",
     long:
       "Two suites, each with a generous living room and a deep, quiet bedroom. Built for anniversaries, honeymoons, and the kind of trip where the plan is no plan at all. Premium interiors, a king bed, and a luxury bathroom.",
-    image: jade("room-suite-1"),
+    image: jade("room-suite-7"),
     gallery: [
+      jade("room-suite-7"),
       jade("room-suite-1"),
       jade("room-suite-2"),
       jade("room-suite-3"),
@@ -131,8 +132,9 @@ export const rooms: Room[] = [
       "Two levels. The children take the upper floor, and you take the quiet one.",
     long:
       "A two-level duplex designed for families who want to be together and also, occasionally, not. Children get their own floor, the lawn is a short walk away, and the river is the soundtrack to both.",
-    image: jade("room-duplex-1"),
+    image: jade("room-duplex-12"),
     gallery: [
+      jade("room-duplex-12"),
       jade("room-duplex-1"),
       jade("room-duplex-2"),
       jade("room-duplex-3"),

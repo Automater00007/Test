@@ -36,18 +36,21 @@ convert_one "$G/Refined resort lounge with Persian rug (1).jpg" "gallery-12"
 # the rest can be picked up by content.ts when needed; unused ones stay stored.
 i=1
 while IFS= read -r -d '' f; do
+  case "$f" in *.webp) continue ;; esac
   convert_one "$f" "room-premium-$i"
   i=$((i+1))
 done < <(find "$SRC/Rooms/Premium Room" -maxdepth 1 -type f -print0 | sort -z)
 
 i=1
 while IFS= read -r -d '' f; do
+  case "$f" in *.webp) continue ;; esac
   convert_one "$f" "room-suite-$i"
   i=$((i+1))
 done < <(find "$SRC/Rooms/Executive Suite" -maxdepth 1 -type f -print0 | sort -z)
 
 i=1
 while IFS= read -r -d '' f; do
+  case "$f" in *.webp) continue ;; esac
   convert_one "$f" "room-duplex-$i"
   i=$((i+1))
 done < <(find "$SRC/Rooms/Executive Duplex Family Room" -maxdepth 1 -type f -print0 | sort -z)
