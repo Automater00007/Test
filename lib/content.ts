@@ -74,12 +74,12 @@ export const rooms: Room[] = [
       "A private balcony, a low chair, and the sound of water finding its way through stone.",
     long:
       "Our most-loved room. Wake to pine light on the ceiling, step onto a private balcony, and watch the Lidder carry the morning past. Luxury bedding, quiet Wi-Fi, and room service that arrives without ceremony.",
-    image: jade("room-premium-1"),
+    image: jade("room-premium-4"),
     gallery: [
+      jade("room-premium-4"),
       jade("room-premium-1"),
       jade("room-premium-2"),
       jade("room-premium-3"),
-      jade("room-premium-4"),
       jade("room-premium-5"),
     ],
     amenities: [
@@ -132,8 +132,9 @@ export const rooms: Room[] = [
       "Two levels. The children take the upper floor, and you take the quiet one.",
     long:
       "A two-level duplex designed for families who want to be together and also, occasionally, not. Children get their own floor, the lawn is a short walk away, and the river is the soundtrack to both.",
-    image: jade("room-duplex-12"),
+    image: jade("room-duplex-7"),
     gallery: [
+      jade("room-duplex-7"),
       jade("room-duplex-12"),
       jade("room-duplex-1"),
       jade("room-duplex-2"),
