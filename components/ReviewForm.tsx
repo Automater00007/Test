@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const allowed = [5, 4, 3, 2, 1];
+const allowed = [1, 2, 3, 4, 5];
 
 type Props = {
   /** "qr" marks submissions that came from the printed QR code. */
@@ -109,7 +109,7 @@ export default function ReviewForm({ source = "website" }: Props) {
           >
             <div>
               <p className="eyebrow text-ink/65">Your rating</p>
-              <div className="mt-3 flex gap-1.5" role="radiogroup" aria-label="Rating">
+              <div className="mt-3 flex flex-wrap items-center gap-2" role="radiogroup" aria-label="Rating">
                 {allowed.map((n) => (
                   <button
                     key={n}
@@ -118,15 +118,19 @@ export default function ReviewForm({ source = "website" }: Props) {
                     role="radio"
                     aria-checked={rating === n}
                     aria-label={`${n} star${n > 1 ? "s" : ""}`}
-                    className={`flex h-11 w-11 items-center justify-center border transition-all duration-300 ${
-                      rating === n
+                    className={`flex min-w-[3rem] flex-col items-center gap-1 border px-2 py-2 transition-all duration-300 ${
+                      n <= rating
                         ? "border-walnut bg-walnut text-paper"
                         : "border-line text-ink/65 hover:border-ink/40"
                     }`}
                   >
-                    ★
+                    <span className="text-base leading-none">★</span>
+                    <span className="font-mono text-[9px] leading-none">{n}</span>
                   </button>
                 ))}
+                <span className="self-center pl-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/65">
+                  {rating} / 5
+                </span>
               </div>
             </div>
 
