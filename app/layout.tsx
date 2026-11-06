@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/images/jade/snow-resort-dusk.webp",
+        url: "/images/jade/gallery-07.webp",
         width: 1672,
         height: 941,
         alt: "Jade River Resort at dusk in snow",
@@ -97,7 +97,7 @@ const jsonLd = {
     postalCode: "192125",
     addressCountry: "IN",
   },
-  geo: { "@type": "GeoCoordinates", latitude: 33.883354, longitude: 75.269764 },
+  geo: { "@type": "GeoCoordinates", latitude: site.lat, longitude: site.lng },
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Riverside setting", value: true },
     { "@type": "LocationFeatureSpecification", name: "Private balconies", value: true },

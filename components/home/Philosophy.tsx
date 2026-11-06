@@ -1,4 +1,5 @@
 import RiverDivider from "@/components/ui/RiverDivider";
+import { site } from "@/lib/content";
 
 const copy =
   "Pahalgam is not a place you rush. The Lidder has run this valley longer than any of us. Thirteen rooms beside it — wooden walls, amber light, pine behind, water in front.";
@@ -23,7 +24,7 @@ export default function Philosophy() {
               >
                 <div className="flex justify-between gap-6 border-b border-line pb-2">
                   <dt>Latitude</dt>
-                  <dd>33.8834° N</dd>
+                  <dd>{site.latDisplay}</dd>
                 </div>
                 <div className="flex justify-between gap-6 border-b border-line pb-2">
                   <dt>Elevation</dt>

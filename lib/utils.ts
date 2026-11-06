@@ -1,3 +1,5 @@
+import { site } from "@/lib/content";
+
 export function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -17,8 +19,7 @@ export const formatPrice = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 
-export const mapsHref =
-  "https://www.google.com/maps/dir/?api=1&destination=33.883354,75.269764";
+export const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${site.coords.replace(/\s/g, "")}`;
 
 export const slugify = (s: string) =>
   s

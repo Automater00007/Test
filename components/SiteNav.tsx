@@ -175,7 +175,7 @@ export default function SiteNav() {
                 <div className="eyebrow leading-[1.9] text-paper/65">
                   Pahalgam, Jammu &amp; Kashmir
                   <br />
-                  33.8834° N · 75.2698° E
+                  {site.coordsDisplay}
                 </div>
                 <div className="text-right">
                   <a

@@ -7,8 +7,7 @@ import { JsonLd, breadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Location & Directions",
-  description:
-    "Jade River Resort is in Pahalgam, Jammu & Kashmir, at 33.883354, 75.269764 and 2,130 metres. Srinagar Airport is 96 km away, roughly 2.5 to 3 hours by road.",
+  description: `Jade River Resort is in Pahalgam, Jammu & Kashmir, at ${site.coords} and 2,130 metres. Srinagar Airport is 96 km away, roughly 2.5 to 3 hours by road.`,
   alternates: { canonical: "/jade-river-resort/location" },
 };
 
@@ -59,9 +58,9 @@ export default function LocationPage() {
         <div className="relative overflow-hidden border border-line bg-paper-2" data-reveal="zoom">
           <iframe
             title="Map showing Jade River Resort in Pahalgam"
-            src="https://www.google.com/maps?q=33.883354,75.269764&z=14&output=embed"
+            src={`https://www.google.com/maps?q=${site.coords.replace(/\s/g, "")}&z=14&output=embed`}
             className="h-[52svh] min-h-[380px] w-full grayscale-[0.85] contrast-[1.05]"
-            loading="lazy"
+            loading="eager"
             referrerPolicy="no-referrer-when-downgrade"
           />
           <div className="pointer-events-none absolute bottom-4 left-4 bg-paper px-4 py-3">

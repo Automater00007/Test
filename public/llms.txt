@@ -9,7 +9,7 @@ Core brand line: "Life, Slowed by the River."
 - Name: Jade River Resort
 - Parent brand: Defoy Hotels & Resorts
 - Location: Pahalgam, Jammu & Kashmir — 192125, India
-- Coordinates: 33.883354, 75.269764
+- Coordinates: 33.882774, 75.271524
 - Elevation: 2,130 metres
 - Total rooms: 13
 - Setting: On the banks of the Lidder River, with a stream in front and dense Kashmiri pine forest behind. Wooden architecture, warm amber lighting, stone pathways.

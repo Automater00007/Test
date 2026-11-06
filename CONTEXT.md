@@ -35,7 +35,7 @@ Rules: **no gradients**; every dark surface must be Forest Green (a deeper fores
 - Rates: ₹6,000 / ₹8,000 / ₹13,000 per night.
 - Direct bookings only; no MakeMyTrip, Booking.com, or other OTAs.
 - Phone / WhatsApp: +91 7780868926.
-- Coordinates: 33.883354, 75.269764.
+- Coordinates: 33.882774, 75.271524.
 - Elevation: 2,130 m.
 - Address: Pahalgam, Jammu & Kashmir — 192125.
 - Srinagar Airport: ~96 km, 2.5–3 hours by road.
@@ -182,6 +182,11 @@ NEXT_PUBLIC_YOUTUBE_API_KEY=
 NEXT_PUBLIC_YOUTUBE_PLAYLIST_ID=
 ```
 Playlist must be public. Feed revalidates hourly. The YouTube key is read-only and should be restricted to the YouTube Data API v3.
+
+## Image set
+Source photography lives in `public/Jade /` (untracked, ~36 MB). `scripts/build-jade-images.sh` rebuilds the optimised set in `public/images/jade/`: **12 gallery frames**, **7 room frames**, and **5 experience frames**. The gallery deliberately uses only 12 of the 34 source gallery photos; the rest stay in the folder unused.
+
+The source `Rooms` folders contained a mix of room and general property shots, so the room galleries are curated from the strongest bedroom/suite frames rather than copied folder-for-folder.
 
 ## Hero video requirement
 Drop the real film at `public/video/hero.mp4` and/or `public/video/hero.webm`. Until then the poster photograph is used; no layout changes are needed.

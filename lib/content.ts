@@ -9,7 +9,12 @@ export const site = {
   whatsapp: "917780868926",
   email: "hello@jaderiverresort.example",
   address: "Pahalgam, Jammu & Kashmir — 192125",
-  coords: "33.883354, 75.269764",
+  coords: "33.882774, 75.271524",
+  lat: 33.882774,
+  lng: 75.271524,
+  coordsDisplay: "33.8828° N · 75.2715° E",
+  latDisplay: "33.8828° N",
+  lngDisplay: "75.2715° E",
   elevation: "2,130 m",
   roomsTotal: 13,
   url: "https://defoyhotelsandresorts.com/jade-river-resort",
@@ -26,22 +31,22 @@ export const nav = [
 const jade = (name: string) => `/images/jade/${name}.webp`;
 
 export const img = {
-  hero: jade("snow-resort-dusk"),
-  cabin: jade("bonfire-night-exterior"),
+  hero: jade("gallery-07"),
+  cabin: jade("gallery-10"),
   valley: jade("mountain-sunset"),
-  forest: jade("snow-mountain-resort"),
-  aerial: jade("river-lawn-resort"),
+  forest: jade("gallery-09"),
+  aerial: jade("gallery-09"),
   mist: jade("mountain-sunset"),
-  green: jade("river-lawn-view"),
-  dark: jade("lounge-fireplace-rug"),
-  tree: jade("lawn-river-exterior"),
-  pines: jade("snow-mountain-resort"),
-  dock: jade("river-lawn-resort"),
-  stars: jade("bonfire-gazebo-sunset"),
-  roomWarm: jade("bedroom-snow-view"),
-  roomBed: jade("bedroom-rug"),
-  roomSuite: jade("suite-lounge-rug"),
-  roomLight: jade("bedroom-large-window"),
+  green: jade("gallery-11"),
+  dark: jade("gallery-12"),
+  tree: jade("gallery-11"),
+  pines: jade("gallery-09"),
+  dock: jade("gallery-09"),
+  stars: jade("exp-bonfire"),
+  roomWarm: jade("room-premium-1"),
+  roomBed: jade("gallery-04"),
+  roomSuite: jade("gallery-06"),
+  roomLight: jade("room-duplex-4"),
 };
 
 export type Room = {
@@ -69,12 +74,12 @@ export const rooms: Room[] = [
       "A private balcony, a low chair, and the sound of water finding its way through stone.",
     long:
       "Our most-loved room. Wake to pine light on the ceiling, step onto a private balcony, and watch the Lidder carry the morning past. Luxury bedding, quiet Wi-Fi, and room service that arrives without ceremony.",
-    image: jade("bedroom-snow-view"),
+    image: jade("room-premium-1"),
     gallery: [
-      jade("bedroom-snow-view"),
-      jade("balcony-mountain-seating"),
-      jade("balcony-pair-view"),
-      jade("bedroom-tv-wood"),
+      jade("room-premium-1"),
+      jade("gallery-01"),
+      jade("gallery-04"),
+      jade("room-premium-4"),
     ],
     amenities: [
       "Private balcony",
@@ -96,12 +101,12 @@ export const rooms: Room[] = [
       "More room to do nothing. A wide living space, a king bed, and a bathroom built for long baths.",
     long:
       "Two suites, each with a generous living room and a deep, quiet bedroom. Built for anniversaries, honeymoons, and the kind of trip where the plan is no plan at all. Premium interiors, a king bed, and a luxury bathroom.",
-    image: jade("suite-lounge-rug"),
+    image: jade("gallery-06"),
     gallery: [
-      jade("suite-lounge-rug"),
-      jade("suite-living-bedroom"),
-      jade("bedroom-large-window"),
-      jade("bathroom-black-marble"),
+      jade("gallery-06"),
+      jade("room-suite-2"),
+      jade("gallery-08"),
+      jade("room-suite-4"),
     ],
     amenities: [
       "Separate living space",
@@ -123,12 +128,12 @@ export const rooms: Room[] = [
       "Two levels. The children take the upper floor, and you take the quiet one.",
     long:
       "A two-level duplex designed for families who want to be together and also, occasionally, not. Children get their own floor, the lawn is a short walk away, and the river is the soundtrack to both.",
-    image: jade("duplex-family-room"),
+    image: jade("gallery-02"),
     gallery: [
-      jade("duplex-family-room"),
-      jade("duplex-twin-beds"),
-      jade("duplex-stairs-room"),
-      jade("bedroom-fruit"),
+      jade("gallery-02"),
+      jade("room-duplex-2"),
+      jade("room-duplex-3"),
+      jade("room-duplex-4"),
     ],
     amenities: [
       "Two-level duplex layout",
@@ -157,7 +162,7 @@ export const experiences: Experience[] = [
     body:
       "Beside the Lidder, after dark, we light a fire. Kashmiri nights are cold in the best way. Sit close. Stay as long as you like.",
     meta: "Every clear evening · Riverside",
-    image: jade("bonfire-gazebo-sunset"),
+    image: jade("exp-bonfire"),
   },
   {
     title: "River Walks",
@@ -165,7 +170,7 @@ export const experiences: Experience[] = [
     body:
       "Follow the water at your own pace. The path goes as far as you want it to. Some guests walk for twenty minutes; some disappear for three hours.",
     meta: "Dawn to dusk · Self-guided",
-    image: jade("river-lawn-resort"),
+    image: jade("gallery-11"),
   },
   {
     title: "Pahalgam Sightseeing",
@@ -181,7 +186,7 @@ export const experiences: Experience[] = [
     body:
       "Wooden facades, a stream in front, pine forest behind. The light changes every hour and never repeats itself. Bring the camera you keep meaning to use.",
     meta: "Golden hour · Across the property",
-    image: jade("round-window-view"),
+    image: jade("exp-photography"),
   },
   {
     title: "Family Moments",
@@ -189,7 +194,7 @@ export const experiences: Experience[] = [
     body:
       "Spacious lawns and a safe, enclosed property. Children run; parents sit. The duplex rooms mean everyone has somewhere to retreat to when the day is done.",
     meta: "All day · Lawns and duplex",
-    image: jade("lawn-river-exterior"),
+    image: jade("exp-family"),
   },
   {
     title: "Pure Luxury",
@@ -197,51 +202,23 @@ export const experiences: Experience[] = [
     body:
       "Warm bedding at night, hot tea before you ask, a fire already lit. Luxury here is quiet, attentive, and almost invisible.",
     meta: "Included · Throughout your stay",
-    image: jade("lounge-fireplace-rug"),
+    image: jade("exp-luxury"),
   },
 ];
 
 export const gallery = [
-  { src: jade("balcony-lounge-view"), alt: "Balcony lounge looking out to the Lidder valley", span: "wide" },
-  { src: jade("balcony-mountain-lounge"), alt: "Private balcony with armchairs facing the mountains", span: "std" },
-  { src: jade("balcony-mountain-seating"), alt: "Balcony seating framed by pine and mountain light", span: "std" },
-  { src: jade("balcony-pair-view"), alt: "Two chairs on a timber balcony above the river", span: "wide" },
-  { src: jade("balcony-rail-view"), alt: "View from a balcony railing across the Pahalgam valley", span: "wide" },
-  { src: jade("bathroom-black-marble"), alt: "Black marble bathroom with a glass shower", span: "tall" },
-  { src: jade("bathroom-dark-marble"), alt: "Dark marble bathroom with warm lighting", span: "tall" },
-  { src: jade("bathroom-marble-shower"), alt: "Marble shower and vanity at Jade River Resort", span: "tall" },
-  { src: jade("bathroom-shower-stone"), alt: "Stone-tiled bathroom with a walk-in shower", span: "tall" },
-  { src: jade("bathroom-vanity-chair"), alt: "Bathroom vanity with a chair and marble walls", span: "tall" },
-  { src: jade("bathroom-vanity"), alt: "Bathroom vanity with towels and warm stone", span: "tall" },
-  { src: jade("bed-petals-detail"), alt: "Bed dressed with flower petals", span: "std" },
-  { src: jade("bedroom-fruit"), alt: "Bedroom with fresh fruit and valley light", span: "std" },
-  { src: jade("bedroom-large-window"), alt: "Bedroom with a large window and timber ceiling", span: "std" },
-  { src: jade("bedroom-red-runner"), alt: "Bedroom with a red runner and dark wood door", span: "std" },
-  { src: jade("bedroom-rug"), alt: "Bedroom with a patterned rug and mountain view", span: "std" },
-  { src: jade("bedroom-sitting-petals"), alt: "Bedroom sitting area with flower petals", span: "std" },
-  { src: jade("bedroom-snow-view"), alt: "Bedroom opening to a snowy mountain view", span: "wide" },
-  { src: jade("bedroom-tv-wood"), alt: "Bedroom with wood panelling and a wall-mounted TV", span: "std" },
-  { src: jade("bonfire-gazebo-sunset"), alt: "Bonfire gazebo lit at sunset", span: "wide" },
-  { src: jade("bonfire-night-exterior"), alt: "Fire pit and lit resort exterior at night", span: "wide" },
-  { src: jade("cocktail-lounge"), alt: "Cocktail on a table in the resort lounge", span: "std" },
-  { src: jade("duplex-family-room"), alt: "Duplex family room with two beds and a staircase", span: "std" },
-  { src: jade("duplex-mural-room"), alt: "Duplex room with twin beds and a painted mural", span: "std" },
-  { src: jade("duplex-stairs-room"), alt: "Timber staircase in the duplex family room", span: "std" },
-  { src: jade("duplex-twin-beds"), alt: "Twin beds in the duplex family room", span: "std" },
-  { src: jade("lawn-river-exterior"), alt: "Lawn and river beside the resort", span: "wide" },
-  { src: jade("lobby-lounge"), alt: "Lobby lounge with sofas and warm lighting", span: "wide" },
-  { src: jade("lounge-fireplace-rug"), alt: "Lounge with a fireplace and Persian rug", span: "wide" },
-  { src: jade("mountain-sunset"), alt: "Sunset over the Pahalgam mountains", span: "wide" },
-  { src: jade("restaurant-dining"), alt: "Resort restaurant set for dinner", span: "wide" },
-  { src: jade("river-lawn-resort"), alt: "Jade River Resort from across the Lidder", span: "wide" },
-  { src: jade("river-lawn-view"), alt: "River, lawn, and timber facades at Jade River Resort", span: "wide" },
-  { src: jade("round-window-view"), alt: "Round window framing the valley", span: "std" },
-  { src: jade("snow-balcony"), alt: "Snow-covered balcony and mountain view", span: "wide" },
-  { src: jade("snow-mountain-resort"), alt: "Snow-covered resort below the mountains", span: "wide" },
-  { src: jade("snow-resort-dusk"), alt: "Jade River Resort at dusk in snow", span: "wide" },
-  { src: jade("snow-resort-exterior"), alt: "Snowy resort exterior and walkway", span: "wide" },
-  { src: jade("suite-living-bedroom"), alt: "Suite living area opening into the bedroom", span: "std" },
-  { src: jade("suite-lounge-rug"), alt: "Suite lounge with a Persian rug and sofa", span: "std" },
+  { src: jade("gallery-01"), alt: "Balcony lounge looking out to the snowy Lidder valley", span: "wide" },
+  { src: jade("gallery-02"), alt: "Duplex living room with a timber staircase", span: "std" },
+  { src: jade("gallery-03"), alt: "Bedroom with a patterned bedspread and warm wood walls", span: "std" },
+  { src: jade("gallery-04"), alt: "Bedroom headboard with warm bedside lighting", span: "wide" },
+  { src: jade("gallery-05"), alt: "Private balcony facing the Pahalgam valley", span: "wide" },
+  { src: jade("gallery-06"), alt: "Suite living area opening into the bedroom", span: "std" },
+  { src: jade("gallery-07"), alt: "Jade River Resort at dusk in snow", span: "wide" },
+  { src: jade("gallery-08"), alt: "Cocktails in the resort lounge", span: "std" },
+  { src: jade("gallery-09"), alt: "Snow-covered resort below the mountains", span: "wide" },
+  { src: jade("gallery-10"), alt: "Fire pit and lit resort exterior at night", span: "wide" },
+  { src: jade("gallery-11"), alt: "Lawn and the Lidder River beside the resort", span: "wide" },
+  { src: jade("gallery-12"), alt: "Lounge with a Persian rug and warm lighting", span: "wide" },
 ];
 
 export const posts = [
@@ -361,7 +338,7 @@ export const reviews = [
 export const faqs = [
   {
     q: "Where is Jade River Resort located?",
-    a: "Jade River Resort is in Pahalgam, Jammu & Kashmir, India, at an elevation of 2,130 metres on the banks of the Lidder River. The address is Pahalgam, Jammu & Kashmir — 192125. Coordinates are 33.883354, 75.269764.",
+    a: "Jade River Resort is in Pahalgam, Jammu & Kashmir, India, at an elevation of 2,130 metres on the banks of the Lidder River. The address is Pahalgam, Jammu & Kashmir — 192125. Coordinates are 33.882774, 75.271524.",
   },
   {
     q: "How many rooms does Jade River Resort have?",

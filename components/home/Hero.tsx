@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { img } from "@/lib/content";
+import { img, site } from "@/lib/content";
 
 const lines = [
   { text: "Life,", italic: false },
@@ -98,9 +98,9 @@ export default function Hero() {
           <div className="absolute inset-x-0 top-0 flex items-start justify-between p-[clamp(1rem,2.4vw,2rem)]">
             <span className="eyebrow text-paper/80">01 — The property</span>
             <span className="eyebrow hidden text-right leading-[1.9] text-paper/70 sm:block">
-              33.8834° N
+              {site.latDisplay}
               <br />
-              75.2698° E
+              {site.lngDisplay}
             </span>
           </div>
 

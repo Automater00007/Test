@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { site } from "@/lib/content";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
 
@@ -133,7 +134,7 @@ export default function SignatureIntro() {
         <div className="flex items-end justify-between gap-6">
           <span className="eyebrow leading-[1.9] text-paper">
             <span className="block">Pahalgam · Jammu &amp; Kashmir</span>
-            <span className="block">33.8834° N, 75.2698° E</span>
+            <span className="block">{site.coordsDisplay}</span>
           </span>
           <span className="eyebrow text-paper">Click to skip</span>
         </div>

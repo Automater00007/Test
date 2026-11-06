@@ -58,7 +58,7 @@ export default function LocationSection() {
               <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "120ms" }}>
                 <dt className="eyebrow text-ink/65">Coordinates</dt>
                 <dd className="mt-2 font-mono text-[0.8rem] tracking-tight">
-                  33.883354, 75.269764
+                  {site.coords}
                 </dd>
               </div>
               <div data-reveal="zoom" style={{ ["--reveal-delay" as string]: "180ms" }}>
@@ -107,7 +107,7 @@ export default function LocationSection() {
                 className="w-full"
                 fill="none"
                 role="img"
-                aria-label="Sketch of the route from Srinagar Airport to Pahalgam and Jade River Resort"
+                aria-label="Sketch of the route from Srinagar Airport to Pahalgam, where Jade River Resort sits"
               >
                 {/* contour lines */}
                 {[0, 1, 2, 3, 4].map((i) => (
@@ -120,8 +120,16 @@ export default function LocationSection() {
                   />
                 ))}
 
+                {/* the Lidder, running past the property */}
                 <path
-                  d="M70 430 C 120 360, 128 300, 214 268 S 330 236, 382 188 S 452 120, 496 96"
+                  d="M-20 476 C 110 458, 210 486, 330 456 S 500 432, 590 458"
+                  stroke="#201B17"
+                  strokeOpacity="0.1"
+                  strokeWidth="1"
+                />
+
+                <path
+                  d="M70 430 C 150 395, 165 340, 250 318 S 365 285, 410 230"
                   stroke="#201B17"
                   strokeOpacity="0.18"
                   strokeWidth="1"
@@ -129,22 +137,38 @@ export default function LocationSection() {
                 />
 
                 <motion.path
-                  d="M70 430 C 120 360, 128 300, 214 268 S 330 236, 382 188 S 452 120, 496 96"
+                  d="M70 430 C 150 395, 165 340, 250 318 S 365 285, 410 230"
                   stroke="#A87850"
                   strokeWidth="1.6"
                   style={{ pathLength: reduce ? 1 : draw }}
                 />
 
+                {/* Pahalgam town boundary — the resort sits inside it */}
+                <circle
+                  cx="410"
+                  cy="230"
+                  r="54"
+                  stroke="#201B17"
+                  strokeOpacity="0.22"
+                  strokeDasharray="2 6"
+                />
+                <path
+                  d="M410 230 L438 206"
+                  stroke="#A87850"
+                  strokeWidth="1.2"
+                  strokeDasharray="2 4"
+                />
+
                 <circle cx="70" cy="430" r="4" fill="#201B17" />
                 <circle cx="70" cy="430" r="11" stroke="#201B17" strokeOpacity="0.2" />
 
-                <circle cx="214" cy="268" r="4" fill="#201B17" />
-                <circle cx="214" cy="268" r="11" stroke="#201B17" strokeOpacity="0.2" />
+                <circle cx="410" cy="230" r="4" fill="#201B17" />
+                <circle cx="410" cy="230" r="11" stroke="#201B17" strokeOpacity="0.2" />
 
-                <circle cx="496" cy="96" r="5" fill="#A87850" />
+                <circle cx="438" cy="206" r="5" fill="#A87850" />
                 <motion.circle
-                  cx="496"
-                  cy="96"
+                  cx="438"
+                  cy="206"
                   r="10"
                   stroke="#A87850"
                   strokeOpacity="0.5"
@@ -153,21 +177,24 @@ export default function LocationSection() {
                   transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
                 />
 
-                <text x="58" y="468" fill="#201B17" fillOpacity="0.55" fontSize="10" fontFamily="monospace" letterSpacing="2">
+                <text x="58" y="468" fill="#201B17" fillOpacity="0.65" fontSize="11" fontFamily="monospace" letterSpacing="2">
                   SRINAGAR AIRPORT
                 </text>
-                <text x="188" y="244" fill="#201B17" fillOpacity="0.55" fontSize="10" fontFamily="monospace" letterSpacing="2">
+                <text x="300" y="306" fill="#201B17" fillOpacity="0.65" fontSize="11" fontFamily="monospace" letterSpacing="2">
                   PAHALGAM
                 </text>
-                <text x="360" y="76" fill="#A87850" fontSize="10" fontFamily="monospace" letterSpacing="2">
+                <text x="300" y="320" fill="#201B17" fillOpacity="0.5" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
+                  2,130 M
+                </text>
+                <text x="410" y="168" fill="#A87850" fontSize="11" fontFamily="monospace" letterSpacing="2">
                   JADE RIVER
                 </text>
-
-                <text x="72" y="492" fill="#201B17" fillOpacity="0.3" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
-                  96 KM · 2.5–3 HRS
+                <text x="410" y="182" fill="#201B17" fillOpacity="0.55" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
+                  RESORT · IN PAHALGAM
                 </text>
-                <text x="360" y="54" fill="#201B17" fillOpacity="0.3" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
-                  2,130 M
+
+                <text x="72" y="492" fill="#201B17" fillOpacity="0.45" fontSize="9" fontFamily="monospace" letterSpacing="1.5">
+                  96 KM · 2.5–3 HRS
                 </text>
               </svg>
 
@@ -177,7 +204,7 @@ export default function LocationSection() {
                     Exact location
                   </p>
                   <p className="mt-1 font-mono text-[11px] tracking-tight">
-                    33.883354, 75.269764
+                    {site.coords}
                   </p>
                 </div>
                 <span className="flex h-10 w-10 items-center justify-center border border-line">
