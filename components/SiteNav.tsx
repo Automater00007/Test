@@ -49,20 +49,18 @@ export default function SiteNav() {
   }, [open]);
 
   const isHome = pathname === "/";
-  const transparent = atTop;
-  const overHero = isHome && transparent;
+  const overHero = isHome && atTop;
 
   return (
     <>
       <motion.header
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color,backdrop-filter] duration-500",
-          transparent
-            ? "border-transparent bg-transparent"
-            : "border-line bg-paper/95 backdrop-blur-md",
-          overHero
-            ? "text-paper [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]"
-            : "text-ink",
+          atTop
+            ? overHero
+              ? "border-transparent bg-forest/35 text-paper backdrop-blur-[2px] [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]"
+              : "border-transparent bg-transparent text-ink"
+            : "border-line bg-paper/95 text-ink backdrop-blur-md",
         )}
         initial={false}
         animate={{ y: hidden ? "-101%" : "0%" }}
@@ -76,7 +74,7 @@ export default function SiteNav() {
             <span className="font-display text-[1.4rem] leading-none tracking-[-0.045em] md:text-[1.6rem]">
               Jade<span className="text-clay">.</span>River
             </span>
-            <span className={cn("eyebrow hidden pb-[2px] text-[9px] lg:block", overHero ? "text-paper/65" : "text-ink/65")}>
+            <span className={cn("eyebrow hidden pb-[2px] text-[9px] lg:block", overHero ? "text-paper/80" : "text-ink/65")}>
               Resort
             </span>
           </Link>
@@ -95,7 +93,7 @@ export default function SiteNav() {
                         ? "text-clay"
                         : "text-walnut"
                       : overHero
-                        ? "text-paper/75 hover:text-paper"
+                        ? "text-paper/90 hover:text-paper"
                         : "text-ink/65 hover:text-ink",
                   )}
                 >
@@ -108,8 +106,10 @@ export default function SiteNav() {
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              className="btn btn-clay hidden !py-3 !px-5 sm:inline-flex"
-
+              className={cn(
+                "btn hidden !py-3 !px-5 sm:inline-flex",
+                overHero ? "!border-paper/70 !text-paper" : "btn-clay",
+              )}
             >
               Reserve directly
               <Arrow />
