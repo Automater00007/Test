@@ -38,7 +38,7 @@ Core brand line: "Life, Slowed by the River."
 - Check-in: 2:00 PM. Check-out: 12:00 noon.
 - Payment: minimum 50% advance to confirm.
 - ID: valid government photo ID required. Foreign nationals need passport and visa. PAN cards are not accepted as address or ID proof.
-- Policy queries: info@defoy.in. GST and invoices: accounts@defoy.in.
+- Policy queries, GST and invoices: jaderiverresort@defoy.in.
 
 ## Getting there
 
@@ -46,13 +46,19 @@ Srinagar Airport is approximately 96 km away, or 2.5 to 3 hours by road.
 
 ## Key pages
 
-- Home: https://defoyhotelsandresorts.com/jade-river-resort
-- Rooms: https://defoyhotelsandresorts.com/jade-river-resort/rooms
-- Experiences: https://defoyhotelsandresorts.com/jade-river-resort/experiences
-- Gallery: https://defoyhotelsandresorts.com/jade-river-resort/gallery
-- Location: https://defoyhotelsandresorts.com/jade-river-resort/location
-- Contact / direct booking: https://defoyhotelsandresorts.com/jade-river-resort/contact
-- Policies: https://defoyhotelsandresorts.com/jade-river-resort/policies
-- FAQ: https://defoyhotelsandresorts.com/jade-river-resort/faq
-- Journal: https://defoyhotelsandresorts.com/jade-river-resort/post
-- Reviews: https://defoyhotelsandresorts.com/jade-river-resort/reviews
+- [Home](https://defoyhotelsandresorts.com/jade-river-resort): Overview of Jade River Resort, Pahalgam.
+- [Rooms](https://defoyhotelsandresorts.com/jade-river-resort/rooms): Room types, rates and amenities.
+- [Experiences](https://defoyhotelsandresorts.com/jade-river-resort/experiences): Bonfires, river walks and Pahalgam sightseeing.
+- [Gallery](https://defoyhotelsandresorts.com/jade-river-resort/gallery): Property and room photography.
+- [Location](https://defoyhotelsandresorts.com/jade-river-resort/location): Directions, map and distance from Srinagar Airport.
+- [Contact / direct booking](https://defoyhotelsandresorts.com/jade-river-resort/contact): Direct booking enquiries.
+- [Policies](https://defoyhotelsandresorts.com/jade-river-resort/policies): Cancellation, check-in, payment and ID policies.
+- [FAQ](https://defoyhotelsandresorts.com/jade-river-resort/faq): Common guest questions.
+- [Journal](https://defoyhotelsandresorts.com/jade-river-resort/post): Notes from the property and the valley.
+- [Reviews](https://defoyhotelsandresorts.com/jade-river-resort/reviews): Notes left by guests.
+
+## Room pages
+
+- [Premium Balcony Room](https://defoyhotelsandresorts.com/jade-river-resort/rooms/premium-balcony-room): 9 rooms, from ₹6,000 per night.
+- [Executive Suite](https://defoyhotelsandresorts.com/jade-river-resort/rooms/executive-suite): 2 suites, from ₹8,000 per night.
+- [Executive Duplex Family Room](https://defoyhotelsandresorts.com/jade-river-resort/rooms/executive-duplex-family-room): 2 duplex rooms, from ₹13,000 per night.
