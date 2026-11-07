@@ -13,7 +13,7 @@ import { site } from "@/lib/content";
 import { mapsHref } from "@/lib/utils";
 import Magnetic from "@/components/ui/Magnetic";
 
-const attractions = ["Baisaran Valley", "Aru Valley", "Betaab Valley", "Chandanwari"];
+const attractions = ["Aru Valley", "Betaab Valley", "Chandanwari"];
 
 export default function LocationSection() {
   const ref = useRef<HTMLDivElement>(null);

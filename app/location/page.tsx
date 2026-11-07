@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 };
 
 const nearby = [
-  { name: "Baisaran Valley", note: "Known as Mini Switzerland" },
   { name: "Aru Valley", note: "Meadows and a quiet road" },
   { name: "Betaab Valley", note: "The river bend" },
   { name: "Chandanwari", note: "The road toward Amarnath" },
