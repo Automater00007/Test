@@ -182,7 +182,7 @@ export const experiences: Experience[] = [
   },
   {
     title: "Pahalgam Sightseeing",
-    subtitle: "Baisaran, Aru, Betaab, Chandanwari",
+    subtitle: "Aru, Betaab, Chandanwari",
     body:
       "The valley keeps its famous places close. Mini Switzerland, the Aru meadows, the Betaab river bend, and the road to Chandanwari all sit within a short drive.",
     meta: "Half and full day · By road",
@@ -328,10 +328,6 @@ export const faqs = [
   {
     q: "How far is Srinagar Airport?",
     a: "Srinagar Airport is approximately 96 km from the resort, or about 2.5 to 3 hours by road.",
-  },
-  {
-    q: "What is there to do nearby?",
-    a: "Baisaran Valley (Mini Switzerland), Aru Valley, Betaab Valley, and Chandanwari are all a short drive away. On the property there are river walks, bonfire evenings, lawns for families, and some of the best photography light in the valley.",
   },
   {
     q: "Is the resort suitable for families?",
