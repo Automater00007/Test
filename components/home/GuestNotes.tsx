@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { stats } from "@/lib/content";
 import type { Review } from "@/lib/googleReviews";
 import CountUp from "@/components/ui/CountUp";
+import ReviewText from "@/components/ReviewText";
 
 export default function GuestNotes({
   reviews,
@@ -84,7 +85,7 @@ export default function GuestNotes({
 
       <div
         ref={rail}
-        className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[clamp(1.15rem,4.2vw,5rem)] pb-4"
+        className="no-scrollbar mt-6 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-[clamp(1.15rem,4.2vw,5rem)] pb-4"
       >
         {reviews.length === 0 ? (
           <article className="w-[min(84vw,420px)] shrink-0 border border-line bg-paper p-6 text-ink">
@@ -104,7 +105,7 @@ export default function GuestNotes({
         ) : (
           reviews.map((review, i) => (
             <article
-              key={review.name}
+              key={`${review.name}-${i}`}
               className="group w-[min(84vw,360px)] shrink-0 snap-start border border-line bg-paper p-6 text-ink transition-colors duration-500 hover:border-ink/40"
               data-reveal="zoom"
               style={{ ["--reveal-delay" as string]: `${(i % 3) * 70}ms` }}
@@ -123,18 +124,19 @@ export default function GuestNotes({
                   {review.title}
                 </h3>
               ) : null}
-              <p
+              <ReviewText
+                body={review.body}
                 className={`${
                   review.title ? "mt-4" : "mt-6"
                 } text-[0.93rem] leading-[1.7] text-ink/70`}
-              >
-                {review.body}
-              </p>
+              />
               <div className="mt-8 flex items-center justify-between border-t border-line pt-4">
                 <p className="text-[0.9rem]">{review.name}</p>
-                <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
-                  {review.from}
-                </p>
+                {review.from ? (
+                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
+                    {review.from}
+                  </p>
+                ) : null}
               </div>
             </article>
           ))

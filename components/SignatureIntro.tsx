@@ -85,16 +85,11 @@ export default function SignatureIntro() {
       />
 
       <motion.div
-        className="absolute inset-0 flex flex-col justify-between bg-forest px-[clamp(1.2rem,4vw,4rem)] py-8 text-paper"
+        className="absolute inset-0 flex flex-col bg-forest px-[clamp(1.2rem,4vw,4rem)] pb-8 pt-[calc(68px+2rem)] text-paper md:pt-[calc(80px+2rem)]"
         animate={{ opacity: opening ? 0 : 1 }}
         transition={{ duration: 0.28, ease: "easeOut" }}
       >
-        <div className="flex items-center justify-between">
-          <span className="eyebrow text-paper">Defoy Hotels &amp; Resorts</span>
-          <span className="eyebrow text-paper">Est. Pahalgam</span>
-        </div>
-
-        <div className="relative mx-auto flex w-full max-w-[1000px] flex-col items-center">
+        <div className="relative mx-auto flex w-full max-w-[1000px] flex-1 flex-col items-center justify-center">
           <svg
             viewBox="0 0 1000 120"
             className="absolute left-1/2 top-1/2 h-[120px] w-[112%] -translate-x-1/2 -translate-y-1/2 opacity-90"

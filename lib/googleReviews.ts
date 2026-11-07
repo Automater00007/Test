@@ -189,7 +189,7 @@ export async function getApprovedReviews(): Promise<Review[]> {
 
         return {
           name: doc.name?.trim() || "Guest",
-          from: doc.location?.trim() || "Guest",
+          from: doc.location?.trim() || "",
           rating: clampRating(doc.rating),
           title: doc.title?.trim() || undefined,
           body,

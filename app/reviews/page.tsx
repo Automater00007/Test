@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import ReviewForm from "@/components/ReviewForm";
+import ReviewText from "@/components/ReviewText";
 import { getDisplayReviews } from "@/lib/googleReviews";
 import { JsonLd, breadcrumb, reviewListSchema } from "@/lib/schema";
 
@@ -55,7 +56,7 @@ export default async function ReviewsPage() {
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <div>
-              <p className="eyebrow text-ink/65">Submissions</p>
+              <p className="eyebrow text-ink/65">Your note</p>
             </div>
             <a href="#write" className="link-line mb-1 font-mono text-[10px] uppercase tracking-[0.18em]">
               Leave a note →
@@ -127,18 +128,19 @@ export default async function ReviewsPage() {
                   ) : null}
                 </div>
                 <div>
-                  <p
+                  <ReviewText
+                    body={review.body}
                     className={`${
                       review.title ? "mt-4" : "mt-0"
                     } text-[0.96rem] leading-[1.75] text-ink/70`}
-                  >
-                    {review.body}
-                  </p>
+                  />
                   <div className="mt-6 flex items-center justify-between border-t border-line pt-4">
                     <p className="text-[0.9rem]">{review.name}</p>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
-                      {review.from}
-                    </p>
+                    {review.from ? (
+                      <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/65">
+                        {review.from}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </article>

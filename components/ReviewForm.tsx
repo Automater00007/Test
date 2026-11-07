@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { error } from "console";
 
 const allowed = [1, 2, 3, 4, 5];
 
@@ -149,14 +148,14 @@ export default function ReviewForm({ source = "website" }: Props) {
                 />
               </label>
               <label className="block border-b border-line pb-1 focus-within:border-clay">
-                <span className="eyebrow text-ink/65">Where you came from</span>
+                <span className="eyebrow text-ink/65">City (optional)</span>
                 <input
                   value={from}
                   onChange={(e) => setFrom(e.target.value)}
                   autoComplete="address-level2"
                   maxLength={80}
                   className="w-full bg-transparent py-3 outline-none placeholder:text-ink/65"
-                  placeholder="City"
+                  placeholder="Where you came from"
                 />
               </label>
             </div>
@@ -202,7 +201,7 @@ export default function ReviewForm({ source = "website" }: Props) {
 
             <div className="flex flex-wrap items-center gap-5">
               <button type="submit" className="btn" disabled={sending}>
-                {sending ? "Sending…" : "Submit for review"}
+                {sending ? "Sending…" : "Send your note"}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="arrow-static">
                   <path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" strokeWidth="1.2" />
                 </svg>

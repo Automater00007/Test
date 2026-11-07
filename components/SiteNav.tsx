@@ -53,10 +53,10 @@ export default function SiteNav() {
     <>
       <motion.header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color,backdrop-filter] duration-500",
+          "site-header fixed inset-x-0 top-0 z-[105] border-b transition-[background-color,border-color,color,backdrop-filter] duration-500",
           atTop
             ? overHero
-              ? "border-transparent bg-forest/35 text-paper backdrop-blur-[2px] [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]"
+              ? "border-transparent bg-forest/55 text-paper backdrop-blur-md [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]"
               : "border-transparent bg-transparent text-ink"
             : "border-line bg-paper/95 text-ink backdrop-blur-md",
         )}
@@ -85,7 +85,7 @@ export default function SiteNav() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "link-line font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
+                    "site-nav-link link-line font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
                     active
                       ? overHero
                         ? "text-clay"
@@ -105,7 +105,7 @@ export default function SiteNav() {
             <Link
               href="/contact"
               className={cn(
-                "btn hidden !py-3 !px-5 sm:inline-flex",
+                "site-nav-cta btn hidden !py-3 !px-5 sm:inline-flex",
                 overHero ? "!border-paper/70 !text-paper" : "btn-clay",
               )}
             >
@@ -116,7 +116,7 @@ export default function SiteNav() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="group flex h-10 w-10 flex-col items-end justify-center gap-[5px] lg:hidden"
+              className="site-hamburger group flex h-10 w-10 flex-col items-end justify-center gap-[5px] lg:hidden"
               aria-label="Open menu"
               aria-expanded={open}
             >
@@ -130,7 +130,7 @@ export default function SiteNav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[80] flex flex-col bg-forest text-paper"
+            className="fixed inset-0 z-[115] flex flex-col bg-forest text-paper"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
