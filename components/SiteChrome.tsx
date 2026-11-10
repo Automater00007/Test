@@ -9,6 +9,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteNav from "@/components/SiteNav";
 import RevealObserver from "@/components/providers/RevealObserver";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import { isHomePath } from "@/lib/utils";
 
 /**
  * Wraps every public page with the site chrome. The Sanity Studio is served
@@ -17,7 +18,7 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isStudio = pathname?.startsWith("/studio") ?? false;
-  const isHome = pathname === "/" || pathname === null;
+  const isHome = isHomePath(pathname);
   // The QR review page is opened from a phone at the table. Skip the cinematic
   // intro so the form is usable immediately.
   const isQuickReview = pathname === "/review";

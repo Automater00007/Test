@@ -202,7 +202,7 @@ export default function RoomsRail() {
                 </p>
                 <div className="mt-10 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-paper/65">
                   <span className="inline-block h-px w-8 bg-paper/25" />
-                  Scroll to move sideways
+                  Scroll to explore the rooms
                 </div>
               </div>
 
@@ -214,7 +214,7 @@ export default function RoomsRail() {
 
               <div className="w-[24vw] shrink-0 self-end pb-[8vh]">
                 <p className="font-display text-[clamp(1.8rem,3vw,3rem)] italic leading-[1.1] text-paper/70">
-                  “We stayed an extra night. Then another.”
+                  Most guests arrive with a plan. The river has other ideas.
                 </p>
                 <Link
                   href="/reviews"

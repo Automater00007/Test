@@ -50,11 +50,12 @@ export default async function BlogPage() {
         {!lead ? (
           <div className="border-t border-line pt-10" data-reveal>
             <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] italic leading-snug text-ink/70">
-              The blog is being written.
+              Notes from the valley, coming soon.
             </p>
             <p className="body-copy mt-4 max-w-md">
-              New notes from the property will appear here. In the meantime, write to us
-              and we will tell you what the valley is doing this week.
+              We&apos;re writing the first field notes from the property. In the
+              meantime, write to us and we&apos;ll tell you what the valley is doing
+              this week.
             </p>
             <Link
               href="/contact"

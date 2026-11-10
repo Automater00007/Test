@@ -30,11 +30,11 @@ export default function ExperiencesPage() {
             <em className="text-clay">very well.</em>
           </>
         }
-        intro="A fire is lit after dark. A path follows the water. The valley does the rest. None of it is scheduled for you."
+        intro="A fire is lit after dark. A path follows the water. The valley does the rest — nothing is scheduled for you."
         aside={
           <div className="flex items-end justify-between border-t border-line pt-5">
             <p className="font-mono text-[9px] uppercase leading-[1.9] tracking-[0.16em] text-ink/65">
-              Inclusive of the property
+              On the property
               <br />
               Ask us to arrange the rest
             </p>
@@ -109,7 +109,7 @@ export default function ExperiencesPage() {
               className="mt-5 max-w-[22ch] font-display text-[clamp(2rem,4.2vw,4rem)] leading-[1]"
               data-reveal
             >
-              The best thing here is the thing we{" "}
+              The best thing here is the one we{" "}
               <em className="text-clay">can’t schedule.</em>
             </p>
           </div>
