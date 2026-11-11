@@ -95,8 +95,8 @@ export default async function BlogTeaser() {
             ))}
           </div>
         ) : (
-          <p className="mt-12 max-w-md font-display text-[1.4rem] italic leading-snug text-ink/70">
-            The first notes are being written from the property.
+          <p className="mt-12 max-w-md font-display text-[1.4rem] leading-snug text-ink/70">
+            The first notes from the property are on their way.
           </p>
         )}
       </div>

@@ -26,3 +26,17 @@ export const slugify = (s: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+
+/**
+ * The site is served under `/jade-river-resort` in production, and the
+ * pathname can arrive with a trailing slash depending on how the host
+ * rewrites the request. Treat every form of the home URL the same so the
+ * "Back" control never appears on the homepage.
+ */
+const HOME_PATHS = new Set(["/", "/home", "/jade-river-resort"]);
+
+export function isHomePath(pathname: string | null | undefined) {
+  if (!pathname) return true;
+  const normalized = pathname.replace(/\/+$/, "") || "/";
+  return HOME_PATHS.has(normalized);
+}

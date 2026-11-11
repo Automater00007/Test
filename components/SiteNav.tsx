@@ -199,7 +199,7 @@ export default function SiteNav() {
                 <div className="text-right">
                   <a
                     href={`https://wa.me/${site.whatsapp}`}
-                    className="link-line font-display text-xl italic text-paper"
+                    className="link-line font-display text-xl text-paper"
                   >
                     {site.phone}
                   </a>

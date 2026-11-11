@@ -18,11 +18,17 @@ export default function BackToHome({
   const router = useRouter();
 
   const handleBack = () => {
-    if (typeof window !== "undefined" && window.history.length > 1) {
-      router.back();
-    } else {
-      router.push("/");
+    if (typeof window !== "undefined") {
+      // Next.js keeps an index in the history state. It tells us whether the
+      // previous entry belongs to this site, unlike history.length, which also
+      // counts whatever page the visitor arrived from.
+      const idx = (window.history.state as { idx?: number } | null)?.idx ?? 0;
+      if (idx > 0) {
+        router.back();
+        return;
+      }
     }
+    router.push("/");
   };
 
   return (

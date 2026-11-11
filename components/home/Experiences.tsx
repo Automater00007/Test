@@ -23,8 +23,8 @@ export default function Experiences() {
             </h2>
           </div>
           <p className="body-copy max-w-sm md:col-span-4 md:col-start-9" data-reveal>
-            Nothing here is scheduled for you. A fire is lit, a path follows the
-            water, and the valley does the rest.
+            Nothing here is scheduled. A fire is lit at dusk, a path follows the
+            river, and the valley does the rest.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function Experiences() {
                   />
                 </div>
               </div>
-              <p className="mt-2 max-w-md pl-9 font-display text-[0.98rem] italic leading-snug text-ink/65 transition-colors duration-300 group-hover:text-ink/65 md:hidden">
+              <p className="mt-2 max-w-md pl-9 font-display text-[0.98rem] leading-snug text-ink/65 transition-colors duration-300 group-hover:text-ink/65 md:hidden">
                 {exp.subtitle}
               </p>
             </Link>

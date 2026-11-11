@@ -74,7 +74,7 @@ There are 13 rooms in total.
 
 - **Bonfire Evenings:** Bonfires beside the Lidder River, Kashmiri nights, stars, and the sound of water. Suitable for families, couples, or solo guests.
 - **River Walks:** Walk beside the Lidder River with no fixed schedule or guide; guests can explore at their own pace.
-- **Pahalgam Sightseeing:**  Valley (Mini Switzerland), Aru Valley, Betaab Valley, and Chandanwari are all a short distance from the resort.
+- **Pahalgam Sightseeing:** Aru Valley, Betaab Valley, and Chandanwari are all a short distance from the resort.
 - **Photography:** Wooden buildings, the stream, and the forest provide a perfect frame around every corner.
 - **Family Moments:** Spacious lawns, a safe environment, family-friendly activities, and duplex rooms.
 - **Pure Luxury:** Room service, premium bedding, and attentive staff — luxury that is felt rather than displayed.

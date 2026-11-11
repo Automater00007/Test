@@ -113,7 +113,7 @@ export default function SiteFooter() {
         style={{ marginBottom: "-0.16em" }}
       >
         <p
-          className="whitespace-nowrap text-center font-display text-[clamp(5rem,18.5vw,19rem)] leading-[0.8] tracking-[-0.055em]"
+          className="whitespace-nowrap text-center font-serif text-[clamp(5rem,18.5vw,19rem)] leading-[0.8] tracking-[-0.055em]"
           style={{ color: "transparent", WebkitTextStroke: "1px rgba(251,248,243,0.18)" }}
         >
           Jade River

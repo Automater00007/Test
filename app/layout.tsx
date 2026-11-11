@@ -1,29 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope, DM_Mono } from "next/font/google";
+import { Manrope, Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import PreviewBridge from "@/components/PreviewBridge";
 import SiteChrome from "@/components/SiteChrome";
 import { site } from "@/lib/content";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-fraunces",
-  style: ["normal", "italic"],
-  axes: ["SOFT", "WONK", "opsz"],
-});
-
 const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
+  weight: ["500", "600", "700"],
 });
 
-const dmMono = DM_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400"],
   display: "swap",
-  variable: "--font-dm-mono",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
+
+// Reserved for the oversized footer wordmark only.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-fraunces",
+  style: ["normal"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
 export const metadata: Metadata = {
@@ -120,7 +122,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${manrope.variable} ${dmMono.variable}`}
+      className={`${manrope.variable} ${inter.variable} ${fraunces.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: introScript }} />

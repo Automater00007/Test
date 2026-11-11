@@ -1,6 +1,6 @@
 # Jade River Resort — Working Context
 
-_Last updated: 4 November 2026 (UX + publishing pass)_
+_Last updated: 11 November 2026 (typography pass; colour system restored)_
 
 ## Project
 Marketing website for **Jade River Resort**, Pahalgam, Jammu & Kashmir — a 13-room boutique resort on the Lidder River, part of Defoy Hotels & Resorts.
@@ -12,7 +12,7 @@ Primary goal: an exceptional, fast, smooth site with a Sanity-powered blog that 
 - Tailwind CSS v4
 - Framer Motion 12
 - Lenis smooth scroll (desktop pointer-fine only)
-- Fonts: Fraunces (display), Manrope (body), DM Mono (labels)
+- Fonts: Manrope (display/headlines), Inter (body, UI and labels)
 - Sanity CMS + Portable Text (implemented; awaiting credentials/content)
 - YouTube Data API v3 playlist feed (deferred)
 
@@ -29,6 +29,8 @@ Primary goal: an exceptional, fast, smooth site with a Sanity-powered blog that 
 | Warm Grey | `#8B8176` | Descriptions, secondary text |
 
 Rules: **no gradients**; every dark surface must be Forest Green (a deeper forest shade is allowed for image placeholders); Deep Walnut for CTA surfaces and primary buttons; Muted Copper for small accents.
+
+The brand-kit palette was trialled on 11 November 2026 and reverted because several accents lost contrast on the ivory and maroon surfaces. The kit's typography is retained; both the old type and the trialled palette are recorded in `BRAND-HISTORY.md`.
 
 ## Resort facts (do not invent alternatives)
 - 13 rooms: 9 Premium Balcony Rooms, 2 Executive Suites, 2 Executive Duplex Family Rooms.

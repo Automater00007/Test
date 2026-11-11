@@ -136,7 +136,7 @@ export default function GalleryMarquee() {
         className="shell mt-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ink/65"
         data-reveal="fade"
       >
-        Scroll velocity changes the current — try it.
+        A few frames from the property and the valley around it.
       </p>
     </section>
   );

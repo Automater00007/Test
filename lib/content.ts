@@ -182,7 +182,7 @@ export const experiences: Experience[] = [
   },
   {
     title: "Pahalgam Sightseeing",
-    subtitle: "Aru, Betaab, Chandanwari",
+    subtitle: " Aru, Betaab, Chandanwari",
     body:
       "The valley keeps its famous places close. Mini Switzerland, the Aru meadows, the Betaab river bend, and the road to Chandanwari all sit within a short drive.",
     meta: "Half and full day · By road",

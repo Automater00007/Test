@@ -18,9 +18,12 @@
   --color-line: rgba(96, 48, 32, 0.18);
   --color-line-light: rgba(251, 248, 243, 0.18);
 
-  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
-  --font-sans: var(--font-manrope), system-ui, sans-serif;
-  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+  /* Manrope carries display; Inter carries body, UI and labels.
+     Fraunces is retained only for the footer wordmark. */
+  --font-display: var(--font-manrope), Arial, sans-serif;
+  --font-sans: var(--font-inter), Arial, sans-serif;
+  --font-mono: var(--font-inter), Arial, sans-serif;
+  --font-serif: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
@@ -42,7 +45,7 @@
     background: var(--color-paper);
     color: var(--color-charcoal);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01" 1, "cv11" 1;
+    font-feature-settings: "kern" 1, "liga" 1;
     overflow-x: clip;
   }
 
@@ -57,18 +60,24 @@
   }
 
   h1,
-  h2,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.94;
+    text-wrap: balance;
+  }
+
   h3 {
     font-family: var(--font-display);
-    font-weight: 380;
-    font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 120;
-    letter-spacing: -0.035em;
-    line-height: 0.92;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
     text-wrap: balance;
   }
 
   em {
-    font-style: italic;
+    font-style: normal;
   }
 
   a,
@@ -91,15 +100,16 @@
 
   .eyebrow {
     font-family: var(--font-mono);
+    font-weight: 600;
     font-size: 0.68rem;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     line-height: 1.4;
   }
 
   .lede {
     font-size: clamp(1.05rem, 1.45vw, 1.35rem);
-    line-height: 1.55;
+    line-height: 1.7;
     letter-spacing: -0.01em;
   }
 
@@ -154,9 +164,10 @@
     border: 1px solid currentColor;
     padding: 1.05rem 1.65rem;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: none;
     isolation: isolate;
     transition: color 0.5s var(--ease-out-expo);
   }
@@ -197,8 +208,10 @@
 
   .num {
     font-family: var(--font-mono);
+    font-weight: 600;
     font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
+    font-variant-numeric: tabular-nums;
     color: color-mix(in srgb, var(--color-charcoal) 70%, transparent);
   }
 
@@ -208,7 +221,7 @@
     font-family: var(--font-display);
     font-size: 4.4em;
     line-height: 0.72;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--color-copper);
   }
 }
