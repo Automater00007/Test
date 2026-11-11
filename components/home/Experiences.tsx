@@ -62,7 +62,7 @@ export default function Experiences() {
                   />
                 </div>
               </div>
-              <p className="mt-2 max-w-md pl-9 font-display text-[0.98rem] italic leading-snug text-ink/65 transition-colors duration-300 group-hover:text-ink/65 md:hidden">
+              <p className="mt-2 max-w-md pl-9 font-display text-[0.98rem] leading-snug text-ink/65 transition-colors duration-300 group-hover:text-ink/65 md:hidden">
                 {exp.subtitle}
               </p>
             </Link>

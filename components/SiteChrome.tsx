@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import BackToHome from "@/components/BackToHome";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -17,8 +17,11 @@ import { isHomePath } from "@/lib/utils";
  */
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const segment = useSelectedLayoutSegment();
   const isStudio = pathname?.startsWith("/studio") ?? false;
-  const isHome = isHomePath(pathname);
+  // `useSelectedLayoutSegment` is null only on the root route, so it catches
+  // every way the homepage can be served (including a rewritten base path).
+  const isHome = segment === null || isHomePath(pathname);
   // The QR review page is opened from a phone at the table. Skip the cinematic
   // intro so the form is usable immediately.
   const isQuickReview = pathname === "/review";

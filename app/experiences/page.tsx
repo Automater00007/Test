@@ -83,7 +83,7 @@ export default function ExperiencesPage() {
                 <h2 className="mt-4 text-[clamp(2rem,3.6vw,3.5rem)] leading-[0.96]">
                   {exp.title}
                 </h2>
-                <p className="mt-4 font-display text-[1.15rem] italic leading-snug text-clay">
+                <p className="mt-4 font-display text-[1.15rem] leading-snug text-clay">
                   {exp.subtitle}
                 </p>
                 <p className="body-copy mt-5">{exp.body}</p>

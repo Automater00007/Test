@@ -49,7 +49,7 @@ export default async function BlogPage() {
       <section className="shell pb-24 md:pb-32">
         {!lead ? (
           <div className="border-t border-line pt-10" data-reveal>
-            <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] italic leading-snug text-ink/70">
+            <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-snug text-ink/70">
               Notes from the valley, coming soon.
             </p>
             <p className="body-copy mt-4 max-w-md">

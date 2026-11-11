@@ -213,7 +213,7 @@ export default function RoomsRail() {
               ))}
 
               <div className="w-[24vw] shrink-0 self-end pb-[8vh]">
-                <p className="font-display text-[clamp(1.8rem,3vw,3rem)] italic leading-[1.1] text-paper/70">
+                <p className="font-display text-[clamp(1.8rem,3vw,3rem)] leading-[1.1] text-paper/70">
                   Most guests arrive with a plan. The river has other ideas.
                 </p>
                 <Link

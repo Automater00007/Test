@@ -7,9 +7,9 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { img, site } from "@/lib/content";
 
 const lines = [
-  { text: "Life,", italic: false },
-  { text: "slowed by", italic: true },
-  { text: "the river.", italic: false },
+  { text: "Life,", emphasis: false },
+  { text: "slowed by", emphasis: true },
+  { text: "the river.", emphasis: false },
 ];
 
 export default function Hero() {
@@ -44,7 +44,7 @@ export default function Hero() {
     <section ref={ref} className="relative mb-[3px]">
       {/* <div className="shell flex items-center justify-between gap-4 py-4 md:py-5">
         <p className="eyebrow text-ink/70">Pahalgam · Jammu &amp; Kashmir</p>
-        <p className="eyebrow hidden italic text-ink/65 md:block">
+        <p className="eyebrow hidden text-ink/65 md:block">
           Life, slowed by the river
         </p>
         <p className="eyebrow text-ink/70">
@@ -122,13 +122,10 @@ export default function Hero() {
                       className="line-inner"
                       style={{ transitionDelay: `${140 + i * 90}ms` }}
                     >
-                      {line.italic ? (
-                        <em className="font-light text-paper/90">{line.text}</em>
+                      {line.emphasis ? (
+                        <em className="font-medium text-paper/90">{line.text}</em>
                       ) : (
                         line.text
-                      )}
-                      {i === 2 && (
-                        <span className="ml-[0.06em] inline-block h-[0.11em] w-[0.11em] translate-y-[-0.72em] bg-copper" />
                       )}
                     </span>
                   </span>

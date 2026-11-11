@@ -50,7 +50,7 @@ export default function ClosingCTA() {
 
               <a
                 href={site.phoneHref}
-                className="link-line font-display text-[1.3rem] italic text-ink"
+                className="link-line font-display text-[1.3rem] text-ink"
               >
                 {site.phone}
               </a>

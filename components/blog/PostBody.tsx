@@ -65,7 +65,7 @@ const components: PortableTextComponents = {
   },
   marks: {
     strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
-    em: ({ children }) => <em className="italic">{children}</em>,
+    em: ({ children }) => <em>{children}</em>,
     link: ({ children, value }) => {
       const href = (value as { href?: string } | undefined)?.href || "#";
       const external = /^https?:\/\//.test(href);

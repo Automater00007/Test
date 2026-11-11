@@ -108,7 +108,7 @@ export default async function PostPage({
               </h1>
             </div>
             <p
-              className="self-end font-display text-[1.1rem] italic leading-snug text-ink/65 md:col-span-3"
+              className="self-end font-display text-[1.1rem] leading-snug text-ink/65 md:col-span-3"
               data-reveal
               style={{ ["--reveal-delay" as string]: "120ms" }}
             >
